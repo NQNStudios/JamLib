@@ -1,0 +1,17 @@
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TestGame.exe
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TestGame.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TileGameLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TileGameLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\Windows Copy of TestGame.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\TestGame.exe
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\TestGame.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Tilesets\Grass Tiles.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Cursor_1.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Rogue.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Arrows.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Tile Overlays.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Maps\Grass Demo.csv
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Maps\layer.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Health Bar.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Phase Icons.xnb

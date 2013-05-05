@@ -1,0 +1,6 @@
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\bin\x86\Debug\TileGameLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\bin\x86\Debug\TileGameLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\x86\Debug\Windows Copy of TileGameLib.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\x86\Debug\TileGameLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\x86\Debug\TileGameLib.pdb

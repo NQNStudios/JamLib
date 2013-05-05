@@ -1,0 +1,17 @@
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\TestGame.exe
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\TestGame.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\TileGameLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\TileGameLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\TestGame.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\TestGame.exe
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\TestGame.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Tilesets\Grass Tiles.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Cursor_1.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Rogue.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Arrows.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Tile Overlays.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Maps\Grass Demo.csv
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Maps\layer.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Health Bar.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Phase Icons.xnb

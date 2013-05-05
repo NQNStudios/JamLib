@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Tilesets\Grass Tiles.png</Source>
+      <Name>Tilesets\Grass Tiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Tilesets\Grass Tiles.xnb</Output>
+      <Time>2013-05-04T08:06:36.1216509-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Cursor_1.png</Source>
+      <Name>UI\Cursor_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Cursor_1.xnb</Output>
+      <Time>2013-05-04T12:17:31.4551992-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Rogue.png</Source>
+      <Name>Sprites\Rogue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Rogue.xnb</Output>
+      <Time>2013-05-04T14:28:40.7995384-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Arrows.png</Source>
+      <Name>UI\Arrows</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Arrows.xnb</Output>
+      <Time>2013-05-04T16:57:02.3170143-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Tile Overlays.png</Source>
+      <Name>UI\Tile Overlays</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Tile Overlays.xnb</Output>
+      <Time>2013-05-05T09:14:14.8096552-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Health Bar.png</Source>
+      <Name>UI\Health Bar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Health Bar.xnb</Output>
+      <Time>2013-05-05T12:40:15.7477054-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Phase Icons.png</Source>
+      <Name>UI\Phase Icons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Phase Icons.xnb</Output>
+      <Time>2013-05-05T12:40:15.7867098-06:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Xbox360</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>true</CompressContent>
+      <RootDirectory>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGameContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGameContent\obj\Xbox 360\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-03-15T19:03:42.3502421-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

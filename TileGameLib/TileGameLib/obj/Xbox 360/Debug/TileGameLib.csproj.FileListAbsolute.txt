@@ -1,0 +1,5 @@
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\bin\Xbox 360\Debug\TileGameLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\bin\Xbox 360\Debug\TileGameLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.pdb
