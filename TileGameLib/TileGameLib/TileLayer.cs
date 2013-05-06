@@ -19,6 +19,7 @@ namespace TileGameLib
         List<int> slowTiles = new List<int>();
 
         public Pathfinder Pathfind;
+        public EntityManager Entities;
 
         #region Initialization
 
@@ -26,6 +27,7 @@ namespace TileGameLib
         {
             this.tileWidth = tileWidth;
             this.tileHeight = tileHeight;
+            Entities = new EntityManager();
         }
 
         public void LoadContent(ContentManager content, string textureFilename, string layoutFilename)
@@ -100,8 +102,6 @@ namespace TileGameLib
                         layer.SetSlowTiles(tiles.ToArray());
                         tiles.Clear();
                     }
-
-                    layer.Pathfind = new Pathfinder(layer);
                 }
                 else
                 {
@@ -150,7 +150,7 @@ namespace TileGameLib
 
         public bool IsPassable(int x, int y)
         {
-            return !blockedTiles.Contains(GetTile(x, y));
+            return !blockedTiles.Contains(GetTile(x, y)) && (Entities.EntityAt(new Point(x, y)) == null || Entities.EntityAt(new Point(x, y)).Group == "Player");
         }
 
         public bool IsPassable(Point loc)

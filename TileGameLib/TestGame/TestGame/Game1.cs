@@ -25,7 +25,6 @@ namespace TestGame
         Camera camera;
         TileLayer layer;
         Cursor cursor;
-        Pathfinder finder;
 
         Entity entity;
 
@@ -75,12 +74,14 @@ namespace TestGame
             Texture2D healthbarTexture = Content.Load<Texture2D>("UI/Health Bar");
 
             cursor = new Cursor(layer, cursorTexture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), new Point(20, 20));
-            cursor.AddProcess(new Buttons[] { Buttons.A }, new Process(onSelect));
-            cursor.AddProcess(new Buttons[] { Buttons.X }, new Process(onTab));
-            cursor.AddProcess(new Buttons[] { Buttons.B }, new Process(onExit));
 
-            finder = new Pathfinder(layer);
-            entity = new Entity("", "", 5, 0, 0, 5, 0, 1, 1, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", 5, 0, 0, 5, 0, 1, 1, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
+            layer.Entities.Add(entity);
+            entity = new Entity("", "NPC", 5, 0, 0, 5, 0, 1, 1, layer, new Point(22, 20), rogue, iconTexture, healthbarTexture);
+            entity.Behavior += new Behavior(enemyBehavior);
+            layer.Entities.Add(entity);
+
+            layer.Pathfind = new Pathfinder(layer);
         }
 
         /// <summary>
@@ -109,7 +110,7 @@ namespace TestGame
 
             cursor.Update(PlayerIndex.One, gameTime, camera);
             camera.ClampToArea(layer.WidthInPixels() + ScreenHelper.Viewport.TitleSafeArea.X, layer.HeightInPixels() + ScreenHelper.Viewport.TitleSafeArea.Y);
-            entity.Update(gameTime);
+            layer.Entities.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -129,7 +130,9 @@ namespace TestGame
 
             cursor.DrawSquares(spriteBatch);
             cursor.DrawArrow(spriteBatch);
-            entity.Draw(spriteBatch);
+
+            layer.Entities.Draw(spriteBatch);
+            
             cursor.Draw(spriteBatch);
 
             spriteBatch.End();
@@ -137,47 +140,19 @@ namespace TestGame
             base.Draw(gameTime);
         }
 
-        void onTab(Cursor cursor)
+        void enemyBehavior(Entity e)
         {
-            if (cursor.SelectedEntity != null)
+            switch (e.Phase)
             {
-                cursor.SelectedEntity.EndPhase();
-            }
-        }
+                case Phase.Move:
+                    Entity target = layer.Entities.Group("Player")[0];
+                    e.MoveTo(target.Position);
+                    e.EndPhase();
+                    break;
 
-        void onExit(Cursor cursor)
-        {
-            cursor.SelectedEntity = null;
-        }
-
-        void onSelect(Cursor cursor)
-        {
-            if (cursor.SelectedEntity != null)
-            {
-                switch (cursor.SelectedEntity.Phase)
-                {
-                    case Phase.Move:
-                        if (!cursor.SelectedEntity.Moving && cursor.Location != cursor.SelectedEntity.Position && cursor.SelectedEntity.CanMoveTo(cursor.Location))
-                        {
-                            cursor.SelectedEntity.MoveTo(cursor.Location);
-                            cursor.SelectedEntity.EndPhase();
-                        }
-                        break; 
-
-                    case Phase.Attack:
-                        if (cursor.SelectedEntity.CanAttack(cursor.Location))
-                            cursor.SelectedEntity.EndPhase();
-                        break;
-
-                    case Phase.Finished:
-                        break;
-                }
-                
-                cursor.SelectedEntity = null;
-            }
-            else if (cursor.Location == entity.Position && entity.Phase != Phase.Finished)
-            {
-                cursor.SelectedEntity = entity;
+                case Phase.Attack:
+                    e.EndPhase();
+                    break;
             }
         }
     }

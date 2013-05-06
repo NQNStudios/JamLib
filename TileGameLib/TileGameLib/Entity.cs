@@ -15,6 +15,8 @@ namespace TileGameLib
         Finished = 2
     }
 
+    public delegate void Behavior(Entity e);
+
     public class Entity
     {
         #region Fields
@@ -25,7 +27,6 @@ namespace TileGameLib
         public StatBar Health;
         public StatBar Magic;
         public StatBar Stamina;
-        //Inventory inv;
 
         int speed;
         int skill;
@@ -33,6 +34,7 @@ namespace TileGameLib
         int maxAttackRange;
 
         Phase phase;
+        public Behavior Behavior;
 
         TileLayer layer;
         Point position;
@@ -42,6 +44,8 @@ namespace TileGameLib
         Texture2D healthbarTexture;
 
         FrameAnimation animation;
+
+        public EntityManager EntityManager;
 
         #endregion
 
@@ -115,6 +119,9 @@ namespace TileGameLib
             if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving)
                 return;
 
+            if (Group != "Player")
+                layer.Pathfind.InitializeSearchNodes(layer);
+
             destinations = new Queue<Point>();
 
             List<Point> points = layer.Pathfind.FindPath(position, destination);
@@ -133,6 +140,7 @@ namespace TileGameLib
         {
             if (!layer.IsPassable(p)) return false;
             if (layer.Pathfind.MoveDistance(position, p) > speed) return false;
+            if (EntityManager != null && EntityManager.EntityAt(p) != null) return false;
             return true;
         }
 
@@ -167,6 +175,16 @@ namespace TileGameLib
                 updateMove(gameTime);
 
             animation.Update(gameTime);
+        }
+
+        #endregion
+
+        #region Act
+
+        public void Act()
+        {
+            if (Behavior != null)
+                Behavior(this);
         }
 
         #endregion

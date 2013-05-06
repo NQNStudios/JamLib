@@ -25,7 +25,7 @@ namespace TileGameLib
             InitializeSearchNodes(layer);
         }
 
-        private void InitializeSearchNodes(TileLayer layer)
+        public void InitializeSearchNodes(TileLayer layer)
         {
             searchNodes = new SearchNode[levelWidth, levelHeight];
 

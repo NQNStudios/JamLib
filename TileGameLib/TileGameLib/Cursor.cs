@@ -57,6 +57,10 @@ namespace TileGameLib
 
             if (location.HasValue)
                 this.location = location.Value;
+
+            AddProcess(new Buttons[] { Buttons.A }, new Process(onSelect));
+            AddProcess(new Buttons[] { Buttons.X }, new Process(onTab));
+            AddProcess(new Buttons[] { Buttons.B }, new Process(onExit));
         }
 
         #region Overloads
@@ -413,5 +417,52 @@ namespace TileGameLib
         }
 
         #endregion
+
+        void onTab(Cursor cursor)
+        {
+            if (layer.Entities.EntityAt(cursor.Location) != null && layer.Entities.EntityAt(cursor.Location).Group == "Player")
+            {
+                layer.Entities.EntityAt(cursor.Location).EndPhase();
+            }
+        }
+
+        void onExit(Cursor cursor)
+        {
+            cursor.SelectedEntity = null;
+        }
+
+        void onSelect(Cursor cursor)
+        {
+            Entity e = layer.Entities.EntityAt(cursor.Location);
+            if (cursor.SelectedEntity != null)
+            {
+                switch (cursor.SelectedEntity.Phase)
+                {
+                    case Phase.Move:
+                        if (!cursor.SelectedEntity.Moving && cursor.Location != cursor.SelectedEntity.Position && cursor.SelectedEntity.CanMoveTo(cursor.Location))
+                        {
+                            cursor.SelectedEntity.MoveTo(cursor.Location);
+                            cursor.SelectedEntity.EndPhase();
+                        }
+                        break;
+
+                    case Phase.Attack:
+                        if (cursor.SelectedEntity.CanAttack(cursor.Location))
+                        {
+                            cursor.SelectedEntity.EndPhase();
+                        }
+                        break;
+
+                    case Phase.Finished:
+                        break;
+                }
+
+                cursor.SelectedEntity = null;
+            }
+            else if (e != null && e.Group == "Player" && e.Phase != Phase.Finished)
+            {
+                cursor.SelectedEntity = e;
+            }
+        }
     }
 }
