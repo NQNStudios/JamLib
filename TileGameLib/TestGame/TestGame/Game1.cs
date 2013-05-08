@@ -22,7 +22,6 @@ namespace TestGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Camera camera;
         TileLayer layer;
         Cursor cursor;
 
@@ -57,27 +56,39 @@ namespace TestGame
         protected override void LoadContent()
         {
             ScreenHelper.Initialize(GraphicsDevice, graphics);
-            camera = new Camera(new Vector2(ScreenHelper.Viewport.Width, ScreenHelper.Viewport.Height), null);
-
+            ScreenHelper.Camera = new Camera(new Vector2(ScreenHelper.Viewport.Width, ScreenHelper.Viewport.Height), null);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
             layer = TileLayer.FromFile(Content, "layer.txt");
 
+            layer.Entities.BloodTexture = Content.Load<Texture2D>("Sprites/Blood");
+            layer.Entities.HealingTexture = Content.Load<Texture2D>("Sprites/Healing");
+
             Texture2D cursorTexture = Content.Load<Texture2D>("UI/Cursor_1");
             Texture2D arrowTexture = Content.Load<Texture2D>("UI/Arrows");
             Texture2D overlayTexture = Content.Load<Texture2D>("UI/Tile Overlays");
 
             Texture2D rogue = Content.Load<Texture2D>("Sprites/Rogue");
+            Texture2D knight = Content.Load<Texture2D>("Sprites/Knight");
+
             Texture2D iconTexture = Content.Load<Texture2D>("UI/Phase Icons");
             Texture2D healthbarTexture = Content.Load<Texture2D>("UI/Health Bar");
 
+            SpriteFont font = Content.Load<SpriteFont>("Fonts/Font1");
+            ScreenHelper.Font = font;
+
             cursor = new Cursor(layer, cursorTexture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), new Point(20, 20));
 
-            entity = new Entity("", "Player", 5, 0, 0, 5, 0, 1, 1, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", 5, 5, 1, 1, 3, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
             layer.Entities.Add(entity);
-            entity = new Entity("", "NPC", 5, 0, 0, 5, 0, 1, 1, layer, new Point(22, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", 5, 5, 1, 1, 1, layer, new Point(21, 20), rogue, iconTexture, healthbarTexture);
+            layer.Entities.Add(entity);
+            entity = new Entity("", "Enemy", 5, 5, 3, 1, 1, layer, new Point(22, 20), knight, iconTexture, healthbarTexture);
+            entity.Behavior += new Behavior(enemyBehavior);
+            layer.Entities.Add(entity);
+            entity = new Entity("", "Enemy", 5, 5, 3, 1, 1, layer, new Point(15, 16), knight, iconTexture, healthbarTexture);
             entity.Behavior += new Behavior(enemyBehavior);
             layer.Entities.Add(entity);
 
@@ -108,8 +119,8 @@ namespace TestGame
 
             // TODO: Add your update logic here
 
-            cursor.Update(PlayerIndex.One, gameTime, camera);
-            camera.ClampToArea(layer.WidthInPixels() + ScreenHelper.Viewport.TitleSafeArea.X, layer.HeightInPixels() + ScreenHelper.Viewport.TitleSafeArea.Y);
+            cursor.Update(PlayerIndex.One, gameTime, ScreenHelper.Camera);
+            ScreenHelper.Camera.ClampToArea(layer.WidthInPixels() + ScreenHelper.Viewport.TitleSafeArea.X, layer.HeightInPixels() + ScreenHelper.Viewport.TitleSafeArea.Y);
             layer.Entities.Update(gameTime);
 
             base.Update(gameTime);
@@ -124,7 +135,7 @@ namespace TestGame
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, camera.TransformMatrix);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, ScreenHelper.Camera.TransformMatrix);
 
             layer.Draw(spriteBatch);
 
@@ -142,16 +153,22 @@ namespace TestGame
 
         void enemyBehavior(Entity e)
         {
+            Entity target = e.ClosestTarget(layer.Entities.EntityList);
             switch (e.Phase)
             {
                 case Phase.Move:
-                    Entity target = layer.Entities.Group("Player")[0];
-                    e.MoveTo(target.Position);
+                    if (e.DistanceTo(target) > 0)
+                        e.MoveTo(target);
                     e.EndPhase();
                     break;
 
                 case Phase.Attack:
-                    e.EndPhase();
+                    if (!e.Moving)
+                    {
+                        if (e.CanAttack(target.Position))
+                            e.Attack(target);
+                        e.EndPhase();
+                    }
                     break;
             }
         }

@@ -102,9 +102,12 @@ namespace TileGameLib
 
             elapsed -= gameTime.ElapsedGameTime;
 
+            if (selectedEntity != null && selectedEntity.Health.IsEmpty)
+                selectedEntity = null;
+
             if (elapsed <= TimeSpan.Zero && (selectedEntity == null || !selectedEntity.Moving))
             {
-                Vector2 tempCamPos = camera.Position;
+                Vector2 tempCamPos = ScreenHelper.Camera.Position;
 
                 if (padState.ThumbSticks.Left.X < 0 || Keyboard.GetState().IsKeyDown(Keys.Left)) //Left stick left
                 {
@@ -189,24 +192,27 @@ namespace TileGameLib
         {
             if (selectedEntity != null)
             {
-                for (int x = 0; x < layer.Width(); ++x)
+                switch (selectedEntity.Phase)
                 {
-                    for (int y = 0; y < layer.Height(); ++y)
-                    {
-                        switch (selectedEntity.Phase)
+                    case Phase.Move:
+                        foreach (Point p in selectedEntity.MovePoints())
                         {
-                            case Phase.Move:
-                                if (selectedEntity.CanMoveTo(new Point(x, y)))
-                                    DrawOverlay(new Point(x, y), spriteBatch, Color.Blue);
-                                break;
-
-                            case Phase.Attack:
-                                if (selectedEntity.CanAttack(new Point(x, y)))
-                                    DrawOverlay(new Point(x, y), spriteBatch, Color.Red);
-                                break;
+                            DrawOverlay(p, spriteBatch, Color.Blue);
                         }
-                    }
+                        break;
+
+                    case Phase.Attack:
+                        foreach (Point p in selectedEntity.AttackPoints())
+                        {
+                            DrawOverlay(p, spriteBatch, Color.Red);
+                        }
+                        break;
+
+                    default:
+                        break;
                 }
+
+                
             }
         }
 
@@ -230,6 +236,10 @@ namespace TileGameLib
             spriteBatch.Draw(overlayTexture, loc, source, Color.White);
         }
 
+        Point lastStart;
+        Point lastEnd;
+        List<Point> path;
+
         public void DrawArrow(SpriteBatch spriteBatch)
         {
             if (selectedEntity != null && selectedEntity.Phase == Phase.Move) //Draw arrow
@@ -240,7 +250,8 @@ namespace TileGameLib
                 Point start = selectedEntity.Position;
                 Point end = Location;
 
-                List<Point> path = layer.Pathfind.FindPath(start, end);
+                if (start != lastStart || end != lastEnd)
+                    path = layer.Pathfind.FindPath(start, end);
 
                 for (int i = 0; i < path.Count; ++i)
                 {
@@ -265,6 +276,9 @@ namespace TileGameLib
 
                     start = path[i];
                 }
+
+                lastStart = start;
+                lastEnd = end;
             }
         }
 
@@ -418,11 +432,14 @@ namespace TileGameLib
 
         #endregion
 
+        #region Events
+
         void onTab(Cursor cursor)
         {
-            if (layer.Entities.EntityAt(cursor.Location) != null && layer.Entities.EntityAt(cursor.Location).Group == "Player")
+            Entity e = layer.Entities.EntityAt(cursor.Location);
+            if (e != null && layer.Entities.CurrentGroup == "Player" && e.Group == "Player")
             {
-                layer.Entities.EntityAt(cursor.Location).EndPhase();
+                e.EndPhase();
             }
         }
 
@@ -433,13 +450,17 @@ namespace TileGameLib
 
         void onSelect(Cursor cursor)
         {
+            if (layer.Entities.CurrentGroup != "Player")
+                return;
+
             Entity e = layer.Entities.EntityAt(cursor.Location);
+
             if (cursor.SelectedEntity != null)
             {
                 switch (cursor.SelectedEntity.Phase)
                 {
                     case Phase.Move:
-                        if (!cursor.SelectedEntity.Moving && cursor.Location != cursor.SelectedEntity.Position && cursor.SelectedEntity.CanMoveTo(cursor.Location))
+                        if (!cursor.SelectedEntity.Moving && cursor.SelectedEntity.CanMoveTo(cursor.Location))
                         {
                             cursor.SelectedEntity.MoveTo(cursor.Location);
                             cursor.SelectedEntity.EndPhase();
@@ -449,6 +470,7 @@ namespace TileGameLib
                     case Phase.Attack:
                         if (cursor.SelectedEntity.CanAttack(cursor.Location))
                         {
+                            cursor.SelectedEntity.Attack(layer.Entities.EntityAt(cursor.Location));
                             cursor.SelectedEntity.EndPhase();
                         }
                         break;
@@ -464,5 +486,7 @@ namespace TileGameLib
                 cursor.SelectedEntity = e;
             }
         }
+
+        #endregion
     }
 }

@@ -5,5 +5,9 @@ Content\UI\Arrows.xnb
 Content\UI\Tile Overlays.xnb
 Content\UI\Health Bar.xnb
 Content\UI\Phase Icons.xnb
+Content\Fonts\Font1.xnb
+Content\Sprites\Knight.xnb
+Content\Sprites\Blood.xnb
+Content\Sprites\Healing.xnb
 Content\Maps\Grass Demo.csv
 Content\Maps\layer.txt

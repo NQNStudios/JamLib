@@ -11,15 +11,21 @@ namespace TileGameLib
 {
     public class TileLayer
     {
+        #region Fields
+
         int[,] tiles;
         Texture2D texture;
         int tileWidth, tileHeight;
 
         List<int> blockedTiles = new List<int>();
         List<int> slowTiles = new List<int>();
+        List<int> coverTiles = new List<int>();
+        List<int> castleTiles = new List<int>();
 
         public Pathfinder Pathfind;
         public EntityManager Entities;
+
+        #endregion
 
         #region Initialization
 
@@ -27,7 +33,6 @@ namespace TileGameLib
         {
             this.tileWidth = tileWidth;
             this.tileHeight = tileHeight;
-            Entities = new EntityManager();
         }
 
         public void LoadContent(ContentManager content, string textureFilename, string layoutFilename)
@@ -50,6 +55,22 @@ namespace TileGameLib
 
             foreach (Int32 tile in slowTiles)
                 this.slowTiles.Add(tile);
+        }
+
+        public void SetCoverTiles(params Int32[] coverTiles)
+        {
+            this.coverTiles.Clear();
+
+            foreach (Int32 tile in coverTiles)
+                this.coverTiles.Add(tile);
+        }
+
+        public void SetCastleTiles(params Int32[] castleTiles)
+        {
+            this.castleTiles.Clear();
+
+            foreach (Int32 tile in castleTiles)
+                this.castleTiles.Add(tile);
         }
 
         public static TileLayer FromFile(ContentManager content, string filename)
@@ -95,11 +116,31 @@ namespace TileGameLib
 
                     if (next == "[Slow Tiles]")
                     {
-                        while ((next = sr.ReadLine()) != null)
+                        while ((next = sr.ReadLine()) != "[Cover Tiles]" && next != null)
                         {
                             tiles.Add(Int32.Parse(next));
                         }
                         layer.SetSlowTiles(tiles.ToArray());
+                        tiles.Clear();
+                    }
+
+                    if (next == "[Cover Tiles]")
+                    {
+                        while ((next = sr.ReadLine()) != "[Castle Tiles]" && next != null)
+                        {
+                            tiles.Add(Int32.Parse(next));
+                        }
+                        layer.SetCoverTiles(tiles.ToArray());
+                        tiles.Clear();
+                    }
+
+                    if (next == "[Castle Tiles]")
+                    {
+                        while ((next = sr.ReadLine()) != null)
+                        {
+                            tiles.Add(Int32.Parse(next));
+                        }
+                        layer.SetCastleTiles(tiles.ToArray());
                         tiles.Clear();
                     }
                 }
@@ -111,6 +152,7 @@ namespace TileGameLib
                 sr.Close();
             }
 
+            layer.Entities = new EntityManager(layer);
             return layer;
         }
 
@@ -150,7 +192,7 @@ namespace TileGameLib
 
         public bool IsPassable(int x, int y)
         {
-            return !blockedTiles.Contains(GetTile(x, y)) && (Entities.EntityAt(new Point(x, y)) == null || Entities.EntityAt(new Point(x, y)).Group == "Player");
+            return !blockedTiles.Contains(GetTile(x, y));
         }
 
         public bool IsPassable(Point loc)
@@ -168,6 +210,26 @@ namespace TileGameLib
             return IsSlowTile(loc.X, loc.Y);
         }
 
+        public bool IsCoverTile(int x, int y)
+        {
+            return coverTiles.Contains(GetTile(x, y));
+        }
+
+        public bool IsCoverTile(Point loc)
+        {
+            return IsCoverTile(loc.X, loc.Y);
+        }
+
+        public bool IsCastleTile(int x, int y)
+        {
+            return castleTiles.Contains(GetTile(x, y));
+        }
+
+        public bool IsCastleTile(Point loc)
+        {
+            return IsCastleTile(loc.X, loc.Y);
+        }
+        
         #endregion
 
         #region Map Manipulation

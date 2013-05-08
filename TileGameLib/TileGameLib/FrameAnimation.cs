@@ -12,6 +12,9 @@ namespace TileGameLib
         float frameLength = .5f;
         float timer = 0f;
 
+        bool once;
+        public bool Finished = false;
+
         public int FramesPerSecond
         {
             get
@@ -58,6 +61,20 @@ namespace TileGameLib
 
                 this.frames[i] = rect;
             }
+
+            once = false;
+        }
+
+        public FrameAnimation(
+            int frames,
+            int frameWidth,
+            int frameHeight,
+            int xOffset,
+            int yOffset,
+            bool animateOnce)
+            : this(frames, frameWidth, frameHeight, xOffset, yOffset)
+        {
+            once = animateOnce;
         }
 
         public void Update(GameTime gameTime)
@@ -68,7 +85,14 @@ namespace TileGameLib
             {
                 timer = 0;
 
-                currentFrame = (currentFrame + 1) % frames.Length;
+                if (!once)
+                    currentFrame = (currentFrame + 1) % frames.Length;
+                else
+                {
+                    ++currentFrame;
+                    if (currentFrame >= frames.Length)
+                        Finished = true;
+                }
             }
         }
     }

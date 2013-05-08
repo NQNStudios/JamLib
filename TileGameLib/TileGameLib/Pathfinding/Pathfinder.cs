@@ -118,10 +118,10 @@ namespace TileGameLib
                 {
                     SearchNode neighbor = currentNode.Neighbors[i];
 
-                    if (neighbor == null || !neighbor.Passable)
+                    if (neighbor == null || !neighbor.Passable || (layer.Entities.EntityAt(neighbor.Position) != null && layer.Entities.EntityAt(neighbor.Position).Group != "Player"))
                         continue;
 
-                    float distanceTraveled = currentNode.DistanceTraveled + 1;
+                    float distanceTraveled = currentNode.DistanceTraveled + (layer.IsSlowTile(neighbor.Position) ? 2 : 1);
                     float heur = heuristic(neighbor.Position, endPoint);
 
                     if (!neighbor.InOpenList && !neighbor.InClosedList)

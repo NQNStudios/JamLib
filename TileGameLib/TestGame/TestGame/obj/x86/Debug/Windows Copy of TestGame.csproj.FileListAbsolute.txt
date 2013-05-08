@@ -15,3 +15,7 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Co
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Maps\layer.txt
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Health Bar.xnb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Phase Icons.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Fonts\Font1.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Knight.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Blood.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Healing.xnb

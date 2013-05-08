@@ -11,3 +11,7 @@ Grass Demo.csv
 [Slow Tiles]
 2
 4
+[Cover Tiles]
+4
+[Castle Tiles]
+5

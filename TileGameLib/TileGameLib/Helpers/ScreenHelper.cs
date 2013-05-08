@@ -12,6 +12,9 @@ namespace TileGameLib
         static GraphicsDevice _graphicsDevice;
         static GraphicsDeviceManager _graphics;
 
+        public static SpriteFont Font;
+        public static Camera Camera;
+
         public static void Initialize(GraphicsDevice graphicsDevice, GraphicsDeviceManager graphics)
         {
             _graphicsDevice = graphicsDevice;
