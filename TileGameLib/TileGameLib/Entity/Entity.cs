@@ -24,13 +24,12 @@ namespace TileGameLib
         public string Tag = "";
         public string Group = "";
 
+        public string TargetGroup = "";
+
         public StatBar Health;
         int skill;
 
         int speed;
-        
-        int minAttackRange;
-        int maxAttackRange;
 
         Phase phase;
         public Behavior Behavior;
@@ -45,6 +44,24 @@ namespace TileGameLib
         FrameAnimation animation;
 
         public EntityManager EntityManager;
+
+        #endregion
+
+        #region Inventory
+
+        Inventory inventory;
+        Weapon weapon;
+
+        public Inventory Items
+        {
+            get { return inventory; }
+        }
+
+        public Weapon EquippedWeapon
+        {
+            get { return weapon; }
+            set { weapon = value; }
+        }
 
         #endregion
 
@@ -75,23 +92,20 @@ namespace TileGameLib
         #region Initialization
 
         public Entity(
-            string tag, string group, 
+            string tag, string group, string targetGroup,
             double health,
             int speed, int skill,
-            int minAttack, int maxAttack,
             TileLayer layer, Point position, 
             Texture2D texture, Texture2D iconTexture, Texture2D healthbarTexture)
         {
             Tag = tag;
             Group = group;
+            TargetGroup = targetGroup;
 
             Health = new StatBar(health);
 
             this.speed = speed;
             this.skill = skill;
-
-            minAttackRange = minAttack;
-            maxAttackRange = maxAttack;
 
             this.layer = layer;
             this.position = position;
@@ -146,30 +160,23 @@ namespace TileGameLib
             if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving)
                 return;
 
-            destinations = new Queue<Point>();
-
-            List<Point> points = layer.Pathfind.FindPath(position, destination);
-
-            for (int i = 0; i < points.Count(); ++i)
+            Point closest = new Point(-1, -1);
+            int dist = int.MaxValue;
+            foreach (Point p in MovePoints())
             {
-                int distFromMe = layer.Pathfind.MoveDistance(position, points[i]);
-                int distFromTarget = layer.Pathfind.MoveDistance(points[i], destination);
-                if (distFromMe <= speed && target.Position != points[i])
+                if (CanAttackFrom(p, destination))
                 {
-                    destinations.Enqueue(points[i]);
-                    if (distFromTarget >= minAttackRange && distFromTarget <= maxAttackRange)
-                        break;
+                    closest = p;
+                    dist = layer.Pathfind.MoveDistance(position, closest);
                 }
-                else
-                    break;
             }
 
-            if (destinations.Count() > 0)
+            if (closest != new Point(-1, -1))
             {
-                moveDest = destinations.Dequeue();
-                moving = true;
-                elapsed = toMove;
+                MoveTo(closest);
+                return;
             }
+            MoveTo(destination);
         }
 
         public bool CanMoveTo(Point p)
@@ -181,11 +188,24 @@ namespace TileGameLib
             return true;
         }
 
+        public bool CanAttackFrom(Point me, Point enemy)
+        {
+            if (weapon == null)
+                return false;
+
+            int dist = layer.Pathfind.AttackDistance(me, enemy);
+
+            return (layer.IsPassable(enemy) && dist >= weapon.MinRange && dist <= weapon.MaxRange);
+        }
+
         public bool CanAttack(Point p)
         {
+            if (weapon == null)
+                return false;
+
             int dist = layer.Pathfind.AttackDistance(position, p);
 
-            return (layer.IsPassable(p) && dist >= minAttackRange && dist <= maxAttackRange);
+            return (layer.IsPassable(p) && dist >= weapon.MinRange && dist <= weapon.MaxRange);
         }
 
         #endregion
@@ -194,7 +214,7 @@ namespace TileGameLib
 
         public void Attack(Entity e)
         {
-            if (e != null && e.Group != Group)
+            if (weapon != null && e != null && e.Group != Group)
             {
                 //Animation
                 attacking = true;
@@ -207,8 +227,7 @@ namespace TileGameLib
                 }
                 else
                 {
-                    int damage = skill;
-                    e.Health.Damage(damage);
+                    weapon.Use(e, skill);
                 }
             }
         }
@@ -226,7 +245,7 @@ namespace TileGameLib
 
             foreach (Entity e in entities)
             {
-                if (DistanceTo(e) <= lowestDistance)
+                if (e.Group == TargetGroup && DistanceTo(e) <= lowestDistance)
                 {
                     closest = e;
                     lowestDistance = DistanceTo(e);
@@ -238,7 +257,7 @@ namespace TileGameLib
 
         public int DistanceTo(Entity e)
         {
-            return layer.Pathfind.MoveDistance(Position, e.Position);
+                return layer.Pathfind.MoveDistance(Position, e.Position);
         }
 
         #endregion
@@ -344,9 +363,12 @@ namespace TileGameLib
         {
             List<Point> points = new List<Point>();
 
-            for (int x = Math.Max(0, Position.X - maxAttackRange); x <= Math.Min(layer.TileWidth - 1, Position.X + maxAttackRange); ++x)
+            if (weapon == null)
+                return points;
+
+            for (int x = Math.Max(0, Position.X - weapon.MaxRange); x <= Math.Min(layer.TileWidth - 1, Position.X + weapon.MaxRange); ++x)
             {
-                for (int y = Math.Max(0, Position.Y - maxAttackRange); y <= Math.Min(layer.TileHeight - 1, Position.Y + maxAttackRange); ++y)
+                for (int y = Math.Max(0, Position.Y - weapon.MaxRange); y <= Math.Min(layer.TileHeight - 1, Position.Y + weapon.MaxRange); ++y)
                 {
                     if (CanAttack(new Point(x, y)))
                         points.Add(new Point(x, y));

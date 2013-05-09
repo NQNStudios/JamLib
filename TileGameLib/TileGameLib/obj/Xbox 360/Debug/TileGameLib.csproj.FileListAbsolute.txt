@@ -4,3 +4,9 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\Mic
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.dll
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.pdb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.csprojResolveAssemblyReference.cache
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TileGameLib\bin\Xbox 360\Debug\TileGameLib.dll
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TileGameLib\bin\Xbox 360\Debug\TileGameLib.pdb
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\ResolveAssemblyReference.cache
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.dll
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TileGameLib\obj\Xbox 360\Debug\TileGameLib.pdb

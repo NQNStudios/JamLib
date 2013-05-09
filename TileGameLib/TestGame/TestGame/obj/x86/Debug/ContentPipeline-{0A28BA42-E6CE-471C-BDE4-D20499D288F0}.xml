@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Tilesets\Grass Tiles.png</Source>
+      <Name>Tilesets\Grass Tiles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Tilesets\Grass Tiles.xnb</Output>
+      <Time>2013-05-09T07:34:03.4839738-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Cursor_1.png</Source>
+      <Name>UI\Cursor_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Cursor_1.xnb</Output>
+      <Time>2013-05-06T07:32:41.0606274-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Rogue.png</Source>
+      <Name>Sprites\Rogue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Rogue.xnb</Output>
+      <Time>2013-05-06T07:32:41.0449958-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Arrows.png</Source>
+      <Name>UI\Arrows</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Arrows.xnb</Output>
+      <Time>2013-05-06T07:32:41.0606274-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Tile Overlays.png</Source>
+      <Name>UI\Tile Overlays</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Tile Overlays.xnb</Output>
+      <Time>2013-05-06T07:32:41.076259-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Health Bar.png</Source>
+      <Name>UI\Health Bar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Health Bar.xnb</Output>
+      <Time>2013-05-06T07:32:41.0606274-06:00</Time>
+    </Item>
+    <Item>
+      <Source>UI\Phase Icons.png</Source>
+      <Name>UI\Phase Icons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Phase Icons.xnb</Output>
+      <Time>2013-05-06T07:32:41.076259-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Knight.png</Source>
+      <Name>Sprites\Knight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Knight.xnb</Output>
+      <Time>2013-05-09T07:34:03.452723-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Blood.png</Source>
+      <Name>Sprites\Blood</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Blood.xnb</Output>
+      <Time>2013-05-09T07:34:03.4370976-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Healing.png</Source>
+      <Name>Sprites\Healing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Healing.xnb</Output>
+      <Time>2013-05-09T07:34:03.4370976-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Font1.spritefont</Source>
+      <Name>Fonts\Font1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Fonts\Font1.xnb</Output>
+      <Time>2013-05-09T07:34:03.4058468-06:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{0A28BA42-E6CE-471C-BDE4-D20499D288F0}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGameContent\</RootDirectory>
+      <LoggerRootDirectory>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\</LoggerRootDirectory>
+      <IntermediateDirectory>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-10-03T16:43:08.0004587-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

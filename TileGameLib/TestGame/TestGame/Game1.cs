@@ -79,16 +79,16 @@ namespace TestGame
             SpriteFont font = Content.Load<SpriteFont>("Fonts/Font1");
             ScreenHelper.Font = font;
 
-            cursor = new Cursor(layer, cursorTexture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), new Point(20, 20));
+            cursor = new Cursor(layer, cursorTexture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), new Point(20, 20), "Player");
 
-            entity = new Entity("", "Player", 5, 5, 1, 1, 3, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", "", 5, 5, 3, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
             layer.Entities.Add(entity);
-            entity = new Entity("", "Player", 5, 5, 1, 1, 1, layer, new Point(21, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", "", 5, 5, 1, layer, new Point(21, 20), rogue, iconTexture, healthbarTexture);
             layer.Entities.Add(entity);
-            entity = new Entity("", "Enemy", 5, 5, 3, 1, 1, layer, new Point(22, 20), knight, iconTexture, healthbarTexture);
+            entity = new Entity("", "Enemy", "Player", 5, 5, 3, layer, new Point(22, 20), knight, iconTexture, healthbarTexture);
             entity.Behavior += new Behavior(enemyBehavior);
             layer.Entities.Add(entity);
-            entity = new Entity("", "Enemy", 5, 5, 3, 1, 1, layer, new Point(15, 16), knight, iconTexture, healthbarTexture);
+            entity = new Entity("", "Enemy", "Player", 5, 5, 3, layer, new Point(15, 16), knight, iconTexture, healthbarTexture);
             entity.Behavior += new Behavior(enemyBehavior);
             layer.Entities.Add(entity);
 
@@ -154,22 +154,26 @@ namespace TestGame
         void enemyBehavior(Entity e)
         {
             Entity target = e.ClosestTarget(layer.Entities.EntityList);
-            switch (e.Phase)
-            {
-                case Phase.Move:
-                    if (e.DistanceTo(target) > 0)
-                        e.MoveTo(target);
-                    e.EndPhase();
-                    break;
 
-                case Phase.Attack:
-                    if (!e.Moving)
-                    {
-                        if (e.CanAttack(target.Position))
-                            e.Attack(target);
+            if (target != null)
+            {
+                switch (e.Phase)
+                {
+                    case Phase.Move:
+                        if (e.DistanceTo(target) > 0)
+                            e.MoveTo(target);
                         e.EndPhase();
-                    }
-                    break;
+                        break;
+
+                    case Phase.Attack:
+                        if (!e.Moving)
+                        {
+                            if (e.CanAttack(target.Position))
+                                e.Attack(target);
+                            e.EndPhase();
+                        }
+                        break;
+                }
             }
         }
     }

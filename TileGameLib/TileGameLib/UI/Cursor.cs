@@ -38,6 +38,8 @@ namespace TileGameLib
 
         Dictionary<Buttons[], Process> processes = new Dictionary<Buttons[], Process>();
 
+        public string Group = "";
+
         public void AddProcess(Buttons[] buttons, Process process)
         {
             processes.Add(buttons, process);
@@ -45,7 +47,7 @@ namespace TileGameLib
 
         #region Constructor
 
-        public Cursor(TileLayer layer, Texture2D texture, Texture2D arrowTexture, Texture2D overlayTexture, TimeSpan moveTime, Point? location)
+        public Cursor(TileLayer layer, Texture2D texture, Texture2D arrowTexture, Texture2D overlayTexture, TimeSpan moveTime, Point? location, string group)
         {
             this.layer = layer;
 
@@ -58,6 +60,8 @@ namespace TileGameLib
             if (location.HasValue)
                 this.location = location.Value;
 
+            Group = group;
+
             AddProcess(new Buttons[] { Buttons.A }, new Process(onSelect));
             AddProcess(new Buttons[] { Buttons.X }, new Process(onTab));
             AddProcess(new Buttons[] { Buttons.B }, new Process(onExit));
@@ -65,8 +69,8 @@ namespace TileGameLib
 
         #region Overloads
 
-        public Cursor(TileLayer layer, Texture2D texture, Texture2D arrowTexture, Texture2D overlayTexture, Point? location)
-            : this(layer, texture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), location) { }
+        public Cursor(TileLayer layer, Texture2D texture, Texture2D arrowTexture, Texture2D overlayTexture, Point? location, string group)
+            : this(layer, texture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), location, group) { }
 
         #endregion
 
@@ -242,7 +246,7 @@ namespace TileGameLib
 
         public void DrawArrow(SpriteBatch spriteBatch)
         {
-            if (selectedEntity != null && selectedEntity.Phase == Phase.Move) //Draw arrow
+            if (selectedEntity != null && selectedEntity.Phase == Phase.Move && location != selectedEntity.Position) //Draw arrow
             {
                 if (!selectedEntity.CanMoveTo(location))
                     return;
@@ -437,7 +441,7 @@ namespace TileGameLib
         void onTab(Cursor cursor)
         {
             Entity e = layer.Entities.EntityAt(cursor.Location);
-            if (e != null && layer.Entities.CurrentGroup == "Player" && e.Group == "Player")
+            if (e != null && layer.Entities.CurrentGroup == Group && e.Group == Group)
             {
                 e.EndPhase();
             }
@@ -450,7 +454,7 @@ namespace TileGameLib
 
         void onSelect(Cursor cursor)
         {
-            if (layer.Entities.CurrentGroup != "Player")
+            if (layer.Entities.CurrentGroup != Group)
                 return;
 
             Entity e = layer.Entities.EntityAt(cursor.Location);
@@ -481,7 +485,7 @@ namespace TileGameLib
 
                 cursor.SelectedEntity = null;
             }
-            else if (e != null && e.Group == "Player" && e.Phase != Phase.Finished)
+            else if (e != null && e.Group == Group && e.Phase != Phase.Finished)
             {
                 cursor.SelectedEntity = e;
             }

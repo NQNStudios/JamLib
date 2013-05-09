@@ -1,1 +1,2 @@
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGameContent\obj\x86\Debug\TestGameContent.contentprojResolveAssemblyReference.cache
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGameContent\obj\x86\Debug\ResolveAssemblyReference.cache

@@ -19,7 +19,7 @@ namespace TileGameLib
         {
             get
             {
-                return (int)(1f / frameLength);
+                return (int)Math.Round(1f / frameLength);
             }
             set
             {
