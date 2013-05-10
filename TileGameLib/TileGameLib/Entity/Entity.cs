@@ -158,7 +158,7 @@ namespace TileGameLib
         {
             Point destination = target.Position;
 
-            if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving)
+            if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving || CanAttack(destination))
                 return;
 
             Point closest = new Point(-1, -1);
