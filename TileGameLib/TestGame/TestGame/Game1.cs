@@ -81,15 +81,19 @@ namespace TestGame
 
             cursor = new Cursor(layer, cursorTexture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), new Point(20, 20), "Player");
 
-            entity = new Entity("", "Player", "", 5, 5, 3, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", "", 20, 5, 3, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
+            entity.EquippedWeapon = new Weapon("Magic", 2.0, 2, 2);
             layer.Entities.Add(entity);
-            entity = new Entity("", "Player", "", 5, 5, 1, layer, new Point(21, 20), rogue, iconTexture, healthbarTexture);
+            entity = new Entity("", "Player", "", 20, 5, 1, layer, new Point(21, 20), rogue, iconTexture, healthbarTexture);
+            entity.EquippedWeapon = new Weapon("Magic", 2.0, 2, 2);
             layer.Entities.Add(entity);
             entity = new Entity("", "Enemy", "Player", 5, 5, 3, layer, new Point(22, 20), knight, iconTexture, healthbarTexture);
             entity.Behavior += new Behavior(enemyBehavior);
+            entity.EquippedWeapon = new Weapon("Sword", 2.0, 1, 1);
             layer.Entities.Add(entity);
             entity = new Entity("", "Enemy", "Player", 5, 5, 3, layer, new Point(15, 16), knight, iconTexture, healthbarTexture);
             entity.Behavior += new Behavior(enemyBehavior);
+            entity.EquippedWeapon = new Weapon("Sword", 2.0, 1, 1);
             layer.Entities.Add(entity);
 
             layer.Pathfind = new Pathfinder(layer);

@@ -36,7 +36,7 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Co
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TestGame.pdb
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TileGameLib.dll
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\TileGameLib.pdb
-\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\ResolveAssemblyReference.cache
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\TestGame.exe
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\TestGame.pdb
+\\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\x86\Debug\Windows Copy of TestGame.csprojResolveAssemblyReference.cache

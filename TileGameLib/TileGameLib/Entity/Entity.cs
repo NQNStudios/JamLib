@@ -157,6 +157,7 @@ namespace TileGameLib
         public void MoveTo(Entity target)
         {
             Point destination = target.Position;
+
             if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving)
                 return;
 
@@ -164,7 +165,7 @@ namespace TileGameLib
             int dist = int.MaxValue;
             foreach (Point p in MovePoints())
             {
-                if (CanAttackFrom(p, destination))
+                if (CanAttackFrom(p, destination) && layer.Pathfind.MoveDistance(position, p) < dist)
                 {
                     closest = p;
                     dist = layer.Pathfind.MoveDistance(position, closest);
@@ -414,9 +415,12 @@ namespace TileGameLib
 
             spriteBatch.Draw(texture, loc, animation.CurrentRect, Color.White);
 
-            Vector2 iconLoc = loc + new Vector2(layer.TileWidth - 12, layer.TileHeight - 12);
+            if (layer.Entities.CurrentGroup == Group)
+            {
+                Vector2 iconLoc = loc + new Vector2(layer.TileWidth - 12, layer.TileHeight - 12);
 
-            spriteBatch.Draw(iconTexture, iconLoc, iconSource(phase), Color.White);
+                spriteBatch.Draw(iconTexture, iconLoc, iconSource(phase), Color.White);
+            }
 
             Vector2 healthbarLoc = loc + new Vector2(2, 2);
             Rectangle backSource = new Rectangle(0, 0, 26, 4);
