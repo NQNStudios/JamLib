@@ -99,8 +99,12 @@
     <Compile Include="Helpers\ScreenHelper.cs" />
     <Compile Include="TileLayer.cs" />
     <Compile Include="Helpers\Utility.cs" />
-    <Compile Include="UI\Cursor.cs" />
-    <Compile Include="UI\StatBar.cs" />
+    <Compile Include="UI\Cursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\StatBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">

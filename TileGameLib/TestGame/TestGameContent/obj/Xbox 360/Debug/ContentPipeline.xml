@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Tilesets\Grass Tiles.xnb</Output>
-      <Time>2013-05-07T20:40:26.3879555-06:00</Time>
+      <Time>2013-05-10T19:54:50.2135519-06:00</Time>
     </Item>
     <Item>
       <Source>UI\Cursor_1.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Phase Icons.xnb</Output>
-      <Time>2013-05-05T12:40:15.7867098-06:00</Time>
+      <Time>2013-05-10T20:13:07.3469863-06:00</Time>
     </Item>
     <Item>
       <Source>Fonts\Font1.spritefont</Source>
