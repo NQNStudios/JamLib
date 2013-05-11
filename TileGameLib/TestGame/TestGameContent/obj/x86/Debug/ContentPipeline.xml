@@ -62,7 +62,11 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Phase Icons.xnb</Output>
+<<<<<<< HEAD
       <Time>2013-05-10T20:17:05.868184-06:00</Time>
+=======
+      <Time>2013-05-10T20:13:07.3469863-06:00</Time>
+>>>>>>> 618126271236c27369f4b2afb974c79309602600
     </Item>
     <Item>
       <Source>Fonts\Font1.spritefont</Source>

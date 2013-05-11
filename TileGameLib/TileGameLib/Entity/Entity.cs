@@ -225,6 +225,7 @@ namespace TileGameLib
                 //Mechanics
                 if (layer.IsCoverTile(e.Position))
                 {
+                    weapon.Use(e, skill / 2);
                 }
                 else
                 {
@@ -268,6 +269,9 @@ namespace TileGameLib
         public void EndPhase()
         {
             phase = (Phase)(MathHelper.Clamp((int)phase + 1, 0, 2));
+
+            if (EquippedWeapon == null && phase == Phase.Attack)
+                phase = Phase.Finished;
         }
 
         public void EndTurn()
@@ -440,7 +444,10 @@ namespace TileGameLib
                     return new Rectangle(0, 0, 8, 8);
 
                 case Phase.Attack:
-                    return new Rectangle(8, 0, 8, 8);
+                    if (EquippedWeapon.Healing)
+                        return new Rectangle(24, 0, 8, 8);
+                    else
+                        return new Rectangle(8, 0, 8, 8);
 
                 case Phase.Finished:
                     return new Rectangle(16, 0, 8, 8);
