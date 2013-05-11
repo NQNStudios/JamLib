@@ -62,20 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Phase Icons.xnb</Output>
-<<<<<<< HEAD
-      <Time>2013-05-10T20:17:05.868184-06:00</Time>
-=======
-      <Time>2013-05-10T20:13:07.3469863-06:00</Time>
->>>>>>> 618126271236c27369f4b2afb974c79309602600
-    </Item>
-    <Item>
-      <Source>Fonts\Font1.spritefont</Source>
-      <Name>Fonts\Font1</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Fonts\Font1.xnb</Output>
-      <Time>2013-05-07T16:12:01.6907923-06:00</Time>
+      <Time>2013-05-10T20:27:22.5707284-06:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Knight.png</Source>
@@ -103,6 +90,24 @@
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Healing.xnb</Output>
       <Time>2013-05-07T21:08:03.4956475-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\Font1.spritefont</Source>
+      <Name>Fonts\Font1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Fonts\Font1.xnb</Output>
+      <Time>2013-05-07T16:12:01.6907923-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Priest.png</Source>
+      <Name>Sprites\Priest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Priest.xnb</Output>
+      <Time>2013-05-10T20:35:08.7404434-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace TileGameLib
 {
@@ -10,14 +11,17 @@ namespace TileGameLib
     public class Item
     {
         protected string name;
-        protected int count;
 
         public Action Use;
 
-        public Item(string name, int count)
+        public virtual string ToString()
+        {
+            return name;
+        }
+
+        public Item(string name)
         {
             this.name = name;
-            this.count = count;
         }
 
         public void UseOn(Entity e)
@@ -32,5 +36,32 @@ namespace TileGameLib
 
             Use(e, multiplier);
         }
+
+        #region File Initialization
+
+        public static Item FromFile(string filename, string group)
+        {
+            string type;
+            string name = "Content/Items/" + filename;
+            using (StreamReader sr = new StreamReader(name))
+            {
+                type = sr.ReadLine();
+                sr.Close();
+            }
+
+            switch (type)
+            {
+                case "[Weapon]":
+                    return Weapon.FromFile(name, group);
+
+                case "[Consumable]":
+                    return Consumable.FromFile(name);
+
+                default:
+                    return null;
+            }
+        }
+
+        #endregion
     }
 }

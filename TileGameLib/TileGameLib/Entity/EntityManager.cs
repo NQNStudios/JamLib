@@ -81,6 +81,16 @@ namespace TileGameLib
             return true;
         }
 
+        public bool AnimationsFinished()
+        {
+            foreach (FrameAnimation animation in animations.Values)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public Entity Tag(string tag)
         {
             foreach (Entity e in entities)
@@ -111,13 +121,27 @@ namespace TileGameLib
         int currentEntity = 0;
         public void Update(GameTime gameTime)
         {
+            List<Point> frameRemove = new List<Point>();
+            foreach (Point p in animations.Keys)
+            {
+                animations[p].Update(gameTime);
+                if (animations[p].Finished)
+                    frameRemove.Add(p);
+            }
+
+            foreach (Point p in frameRemove)
+            {
+                animations.Remove(p);
+            }
+
             List<Entity> toRemove = new List<Entity>();
             foreach (Entity e in entities)
             {
-                e.Update(gameTime);
+                e.Update(gameTime, PlayerIndex.One);
 
                 if (e.Health.IsEmpty)
                 {
+                    animations.Remove(e.Position);
                     FrameAnimation animation = new FrameAnimation(5, 32, 32, 0, 0, true);
                     animation.FramesPerSecond = 10;
                     animations.Add(e.Position, animation);
@@ -136,20 +160,7 @@ namespace TileGameLib
                 }
             }
 
-            List<Point> frameRemove = new List<Point>();
-            foreach (Point p in animations.Keys)
-            {
-                animations[p].Update(gameTime);
-                if (animations[p].Finished)
-                    frameRemove.Add(p);
-            }
-
-            foreach (Point p in frameRemove)
-            {
-                animations.Remove(p);
-            }
-
-            if (GroupFinished(CurrentGroup))
+            if (GroupFinished(CurrentGroup) && AnimationsFinished())
             {
                 currentEntity = 0;
                 foreach (Entity e in Group(CurrentGroup))
@@ -188,7 +199,14 @@ namespace TileGameLib
         {
             foreach (Entity e in entities)
             {
-                e.Draw(spriteBatch);
+                if (!e.InvMode)
+                    e.Draw(spriteBatch);
+            }
+
+            foreach (Entity e in entities)
+            {
+                if (e.InvMode)
+                    e.Draw(spriteBatch);
             }
 
             foreach (Point p in animations.Keys)

@@ -88,8 +88,8 @@
     <Compile Include="Display\Camera.cs" />
     <Compile Include="Display\FrameAnimation.cs" />
     <Compile Include="Entity\Entity.cs" />
-    <Compile Include="Entity\EntityInfo.cs" />
     <Compile Include="Entity\EntityManager.cs" />
+    <Compile Include="Items\Consumable.cs" />
     <Compile Include="Items\Inventory.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Weapon.cs" />

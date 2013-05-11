@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace TileGameLib
 {
@@ -49,6 +50,8 @@ namespace TileGameLib
 
         #region Inventory
 
+        public bool InvMode = false;
+        int selectedItem = 0;
         Inventory inventory;
         Weapon weapon;
 
@@ -106,6 +109,8 @@ namespace TileGameLib
 
             this.speed = speed;
             this.skill = skill;
+
+            this.inventory = new Inventory(5, this);
 
             this.layer = layer;
             this.position = position;
@@ -215,7 +220,7 @@ namespace TileGameLib
 
         public void Attack(Entity e)
         {
-            if (weapon != null && e != null && e.Group != Group)
+            if (weapon != null && e != null && weapon.CanTarget(e))
             {
                 //Animation
                 attacking = true;
@@ -223,7 +228,7 @@ namespace TileGameLib
                 elapsed = toAttack;
 
                 //Mechanics
-                if (layer.IsCoverTile(e.Position))
+                if (layer.IsCoverTile(e.Position) && !weapon.Healing)
                 {
                     weapon.Use(e, skill / 2);
                 }
@@ -283,15 +288,81 @@ namespace TileGameLib
 
         #region Update
 
-        public void Update(GameTime gameTime)
+        GamePadState lastPad;
+        KeyboardState lastKey;
+        public void Update(GameTime gameTime, PlayerIndex index)
         {
+            KeyboardState keyState = Keyboard.GetState();
+            GamePadState padState = GamePad.GetState(index);
+
             if (moving)
                 updateMove(gameTime);
 
             if (attacking)
                 updateAttack(gameTime);
 
+            #region Inv Management
+
+            if (InvMode)
+            {
+                if (padState.IsButtonDown(Buttons.B) && lastPad.IsButtonUp(Buttons.B))
+                {
+                    InvMode = false;
+                    selectedItem = 0;
+                }
+
+                if (padState.IsButtonDown(Buttons.A) && lastPad.IsButtonUp(Buttons.A))
+                {
+                    Item i = Items.Items[selectedItem];
+
+                    if (i is Weapon)
+                        weapon = i as Weapon;
+
+                    else if (i is Consumable)
+                        i.UseOn(this);
+                }
+
+                if (padState.ThumbSticks.Left.Y > 0 && lastPad.ThumbSticks.Left.Y <= 0)
+                    selectedItem++;
+                else if (padState.ThumbSticks.Left.Y < 0 && lastPad.ThumbSticks.Left.Y >= 0)
+                    selectedItem--;
+                
+                if (keyState.IsKeyDown(Keys.Escape) && lastKey.IsKeyUp(Keys.Escape))
+                {
+                    InvMode = false;
+                    selectedItem = 0;
+                }
+
+                else if (keyState.IsKeyDown(Keys.Space) && lastKey.IsKeyUp(Keys.Space))
+                {
+                    Item i = Items.Items[selectedItem];
+                    
+                    if (i is Weapon)
+                        weapon = i as Weapon;                        
+
+                    else if (i is Consumable)
+                        i.UseOn(this);
+                }
+
+                if (keyState.IsKeyDown(Keys.Down) && lastKey.IsKeyUp(Keys.Down))
+                    selectedItem++;
+                else if (keyState.IsKeyDown(Keys.Up) && lastKey.IsKeyUp(Keys.Up))
+                    selectedItem--;
+
+                
+
+                if (selectedItem < 0)
+                    selectedItem = Items.Items.Count() - 1;
+                else if (selectedItem > Items.Items.Count() - 1)
+                    selectedItem = 0;
+            }
+
+            #endregion
+
             animation.Update(gameTime);
+
+            lastKey = keyState;
+            lastPad = padState;
         }
 
         #endregion
@@ -434,6 +505,22 @@ namespace TileGameLib
 
             spriteBatch.Draw(healthbarTexture, healthbarLoc, backSource, Color.White);
             spriteBatch.Draw(healthbarTexture, healthbarLoc, frontSource, Color.White);
+
+            if (InvMode)
+            {
+                Vector2 itemLoc = new Vector2((position.X * layer.TileWidth) + (layer.TileWidth / 2), (position.Y * layer.TileHeight) + (layer.TileHeight / 2));
+                foreach (Item i in Items.Items)
+                {
+                    Color color = (selectedItem == Items.Items.IndexOf(i)) ? Color.Yellow : Color.White;
+                    string text = i.ToString();
+                    if (i == weapon)
+                        text += ": Equipped";
+
+
+                    spriteBatch.DrawString(ScreenHelper.Font, text, itemLoc, color);
+                    itemLoc.Y += ScreenHelper.Font.LineSpacing;
+                }
+            }
         }
 
         private Rectangle iconSource(Phase phase)

@@ -35,6 +35,7 @@ namespace TileGameLib
 
         Entity selectedEntity;
         Point location;
+        public bool Enabled = true;
 
         Dictionary<Buttons[], Process> processes = new Dictionary<Buttons[], Process>();
 
@@ -65,6 +66,7 @@ namespace TileGameLib
             AddProcess(new Buttons[] { Buttons.A }, new Process(onSelect));
             AddProcess(new Buttons[] { Buttons.X }, new Process(onTab));
             AddProcess(new Buttons[] { Buttons.B }, new Process(onExit));
+            AddProcess(new Buttons[] { Buttons.Y }, new Process(onOpen));
         }
 
         #region Overloads
@@ -102,6 +104,15 @@ namespace TileGameLib
 
         public void Update(PlayerIndex index, GameTime gameTime, Camera camera)
         {
+            if (!Enabled)
+            {
+                if (selectedEntity.InvMode)
+                    return;
+
+                else
+                    Enabled = true;
+            }
+
             GamePadState padState = GamePad.GetState(index);
 
             elapsed -= gameTime.ElapsedGameTime;
@@ -194,7 +205,7 @@ namespace TileGameLib
 
         public void DrawSquares(SpriteBatch spriteBatch)
         {
-            if (selectedEntity != null)
+            if (selectedEntity != null && Enabled)
             {
                 switch (selectedEntity.Phase)
                 {
@@ -208,7 +219,8 @@ namespace TileGameLib
                     case Phase.Attack:
                         foreach (Point p in selectedEntity.AttackPoints())
                         {
-                            DrawOverlay(p, spriteBatch, Color.Red);
+                            Color color = selectedEntity.EquippedWeapon.Healing ? Color.Green : Color.Red;
+                            DrawOverlay(p, spriteBatch, color);
                         }
                         break;
 
@@ -311,6 +323,9 @@ namespace TileGameLib
 
                 case Buttons.B:
                     return Keys.Escape;
+
+                case Buttons.Y:
+                    return Keys.I;
 
                 default:
                     return Keys.Enter;
@@ -438,8 +453,29 @@ namespace TileGameLib
 
         #region Events
 
+        void onOpen(Cursor cursor)
+        {
+            if (Enabled && selectedEntity == null)
+            {
+                Entity e = layer.Entities.EntityAt(cursor.Location);
+
+                if (e != null)
+                {
+                    if (e.Moving || e.Attacking)
+                        return;
+
+                    Enabled = false;
+                    e.InvMode = true;
+                    selectedEntity = e;
+                }
+            }
+        }
+
         void onTab(Cursor cursor)
         {
+            if (!Enabled)
+                return;
+
             Entity e = layer.Entities.EntityAt(cursor.Location);
             if (e != null && layer.Entities.CurrentGroup == Group && e.Group == Group)
             {
@@ -449,12 +485,13 @@ namespace TileGameLib
 
         void onExit(Cursor cursor)
         {
-            cursor.SelectedEntity = null;
+            if (Enabled)
+                cursor.SelectedEntity = null;
         }
 
         void onSelect(Cursor cursor)
         {
-            if (layer.Entities.CurrentGroup != Group)
+            if (layer.Entities.CurrentGroup != Group || !Enabled)
                 return;
 
             Entity e = layer.Entities.EntityAt(cursor.Location);

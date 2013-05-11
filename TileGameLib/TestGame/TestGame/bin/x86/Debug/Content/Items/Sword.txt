@@ -1,0 +1,9 @@
+[Weapon]
+[Name]
+Sword
+[Amount]
+3.0
+[Min]
+1
+[Max]
+1

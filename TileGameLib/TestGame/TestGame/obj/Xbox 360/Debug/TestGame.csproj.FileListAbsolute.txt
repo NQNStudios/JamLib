@@ -40,3 +40,6 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Deb
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\TestGame.exe
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\TestGame.pdb
 \\716-FS1\USERS\NN501621\Desktop\JamLib\TileGameLib\TestGame\TestGame\obj\Xbox 360\Debug\TestGame.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Priest.xnb
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Items\Health Potion.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Items\Sword.txt

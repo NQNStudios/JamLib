@@ -1,0 +1,9 @@
+[Consumable]
+[Name]
+Health Potion
+[Amount]
+5.0
+[Count]
+2
+[Type]
+Heal

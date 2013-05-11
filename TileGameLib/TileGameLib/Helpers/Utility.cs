@@ -42,6 +42,8 @@ namespace TileGameLib
 
         #endregion
 
+        #region Geometry
+
         public static bool Vector2Intersects(Vector2 p, Rectangle r)
         {
             if (p.X < r.X || p.Y < r.Y || p.X > r.X + r.Width || p.Y > r.Y + r.Height)
@@ -76,6 +78,8 @@ namespace TileGameLib
                 return Rectangle.Empty;
             }
         }
+
+        #endregion
 
         #region Conversion
 
