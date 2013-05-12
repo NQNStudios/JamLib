@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 
 namespace TileGameLib
 {
@@ -14,6 +15,54 @@ namespace TileGameLib
         Move = 0,
         Attack = 1,
         Finished = 2
+    }
+
+    public struct EntityInfo
+    {
+        public string behavior;
+        public double health;
+        public int speed;
+        public int skill;
+        public string texture;
+        public string icon;
+        public string healthbar;
+
+        public List<string> items;
+
+        public static EntityInfo FromFile(string filename)
+        {
+            EntityInfo info = new EntityInfo();
+
+            using (StreamReader sr = new StreamReader("Content/Entities/" + filename))
+            {
+                sr.ReadLine();
+                info.behavior = sr.ReadLine();
+                sr.ReadLine();
+                info.health = double.Parse(sr.ReadLine());
+                sr.ReadLine();
+                info.speed = int.Parse(sr.ReadLine());
+                sr.ReadLine();
+                info.skill = int.Parse(sr.ReadLine());
+                sr.ReadLine();
+                info.texture = sr.ReadLine();
+                sr.ReadLine();
+                info.icon = sr.ReadLine();
+                sr.ReadLine();
+                info.healthbar = sr.ReadLine();
+
+                info.items = new List<string>();
+                sr.ReadLine();
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    info.items.Add(line);
+                }
+
+                sr.Close();
+            }
+
+            return info;
+        }
     }
 
     public delegate void Behavior(Entity e);
@@ -25,8 +74,6 @@ namespace TileGameLib
         public string Tag = "";
         public string Group = "";
 
-        public string TargetGroup = "";
-
         public StatBar Health;
         int skill;
 
@@ -34,6 +81,8 @@ namespace TileGameLib
 
         Phase phase;
         public Behavior Behavior;
+        static Dictionary<string, Behavior> behaviors = new Dictionary<string, Behavior>();
+        static bool init = false;
 
         TileLayer layer;
         Point position;
@@ -94,16 +143,61 @@ namespace TileGameLib
 
         #region Initialization
 
+        public Entity(string tag, string group, TileLayer layer, Point position, EntityInfo info, ContentManager content)
+        {
+            if (!init)
+            {
+                initializeBehaviors();
+                init = true;
+            }
+
+            Tag = tag;
+            Group = group;
+
+            Health = new StatBar(info.health);
+
+            this.speed = info.speed;
+            this.skill = info.skill;
+
+            this.inventory = new Inventory(5, this);
+
+            this.layer = layer;
+            this.position = position;
+
+            texture = content.Load<Texture2D>("Sprites/" + info.texture);
+            iconTexture = content.Load<Texture2D>("UI/" + info.icon);
+            healthbarTexture = content.Load<Texture2D>("UI/" + info.healthbar);
+
+            animation = new FrameAnimation(2, 32, 32, 0, 0);
+            animation.FramesPerSecond = 2;
+
+            foreach (string item in info.items)
+            {
+                Item i = Item.FromFile(item, Group);
+                inventory.Add(i);
+                if (i is Weapon)
+                    weapon = i as Weapon;
+            }
+
+            if (behaviors.ContainsKey(info.behavior))
+                Behavior += behaviors[info.behavior];
+        }
+
         public Entity(
-            string tag, string group, string targetGroup,
+            string tag, string group, string behavior,
             double health,
             int speed, int skill,
             TileLayer layer, Point position, 
             Texture2D texture, Texture2D iconTexture, Texture2D healthbarTexture)
         {
+            if (!init)
+            {
+                initializeBehaviors();
+                init = true;
+            }
+
             Tag = tag;
             Group = group;
-            TargetGroup = targetGroup;
 
             Health = new StatBar(health);
 
@@ -121,6 +215,9 @@ namespace TileGameLib
 
             animation = new FrameAnimation(2, 32, 32, 0, 0);
             animation.FramesPerSecond = 2;
+
+            if (behaviors.ContainsKey(behavior))
+                Behavior += behaviors[behavior];
         }
 
         #endregion
@@ -139,24 +236,27 @@ namespace TileGameLib
 
         public void MoveTo(Point destination)
         {
-            if (destination == Position || destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving)
+            if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving || CanAttack(destination))
                 return;
 
             destinations = new Queue<Point>();
 
-            List<Point> points = layer.Pathfind.FindPath(position, destination);
+            List<Point> points = layer.Pathfind.FindPath(position, destination, Group);
 
             for (int i = 0; i < points.Count(); ++i)
             {
-                if (layer.Pathfind.MoveDistance(position, points[i]) <= speed)
+                if (CanMoveTo(points[i]))
                     destinations.Enqueue(points[i]);
                 else
                     break;
             }
 
-            moveDest = destinations.Dequeue();
-            moving = true;
-            elapsed = toMove;
+            if (destinations.Count() > 0)
+            {
+                moveDest = destinations.Dequeue();
+                moving = true;
+                elapsed = toMove;
+            }
         }
 
         public void MoveTo(Entity target)
@@ -170,10 +270,10 @@ namespace TileGameLib
             int dist = int.MaxValue;
             foreach (Point p in MovePoints())
             {
-                if (CanAttackFrom(p, destination) && layer.Pathfind.MoveDistance(position, p) < dist)
+                if (CanAttackFrom(p, destination) && layer.Pathfind.MoveDistance(position, p, Group) < dist)
                 {
                     closest = p;
-                    dist = layer.Pathfind.MoveDistance(position, closest);
+                    dist = layer.Pathfind.MoveDistance(position, closest, Group);
                 }
             }
 
@@ -187,9 +287,12 @@ namespace TileGameLib
 
         public bool CanMoveTo(Point p)
         {
+            if (p.X < 0 || p.X >= layer.Width()) return false;
+            if (p.Y < 0 || p.Y >= layer.Height()) return false;
+            if (Moving || Attacking) return false;
             if (Position == p) return true;
             if (!layer.IsPassable(p)) return false;
-            if (layer.Pathfind.MoveDistance(position, p) > speed) return false;
+            if (layer.Pathfind.MoveDistance(position, p, Group) > speed) return false;
             if (EntityManager != null && EntityManager.EntityAt(p) != null) return false;
             return true;
         }
@@ -245,6 +348,23 @@ namespace TileGameLib
 
         #region AI
 
+        public Entity ClosestEnemy(List<Entity> entities)
+        {
+            int lowestDistance = int.MaxValue;
+            Entity closest = null;
+
+            foreach (Entity e in entities)
+            {
+                if (e.Group != Group && DistanceTo(e) <= lowestDistance)
+                {
+                    closest = e;
+                    lowestDistance = DistanceTo(e);
+                }
+            }
+
+            return closest;
+        }
+
         public Entity ClosestTarget(List<Entity> entities)
         {
             int lowestDistance = int.MaxValue;
@@ -252,7 +372,7 @@ namespace TileGameLib
 
             foreach (Entity e in entities)
             {
-                if (e.Group == TargetGroup && DistanceTo(e) <= lowestDistance)
+                if (weapon.CanTarget(e) && DistanceTo(e) <= lowestDistance && e != this)
                 {
                     closest = e;
                     lowestDistance = DistanceTo(e);
@@ -264,7 +384,23 @@ namespace TileGameLib
 
         public int DistanceTo(Entity e)
         {
-                return layer.Pathfind.MoveDistance(Position, e.Position);
+            return layer.Pathfind.MoveDistance(Position, e.Position, Group);
+        }
+
+        public Point FurthestFrom(Entity e)
+        {
+            Point furthest = new Point(-1, -1);
+            int furthestDist = int.MinValue;
+            foreach (Point p in MovePoints())
+            {
+                if (layer.Pathfind.MoveDistance(e.Position, p, Group) > furthestDist)
+                {
+                    furthest = p;
+                    furthestDist = layer.Pathfind.MoveDistance(e.Position, p, Group);
+                }
+            }
+
+            return furthest;
         }
 
         #endregion
@@ -315,11 +451,15 @@ namespace TileGameLib
                 {
                     Item i = Items.Items[selectedItem];
 
-                    if (i is Weapon)
-                        weapon = i as Weapon;
+                    Items.UseItem(i);
 
-                    else if (i is Consumable)
-                        i.UseOn(this);
+                    if (i is Consumable)
+                    {
+                        while (phase != Phase.Finished)
+                            EndPhase();
+
+                        InvMode = false;
+                    }
                 }
 
                 if (padState.ThumbSticks.Left.Y > 0 && lastPad.ThumbSticks.Left.Y <= 0)
@@ -336,12 +476,16 @@ namespace TileGameLib
                 else if (keyState.IsKeyDown(Keys.Space) && lastKey.IsKeyUp(Keys.Space))
                 {
                     Item i = Items.Items[selectedItem];
-                    
-                    if (i is Weapon)
-                        weapon = i as Weapon;                        
 
-                    else if (i is Consumable)
-                        i.UseOn(this);
+                    Items.UseItem(i);
+
+                    if (i is Consumable)
+                    {
+                        while (phase != Phase.Finished)
+                            EndPhase();
+
+                        InvMode = false;
+                    }
                 }
 
                 if (keyState.IsKeyDown(Keys.Down) && lastKey.IsKeyUp(Keys.Down))
@@ -483,7 +627,7 @@ namespace TileGameLib
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 loc = new Vector2(position.X * layer.TileWidth, position.Y * layer.TileHeight) + Utility.ToVector2(ScreenHelper.Viewport.TitleSafeArea.Location);
+            Vector2 loc = new Vector2(position.X * layer.TileWidth, position.Y * layer.TileHeight);
 
             if (moving || attacking)
                 loc += moveOffset;
@@ -541,6 +685,82 @@ namespace TileGameLib
 
                 default:
                     return Rectangle.Empty;
+            }
+        }
+
+        #endregion
+
+        #region Behaviors
+
+        private void initializeBehaviors()
+        {
+            behaviors.Add("Default", new Behavior(defaultBehavior));
+            behaviors.Add("Healer", new Behavior(healerBehavior));
+        }
+
+        void healerBehavior(Entity e)
+        {
+            Entity target = e.ClosestTarget(layer.Entities.EntityList);
+
+            if (target != null)
+            {
+                switch (e.Phase)
+                {
+                    case Phase.Move:
+                        if (e.DistanceTo(target) > 0)
+                            e.MoveTo(target);
+                        e.EndPhase();
+                        break;
+
+                    case Phase.Attack:
+                        if (!e.Moving)
+                        {
+                            if (e.CanAttack(target.Position) && target.Health.Fraction < 1)
+                                e.Attack(target);
+                            e.EndPhase();
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                target = ClosestEnemy(layer.Entities.EntityList);
+
+                if (target != null)
+                {
+                    if (e.Phase == Phase.Move)
+                    {
+                        e.MoveTo(FurthestFrom(target));
+                        e.EndPhase();
+                        e.EndPhase();
+                    }
+                }
+            }
+        }
+
+        void defaultBehavior(Entity e)
+        {
+            Entity target = e.ClosestTarget(layer.Entities.EntityList);
+
+            if (target != null)
+            {
+                switch (e.Phase)
+                {
+                    case Phase.Move:
+                        if (e.DistanceTo(target) > 0)
+                            e.MoveTo(target);
+                        e.EndPhase();
+                        break;
+
+                    case Phase.Attack:
+                        if (!e.Moving)
+                        {
+                            if (e.CanAttack(target.Position))
+                                e.Attack(target);
+                            e.EndPhase();
+                        }
+                        break;
+                }
             }
         }
 

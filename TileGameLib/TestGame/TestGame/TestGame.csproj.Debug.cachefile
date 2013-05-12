@@ -10,7 +10,8 @@ Content\Sprites\Blood.xnb
 Content\Sprites\Healing.xnb
 Content\Fonts\Font1.xnb
 Content\Sprites\Priest.xnb
-Content\Maps\Grass Demo.csv
-Content\Maps\layer.txt
+Content\Levels\Maps\Grass Demo.csv
+Content\Levels\layer.txt
 Content\Items\Health Potion.txt
 Content\Items\Sword.txt
+Content\Entities\Knight.txt

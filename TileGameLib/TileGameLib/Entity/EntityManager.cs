@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using Microsoft.Xna.Framework.Content;
 
 namespace TileGameLib
 {
@@ -42,6 +44,26 @@ namespace TileGameLib
         {
             this.layer = layer;
             groups.Add("Player");
+        }
+
+        public EntityManager(TileLayer layer, StreamReader sr, ContentManager content)
+            : this(layer)
+        {
+            do
+            {
+                Entity e; 
+                sr.ReadLine();
+                string tag = sr.ReadLine();
+                sr.ReadLine();
+                string group = sr.ReadLine();
+                sr.ReadLine();
+                Point pos = Utility.ParsePoint(sr.ReadLine());
+                sr.ReadLine();
+                string type = sr.ReadLine();
+                sr.ReadLine();
+                e = new Entity(tag, group, layer, pos, EntityInfo.FromFile(type), content);
+                Add(e);
+            } while (sr.ReadLine() != null);
         }
 
         #region Methods
@@ -185,7 +207,7 @@ namespace TileGameLib
                 if (currentEntity < cur.Count())
                 {
                     cur[currentEntity].Act();
-                    if (cur[currentEntity].Phase == Phase.Finished)
+                    if (cur[currentEntity].Phase == Phase.Finished && !cur[currentEntity].Attacking && !cur[currentEntity].Moving)
                         currentEntity++;
                 }
             }
@@ -221,7 +243,7 @@ namespace TileGameLib
             string text = CurrentGroup + " Turn";
             Color color = colorFor(CurrentGroup);
             spriteBatch.DrawString(ScreenHelper.Font, text,
-                ScreenHelper.Camera.Position + new Vector2(ScreenHelper.Viewport.Width / 2 - ScreenHelper.Font.MeasureString(text).X / 2, 0), color);
+                ScreenHelper.Camera.Position + new Vector2(ScreenHelper.Viewport.Width / 2 - ScreenHelper.Font.MeasureString(text).X / 2, ScreenHelper.Viewport.TitleSafeArea.Y), color);
         }
 
         private Color colorFor(string group)

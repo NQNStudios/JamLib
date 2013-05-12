@@ -1,0 +1,37 @@
+[Width]
+32
+[Height]
+32
+[Texture]
+Grass Tiles
+[Layout]
+Grass Demo.csv
+[Blocked Tiles]
+3
+[Slow Tiles]
+2
+4
+[Cover Tiles]
+4
+[Castle Tiles]
+5
+[Entities]
+[Tag]
+
+[Group]
+Player
+[Position]
+20, 20
+[Type]
+Knight.txt
+BREAK
+
+[Tag]
+
+[Group]
+Player
+[Position]
+21, 20
+[Type]
+Knight.txt
+BREAK

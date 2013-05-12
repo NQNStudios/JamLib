@@ -1,0 +1,17 @@
+[Behavior]
+Default
+[Health]
+20
+[Speed]
+4
+[Skill]
+2
+[Texture]
+Knight
+[Icon]
+Phase Icons
+[Health Bar]
+Health Bar
+[Items]
+Sword.txt
+Health Potion.txt

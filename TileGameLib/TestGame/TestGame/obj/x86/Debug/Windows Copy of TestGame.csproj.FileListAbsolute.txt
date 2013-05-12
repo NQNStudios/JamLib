@@ -11,8 +11,6 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Co
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Rogue.xnb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Arrows.xnb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Tile Overlays.xnb
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Maps\Grass Demo.csv
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Maps\layer.txt
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Health Bar.xnb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\UI\Phase Icons.xnb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Fonts\Font1.xnb
@@ -43,3 +41,6 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Co
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Sprites\Priest.xnb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Items\Health Potion.txt
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Items\Sword.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Levels\Maps\Grass Demo.csv
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Levels\layer.txt
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\x86\Debug\Content\Entities\Knight.txt

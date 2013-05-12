@@ -37,6 +37,12 @@ namespace TileGameLib
                 owner.EquippedWeapon = item as Weapon;
             else
                 item.Use(owner, multiplier);
+
+            if (item is Consumable)
+            {
+                if ((item as Consumable).IsDepleted())
+                    Items.Remove(item);
+            }
         }
 
         public void UseItem(Item item)

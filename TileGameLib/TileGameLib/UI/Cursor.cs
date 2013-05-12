@@ -203,6 +203,7 @@ namespace TileGameLib
 
         #region Draw
 
+        List<Point> squarePoints = new List<Point>();
         public void DrawSquares(SpriteBatch spriteBatch)
         {
             if (selectedEntity != null && Enabled)
@@ -210,14 +211,20 @@ namespace TileGameLib
                 switch (selectedEntity.Phase)
                 {
                     case Phase.Move:
-                        foreach (Point p in selectedEntity.MovePoints())
+                        if (squarePoints.Count() == 0)
+                            squarePoints = selectedEntity.MovePoints();
+
+                        foreach (Point p in squarePoints)
                         {
                             DrawOverlay(p, spriteBatch, Color.Blue);
                         }
                         break;
 
                     case Phase.Attack:
-                        foreach (Point p in selectedEntity.AttackPoints())
+                        if (squarePoints.Count() == 0)
+                            squarePoints = selectedEntity.AttackPoints();
+
+                        foreach (Point p in squarePoints)
                         {
                             Color color = selectedEntity.EquippedWeapon.Healing ? Color.Green : Color.Red;
                             DrawOverlay(p, spriteBatch, color);
@@ -227,14 +234,12 @@ namespace TileGameLib
                     default:
                         break;
                 }
-
-                
             }
         }
 
         private void DrawOverlay(Point p, SpriteBatch spriteBatch, Color color)
         {
-            Vector2 loc = Utility.ToVector2(ScreenHelper.Viewport.TitleSafeArea.Location) + new Vector2(p.X * layer.TileWidth, p.Y * layer.TileHeight);
+            Vector2 loc = new Vector2(p.X * layer.TileWidth, p.Y * layer.TileHeight);
             Rectangle source;
 
             if (color == Color.Blue)
@@ -255,6 +260,7 @@ namespace TileGameLib
         Point lastStart;
         Point lastEnd;
         List<Point> path;
+        Dictionary<Point, Rectangle> sources = new Dictionary<Point, Rectangle>();
 
         public void DrawArrow(SpriteBatch spriteBatch)
         {
@@ -267,30 +273,16 @@ namespace TileGameLib
                 Point end = Location;
 
                 if (start != lastStart || end != lastEnd)
-                    path = layer.Pathfind.FindPath(start, end);
-
-                for (int i = 0; i < path.Count; ++i)
                 {
-                    Point change = new Point(path[i].X - start.X, path[i].Y - start.Y);
-                    bool finished = (i >= path.Count - 1);
-                    ArrowDirection d = ArrowDirection.None;
-                    if (!finished)
-                    {
-                        Point nextChange = new Point(path[i + 1].X - path[i].X, path[i + 1].Y - path[i].Y);
-                        d = direction(change, nextChange, false);
-                    }
-                    else
-                    {
-                        d = direction(change, Point.Zero, true);
-                    }
+                    path = layer.Pathfind.FindPath(start, end, Group);
+                    calculateArrows(start);
+                }
 
-                    Rectangle source = arrowSource(d);
-
+                for (int i = 0; i < path.Count(); ++i)
+                {
                     Vector2 loc1 = new Vector2(path[i].X * layer.TileWidth, path[i].Y * layer.TileHeight);
 
-                    spriteBatch.Draw(arrowTexture, loc1, source, Color.White);
-
-                    start = path[i];
+                    spriteBatch.Draw(arrowTexture, loc1, sources[path[i]], Color.White);
                 }
 
                 lastStart = start;
@@ -298,9 +290,38 @@ namespace TileGameLib
             }
         }
 
+        private void calculateArrows(Point start)
+        {
+            sources.Clear();
+
+            for (int i = 0; i < path.Count; ++i)
+            {
+                Point change = new Point(path[i].X - start.X, path[i].Y - start.Y);
+                bool finished = (i >= path.Count - 1);
+                ArrowDirection d = ArrowDirection.None;
+                if (!finished)
+                {
+                    Point nextChange = new Point(path[i + 1].X - path[i].X, path[i + 1].Y - path[i].Y);
+                    d = direction(change, nextChange, false);
+                }
+                else
+                {
+                    d = direction(change, Point.Zero, true);
+                }
+
+                Rectangle source = arrowSource(d);
+                sources.Add(path[i], source);
+
+                start = path[i];
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 loc = new Vector2(location.X * layer.TileWidth, location.Y * layer.TileHeight) + Utility.ToVector2(ScreenHelper.Viewport.TitleSafeArea.Location);
+            if (!Enabled)
+                return;
+
+            Vector2 loc = new Vector2(location.X * layer.TileWidth, location.Y * layer.TileHeight);
 
             spriteBatch.Draw(texture, loc, Color.White);
         }
@@ -459,7 +480,7 @@ namespace TileGameLib
             {
                 Entity e = layer.Entities.EntityAt(cursor.Location);
 
-                if (e != null)
+                if (e != null && e.Group == Group && e.Phase != Phase.Finished)
                 {
                     if (e.Moving || e.Attacking)
                         return;
@@ -480,13 +501,18 @@ namespace TileGameLib
             if (e != null && layer.Entities.CurrentGroup == Group && e.Group == Group)
             {
                 e.EndPhase();
+                if (e == selectedEntity)
+                    squarePoints.Clear();
             }
         }
 
         void onExit(Cursor cursor)
         {
             if (Enabled)
+            {
                 cursor.SelectedEntity = null;
+                squarePoints.Clear();
+            }
         }
 
         void onSelect(Cursor cursor)
@@ -498,6 +524,7 @@ namespace TileGameLib
 
             if (cursor.SelectedEntity != null)
             {
+                
                 switch (cursor.SelectedEntity.Phase)
                 {
                     case Phase.Move:
@@ -505,6 +532,7 @@ namespace TileGameLib
                         {
                             cursor.SelectedEntity.MoveTo(cursor.Location);
                             cursor.SelectedEntity.EndPhase();
+                            squarePoints.Clear();
                         }
                         break;
 
@@ -513,6 +541,7 @@ namespace TileGameLib
                         {
                             cursor.SelectedEntity.Attack(layer.Entities.EntityAt(cursor.Location));
                             cursor.SelectedEntity.EndPhase();
+                            squarePoints.Clear();
                         }
                         break;
 
@@ -525,6 +554,7 @@ namespace TileGameLib
             else if (e != null && e.Group == Group && e.Phase != Phase.Finished)
             {
                 cursor.SelectedEntity = e;
+                squarePoints.Clear();
             }
         }
 

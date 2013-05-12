@@ -18,6 +18,11 @@ namespace TileGameLib
 
         #endregion
 
+        public bool IsDepleted()
+        {
+            return count <= 0;
+        }
+
         public override string ToString()
         {
             return name + " x" + count.ToString();

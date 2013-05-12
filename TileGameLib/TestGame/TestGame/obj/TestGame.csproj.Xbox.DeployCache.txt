@@ -6,16 +6,38 @@ C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Deb
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\GameThumbnail.png
 2013-05-04T13:45:33.1123470Z
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\TestGame.exe
-2013-05-04T20:54:05.3613290Z
+2013-05-11T17:17:47.0463455Z
 C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\TileGameLib.dll
-2013-05-04T20:54:05.0023239Z
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Cursor_1.xnb
-2013-05-04T18:23:43.2618912Z
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Grass Demo.csv
-2013-05-04T16:09:53.6057813Z
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Grass Tiles.xnb
-2013-05-04T14:12:14.8510990Z
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\layer.txt
-2013-05-04T20:49:46.2906937Z
-C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Rogue.xnb
-2013-05-04T20:31:11.0277008Z
+2013-05-11T17:17:46.6012456Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Fonts\Font1.xnb
+2013-05-11T02:25:27.7675858Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Items\Health Potion.txt
+2013-05-11T03:08:34.4054895Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Items\Sword.txt
+2013-05-11T02:57:28.4187616Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Maps\Grass Demo.csv
+2013-05-08T02:40:38.8975777Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Maps\layer.txt
+2013-05-08T02:42:58.8923526Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Blood.xnb
+2013-05-11T02:25:27.3965130Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Healing.xnb
+2013-05-11T02:25:27.6895684Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Knight.xnb
+2013-05-11T02:25:27.1625143Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Priest.xnb
+2013-05-11T02:35:35.9593001Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Sprites\Rogue.xnb
+2013-05-11T02:25:25.8653201Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\Tilesets\Grass Tiles.xnb
+2013-05-11T02:25:25.3332649Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Arrows.xnb
+2013-05-11T02:25:26.1753463Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Cursor_1.xnb
+2013-05-11T02:25:25.5952731Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Health Bar.xnb
+2013-05-11T02:25:26.7174274Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Phase Icons.xnb
+2013-05-11T02:27:24.3627496Z
+C:\Users\Nathaniel\Desktop\JamLib\TileGameLib\TestGame\TestGame\bin\Xbox 360\Debug\Content\UI\Tile Overlays.xnb
+2013-05-11T02:25:26.4534089Z

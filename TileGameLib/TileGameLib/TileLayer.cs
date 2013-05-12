@@ -38,7 +38,7 @@ namespace TileGameLib
         public void LoadContent(ContentManager content, string textureFilename, string layoutFilename)
         {
             texture = content.Load<Texture2D>("Tilesets/" + textureFilename);
-            tiles = Utility.FromCSV("Content/Maps/" + layoutFilename);
+            tiles = Utility.FromCSV("Content/Levels/" + layoutFilename);
         }
 
         public void SetBlockedTiles(params Int32[] blockedTiles)
@@ -77,7 +77,7 @@ namespace TileGameLib
         {
             TileLayer layer;
 
-            using (StreamReader sr = new StreamReader("Content/Maps/" + filename))
+            using (StreamReader sr = new StreamReader("Content/Levels/" + filename))
             {
                 int width = -1, height = -1;
 
@@ -101,7 +101,7 @@ namespace TileGameLib
                 if (string.IsNullOrEmpty(textureFilename) || string.IsNullOrEmpty(layoutFilename))
                     throw new ArgumentException("File format incorrect.");
 
-                layer.LoadContent(content, textureFilename, layoutFilename);
+                layer.LoadContent(content, textureFilename, "Maps/" + layoutFilename);
 
                 if (sr.ReadLine().Equals("[Blocked Tiles]"))
                 {
@@ -136,7 +136,7 @@ namespace TileGameLib
 
                     if (next == "[Castle Tiles]")
                     {
-                        while ((next = sr.ReadLine()) != null)
+                        while ((next = sr.ReadLine()) != "[Entities]")
                         {
                             tiles.Add(Int32.Parse(next));
                         }
@@ -149,10 +149,11 @@ namespace TileGameLib
                     throw new ArgumentException("Improper file format.");
                 }
 
+                layer.Entities = new EntityManager(layer, sr, content);
+
                 sr.Close();
             }
 
-            layer.Entities = new EntityManager(layer);
             return layer;
         }
 
@@ -265,7 +266,7 @@ namespace TileGameLib
 
         Rectangle tileDestination(int x, int y)
         {
-            return new Rectangle(ScreenHelper.Viewport.TitleSafeArea.X + x * tileWidth, ScreenHelper.Viewport.TitleSafeArea.Y + y * tileHeight, tileWidth, tileHeight);
+            return new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
         }
 
         #endregion

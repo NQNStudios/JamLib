@@ -82,24 +82,15 @@ namespace TestGame
 
             cursor = new Cursor(layer, cursorTexture, arrowTexture, overlayTexture, TimeSpan.FromSeconds(0.1), new Point(20, 20), "Player");
 
-            entity = new Entity("", "Player", "", 20, 5, 3, layer, new Point(20, 20), rogue, iconTexture, healthbarTexture);
-            Weapon w = new Weapon("Magic", "Player", 2.0, 2, 2);
-            entity.Items.Add(w);
-            entity.Items.Add(Item.FromFile("Sword.txt", "Player"));
-            entity.EquippedWeapon = w;
-            layer.Entities.Add(entity);
-            entity = new Entity("", "Player", "", 20, 5, 1, layer, new Point(21, 20), priest, iconTexture, healthbarTexture);
-            w = new Weapon("Healing", "Player", 3.0, 2, 2, true);
+            entity = new Entity("", "Enemy", "Healer", 20, 5, 1, layer, new Point(15, 17), priest, iconTexture, healthbarTexture);
+            Weapon w = new Weapon("Healing", "Enemy", 3.0, 1, 1, true);
             entity.Items.Add(w);
             entity.EquippedWeapon = w;
-            entity.Items.Add(Item.FromFile("Health Potion.txt", "Player"));
             layer.Entities.Add(entity);
-            entity = new Entity("", "Enemy", "Player", 5, 5, 3, layer, new Point(22, 20), knight, iconTexture, healthbarTexture);
-            entity.Behavior += new Behavior(enemyBehavior);
+            entity = new Entity("", "Enemy", "Default", 20, 5, 3, layer, new Point(22, 20), knight, iconTexture, healthbarTexture);
             entity.EquippedWeapon = Item.FromFile("Sword.txt", "Enemy") as Weapon;
             layer.Entities.Add(entity);
-            entity = new Entity("", "Enemy", "Player", 5, 5, 3, layer, new Point(15, 16), knight, iconTexture, healthbarTexture);
-            entity.Behavior += new Behavior(enemyBehavior);
+            entity = new Entity("", "Enemy", "Default", 20, 5, 3, layer, new Point(15, 16), knight, iconTexture, healthbarTexture);
             entity.EquippedWeapon = new Weapon("Sword", "Enemy", 2.0, 1, 1);
             layer.Entities.Add(entity);
 
@@ -131,7 +122,7 @@ namespace TestGame
             // TODO: Add your update logic here
 
             cursor.Update(PlayerIndex.One, gameTime, ScreenHelper.Camera);
-            ScreenHelper.Camera.ClampToArea(layer.WidthInPixels() + ScreenHelper.Viewport.TitleSafeArea.X, layer.HeightInPixels() + ScreenHelper.Viewport.TitleSafeArea.Y);
+            ScreenHelper.Camera.ClampToArea(layer.WidthInPixels(), layer.HeightInPixels());
             layer.Entities.Update(gameTime);
 
             base.Update(gameTime);
@@ -160,32 +151,6 @@ namespace TestGame
             spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-
-        void enemyBehavior(Entity e)
-        {
-            Entity target = e.ClosestTarget(layer.Entities.EntityList);
-
-            if (target != null)
-            {
-                switch (e.Phase)
-                {
-                    case Phase.Move:
-                        if (e.DistanceTo(target) > 0)
-                            e.MoveTo(target);
-                        e.EndPhase();
-                        break;
-
-                    case Phase.Attack:
-                        if (!e.Moving)
-                        {
-                            if (e.CanAttack(target.Position))
-                                e.Attack(target);
-                            e.EndPhase();
-                        }
-                        break;
-                }
-            }
         }
     }
 }

@@ -44,6 +44,13 @@ namespace TileGameLib
 
         #region Geometry
 
+        public static Point ParsePoint(string point)
+        {
+            string[] components = point.Split(',');
+
+            return new Point(int.Parse(components[0]), int.Parse(components[1].Trim()));
+        }
+
         public static bool Vector2Intersects(Vector2 p, Rectangle r)
         {
             if (p.X < r.X || p.Y < r.Y || p.X > r.X + r.Width || p.Y > r.Y + r.Height)

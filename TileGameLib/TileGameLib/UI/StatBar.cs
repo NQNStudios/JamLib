@@ -35,12 +35,12 @@ namespace TileGameLib
 
         public void Damage(double amount)
         {
-            current -= amount;
+            current = Math.Max(current - amount, 0);
         }
 
         public void Heal(double amount)
         {
-            current += amount;
+            current = Math.Min(current + amount, max);
         }
 
         public void Reset()

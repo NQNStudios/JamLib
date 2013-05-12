@@ -87,7 +87,7 @@ namespace TileGameLib
 
         #region Algorithm
 
-        public List<Point> FindPath(Point startPoint, Point endPoint)
+        public List<Point> FindPath(Point startPoint, Point endPoint, string group)
         {
             if (startPoint == endPoint)
                 return new List<Point>();
@@ -118,7 +118,7 @@ namespace TileGameLib
                 {
                     SearchNode neighbor = currentNode.Neighbors[i];
 
-                    if (neighbor == null || !neighbor.Passable || (layer.Entities.EntityAt(neighbor.Position) != null && layer.Entities.EntityAt(neighbor.Position).Group != "Player"))
+                    if (neighbor == null || !neighbor.Passable || (layer.Entities.EntityAt(neighbor.Position) != null && layer.Entities.EntityAt(neighbor.Position).Group != group))
                         continue;
 
                     float distanceTraveled = currentNode.DistanceTraveled + (layer.IsSlowTile(neighbor.Position) ? 2 : 1);
@@ -167,13 +167,13 @@ namespace TileGameLib
             return Math.Abs(p1.X - p2.X) + Math.Abs(p1.Y - p2.Y);
         }
 
-        public int MoveDistance(Point p1, Point p2)
+        public int MoveDistance(Point p1, Point p2, string group)
         {
             int sum = 0;
-            List<Point> path = FindPath(p1, p2);
+            List<Point> path = FindPath(p1, p2, group);
             if (path.Count == 0)
                 return int.MaxValue;
-            foreach (Point p in FindPath(p1, p2))
+            foreach (Point p in path)
             {
                 if (layer.IsSlowTile(p))
                     sum += 2;
