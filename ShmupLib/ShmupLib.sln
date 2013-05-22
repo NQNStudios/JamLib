@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShmupLib", "ShmupLib\ShmupLib.csproj", "{6CEE899A-0F50-4562-9A7D-D24D9642FC09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperFishHunter", "SuperFishHunter\SuperFishHunter\SuperFishHunter.csproj", "{EECEB2B0-6FED-44EE-979D-5BB10C6760E3}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SuperFishHunterContent", "SuperFishHunter\SuperFishHunterContent\SuperFishHunterContent.contentproj", "{7C0D95EC-16A1-45E5-AC39-67EAA1F45DFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +17,12 @@ Global
 		{6CEE899A-0F50-4562-9A7D-D24D9642FC09}.Debug|x86.Build.0 = Debug|x86
 		{6CEE899A-0F50-4562-9A7D-D24D9642FC09}.Release|x86.ActiveCfg = Release|x86
 		{6CEE899A-0F50-4562-9A7D-D24D9642FC09}.Release|x86.Build.0 = Release|x86
+		{EECEB2B0-6FED-44EE-979D-5BB10C6760E3}.Debug|x86.ActiveCfg = Debug|x86
+		{EECEB2B0-6FED-44EE-979D-5BB10C6760E3}.Debug|x86.Build.0 = Debug|x86
+		{EECEB2B0-6FED-44EE-979D-5BB10C6760E3}.Release|x86.ActiveCfg = Release|x86
+		{EECEB2B0-6FED-44EE-979D-5BB10C6760E3}.Release|x86.Build.0 = Release|x86
+		{7C0D95EC-16A1-45E5-AC39-67EAA1F45DFF}.Debug|x86.ActiveCfg = Debug|x86
+		{7C0D95EC-16A1-45E5-AC39-67EAA1F45DFF}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

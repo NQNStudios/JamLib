@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Textures\Back Health.png</Source>
+      <Name>Textures\Back Health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Back Health.xnb</Output>
+      <Time>2013-05-20T17:04:25.0599239-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Front Health.png</Source>
+      <Name>Textures\Front Health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Front Health.xnb</Output>
+      <Time>2013-05-20T17:04:25.0109211-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Rogue.png</Source>
+      <Name>Textures\Rogue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Rogue.xnb</Output>
+      <Time>2013-05-20T17:08:00.2932345-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Bullet.png</Source>
+      <Name>Textures\Bullet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Bullet.xnb</Output>
+      <Time>2013-05-21T18:05:01.5198654-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menufont.spritefont</Source>
+      <Name>Fonts\menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Fonts\menufont.xnb</Output>
+      <Time>2013-05-21T18:32:54.2985428-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\titlefont.spritefont</Source>
+      <Name>Fonts\titlefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Fonts\titlefont.xnb</Output>
+      <Time>2013-05-21T18:32:54.2895423-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\blank.png</Source>
+      <Name>Textures\blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\blank.xnb</Output>
+      <Time>2013-05-21T18:35:02.2078588-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Large Fish - Clr. Variations Available.png</Source>
+      <Name>Textures\Large Fish - Clr. Variations Available</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Large Fish - Clr. Variations Available.xnb</Output>
+      <Time>2013-05-21T19:03:26.0633138-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Med Fish.png</Source>
+      <Name>Textures\Med Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Med Fish.xnb</Output>
+      <Time>2013-05-21T19:03:26.066314-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Moby Dick.png</Source>
+      <Name>Textures\Moby Dick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Moby Dick.xnb</Output>
+      <Time>2013-05-21T19:03:26.0693141-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Small Fish.png</Source>
+      <Name>Textures\Small Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Small Fish.xnb</Output>
+      <Time>2013-05-21T19:03:26.067314-06:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{7C0D95EC-16A1-45E5-AC39-67EAA1F45DFF}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunterContent\</RootDirectory>
+      <LoggerRootDirectory>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\</LoggerRootDirectory>
+      <IntermediateDirectory>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-09-01T16:22:30-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2012-05-26T12:16:43.2526913-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

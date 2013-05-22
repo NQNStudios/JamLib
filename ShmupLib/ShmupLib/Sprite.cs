@@ -7,6 +7,13 @@ using Microsoft.Xna.Framework;
 
 namespace ShmupLib
 {
+    public enum AnimationType
+    {
+        Loop,
+        Bounce,
+        Once
+    }
+
     public class Sprite
     {
         #region Fields
@@ -14,14 +21,21 @@ namespace ShmupLib
         public Texture2D Texture;
         public Color[] Pixels;
 
+        AnimationType type;
         protected List<Rectangle> frames = new List<Rectangle>();
         int frameWidth = 0;
         int frameHeight = 0;
         int currentFrame;
         float frameTime = 0.1f;
         float timeForCurrentFrame = 0.0f;
-        
+
+        float layer = 0f;
+
         Color tintColor = Color.White;
+        float tintTime;
+        float elapsedTint;
+
+        SpriteEffects effect = SpriteEffects.None;
         
         public int CollisionRadius = 0;
         public int BoundingXPadding = 0;
@@ -34,21 +48,44 @@ namespace ShmupLib
 
         #region Constructor
 
-        public Sprite(Vector2 location, Texture2D texture, Rectangle initialFrame, Vector2 velocity)
+        public Sprite(Vector2 location, Texture2D texture, Rectangle initialFrame, int frames, AnimationType animType, float layer)
         {
             this.location = location;
             Texture = texture;
             Pixels = new Color[texture.Width * texture.Height];
             Texture.GetData<Color>(Pixels);
-            this.velocity = velocity;
-            frames.Add(initialFrame);
+            AddFrames(initialFrame.X, initialFrame.Y, initialFrame.Width, initialFrame.Height, frames);
             frameWidth = initialFrame.Width;
             frameHeight = initialFrame.Height;
+            type = animType;
+            this.layer = layer;
+        }
+
+        public Sprite(Vector2 location, Texture2D texture, Rectangle initialFrame, int frames, AnimationType animType)
+            : this(location, texture, initialFrame, frames, animType, 0f)
+        {
+        }
+
+        public Sprite(Vector2 location, Texture2D texture, AnimationType animType)
+        {
+            this.location = location;
+            Texture = texture;
+            Pixels = new Color[texture.Width * texture.Height];
+            Texture.GetData<Color>(Pixels);
+            this.AddFrame(new Rectangle(0, 0, texture.Width, texture.Height));
+            frameWidth = texture.Width;
+            frameHeight = texture.Height;
+            type = animType;
         }
 
         #endregion
 
         #region Properties
+
+        public bool Done
+        {
+            get { return type == AnimationType.Once && currentFrame == frames.Count - 1; }
+        }
 
         public Vector2 Location
         {
@@ -60,12 +97,6 @@ namespace ShmupLib
         {
             get { return velocity; }
             set { velocity = value; }
-        }
-
-        public Color TintColor
-        {
-            get { return tintColor; }
-            set { tintColor = value; }
         }
 
         public int Frame
@@ -115,6 +146,28 @@ namespace ShmupLib
 
         #endregion
 
+        #region Sprite Effects
+
+        public SpriteEffects Effect
+        {
+            get { return effect; }
+            set { effect = value; }
+        }
+
+        /// <summary>
+        /// Gives the sprite a temporary tint color.
+        /// </summary>
+        /// <param name="tint"></param>
+        /// <param name="time">If -1, the tint will remain until a new one is applied.</param>
+        public void SetTint(Color tint, float time)
+        {
+            elapsedTint = 0;
+            tintTime = time;
+            tintColor = tint;
+        }
+
+        #endregion
+
         #region Collision
 
         public bool IsBoxColliding(Rectangle OtherBox)
@@ -139,18 +192,19 @@ namespace ShmupLib
 
             int top = Math.Max(rect1.Top, rect2.Top);
             int bottom = Math.Min(rect1.Bottom, rect2.Bottom);
-            int left = Math.Max(rect1.Left, rect2.Bottom);
+            int left = Math.Max(rect1.Left, rect2.Left);
             int right = Math.Min(rect1.Right, rect2.Right);
 
             for (int y = top; y < bottom; y++)
                 for (int x = left; x < right; x++)
                 {
-                    Color color1 = Pixels[(x - rect1.Left) + 
-                        (y - rect1.Top) * rect1.Width];
-                    Color color2 = other.Pixels[(x - rect2.Left) +
-                        (y - rect2.Top) * rect2.Width];
-
-                    return (color1.A != 0 && color2.A != 0);
+                    Color color1 = Pixels[(x - rect1.Left + currentFrame * Source.Width) + 
+                        (y - rect1.Top) * Texture.Width];
+                    Color color2 = other.Pixels[(x - rect2.Left + other.currentFrame * other.Source.Width) +
+                        (y - rect2.Top) * other.Texture.Width];
+                       
+                    if (color1.A != 0 && color2.A != 0)
+                        return true;
                 }
 
             return false;
@@ -165,9 +219,9 @@ namespace ShmupLib
             frames.Add(frameRectangle);
         }
 
-        public void AddFrames(int x, int y, int width, int height, int frames)
+        public void AddFrames(int x, int y, int width, int height, int frameCount)
         {
-            for (int i = 0; i < frames; i++)
+            for (int i = 0; i < frameCount; i++)
             {
                 Rectangle rect = new Rectangle(x + (width * i), y, width, height);
                 AddFrame(rect);
@@ -178,15 +232,47 @@ namespace ShmupLib
 
         #region Update/Draw
 
+        int step = 1;
         public virtual void Update(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeForCurrentFrame += elapsed;
+
             if (timeForCurrentFrame >= FrameTime)
             {
-                currentFrame = (currentFrame + 1) % (frames.Count);
+                switch (type)
+                {
+                    case AnimationType.Loop:
+                        currentFrame = (currentFrame + step) % (frames.Count);
+                        break;
+
+                    case AnimationType.Bounce:
+                        if (currentFrame < 0 || currentFrame >= frames.Count)
+                            step *= -1;
+
+                        currentFrame += step;
+                        break;
+
+                    case AnimationType.Once:
+                        if (currentFrame < frames.Count - 1)
+                            currentFrame++;
+                        break;
+                }
                 timeForCurrentFrame = 0.0f;
             }
+
+            if (tintColor != Color.White && tintTime != 1)
+            {
+                elapsedTint += elapsed;
+
+                if (elapsedTint >= tintTime)
+                {
+                    tintColor = Color.White;
+                    tintTime = 0f;
+                    elapsedTint = 0f;
+                }
+            }
+
             location += (velocity * elapsed);
         }
 
@@ -201,7 +287,7 @@ namespace ShmupLib
                 new Vector2(frameWidth / 2, frameHeight / 2),
                 1.0f,
                 SpriteEffects.None,
-                0.0f);
+                layer);
         }
 
         #endregion

@@ -1,0 +1,1 @@
+c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunterContent\obj\x86\Debug\SuperFishHunterContent.contentprojResolveAssemblyReference.cache

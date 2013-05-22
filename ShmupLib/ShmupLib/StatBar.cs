@@ -92,8 +92,6 @@ namespace ShmupLib
             CurrentValue -= (int)value;
         }
 
-
-
         #endregion
     }
 }
