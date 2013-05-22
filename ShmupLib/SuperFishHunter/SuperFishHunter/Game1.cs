@@ -32,6 +32,7 @@ namespace SuperFishHunter
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
+            //graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
@@ -80,7 +81,7 @@ namespace SuperFishHunter
         #region Update
 
         public bool InGame = false;
-        float elapsedSec = 0f;
+        float elapsedSec = 5f;
 
 
         /// <summary>
@@ -91,19 +92,32 @@ namespace SuperFishHunter
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
             if (InGame)
             {
                 elapsedSec += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                float difficulty = elapsedSec / 60f;
+            }
 
-                int mooksToSpawn = floatToInt(difficulty / 20f);
-                for (int i = 0; i < mooksToSpawn; i++)
-                {
-                    manager.Add(MakeMook());
-                }
+            float difficulty = elapsedSec / 60f;
+
+            int mooksToSpawn = floatToInt(difficulty / 10f);
+            for (int i = 0; i < mooksToSpawn; i++)
+            {
+                manager.Add(MakeMook());
+            }
+
+            int thugsToSpawn = floatToInt(difficulty / 100f);
+            for (int i = 0; i < thugsToSpawn; i++)
+            {
+                manager.Add(MakeThug());
+            }
+
+            int largeToSpawn = floatToInt(difficulty / 1000f);
+            for (int i = 0; i < largeToSpawn; i++)
+            {
+                manager.Add(MakeLarge());
             }
 
             // TODO: Add your update logic here
@@ -125,7 +139,7 @@ namespace SuperFishHunter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
 
             manager.Draw(spriteBatch);
 
@@ -142,8 +156,8 @@ namespace SuperFishHunter
 
         public  Entity MakePlayer()
         {
-            Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - 8), Content.Load<Texture2D>("Textures/Rogue"), new Rectangle(0, 0, 32, 32), 2, AnimationType.Loop, 1f);
-            return new Player(5, s, 1, 200f, false, true, Content.Load<Texture2D>("Textures/Bullet"), 1, 1, 400f, 0.25f);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - 8), Content.Load<Texture2D>("Textures/Rogue"), new Rectangle(0, 0, 32, 32), 2, AnimationType.Loop);
+            return new Player(Content.Load<Texture2D>("Textures/Player Bar Front"), Content.Load<Texture2D>("Textures/Player Bar Back"), 5, s, 1, 200f, false, true, Content.Load<Texture2D>("Textures/Bullet"), 1, 1, 200, 0.25f);
         }
 
         private Entity MakeMook()
@@ -154,6 +168,22 @@ namespace SuperFishHunter
             return new Enemy(1, s, 1, 100f);
         }
 
+        private Entity MakeThug()
+        {
+            float y = (float)((r.NextDouble() * 2 - 1) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), Content.Load<Texture2D>("Textures/Med Fish"), AnimationType.Loop);
+
+            return new Enemy(2, s, 2, 100f);
+        }
+
+        private Entity MakeLarge()
+        {
+            float y = (float)((r.NextDouble() * 2 - 1) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), Content.Load<Texture2D>("Textures/Large Fish"), AnimationType.Loop);
+
+            return new Enemy(3, s, 2, 100f);
+        }
+
         #endregion
 
         #region Math Helpers
@@ -162,11 +192,9 @@ namespace SuperFishHunter
         {
             float i = (int)f;
 
-            float c = r.Next(0, 101) / 100f;
+            float c = (float)r.NextDouble();
             if (c < f - i)
                 ++i;
-
-
 
             return (int)i;
         }

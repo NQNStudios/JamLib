@@ -16,6 +16,8 @@ namespace ShmupLib
 
     public class Sprite
     {
+        static int sprites = 0;
+
         #region Fields
 
         public Texture2D Texture;
@@ -48,8 +50,9 @@ namespace ShmupLib
 
         #region Constructor
 
-        public Sprite(Vector2 location, Texture2D texture, Rectangle initialFrame, int frames, AnimationType animType, float layer)
+        public Sprite(Vector2 location, Texture2D texture, Rectangle initialFrame, int frames, AnimationType animType)
         {
+            sprites++;
             this.location = location;
             Texture = texture;
             Pixels = new Color[texture.Width * texture.Height];
@@ -58,16 +61,12 @@ namespace ShmupLib
             frameWidth = initialFrame.Width;
             frameHeight = initialFrame.Height;
             type = animType;
-            this.layer = layer;
-        }
-
-        public Sprite(Vector2 location, Texture2D texture, Rectangle initialFrame, int frames, AnimationType animType)
-            : this(location, texture, initialFrame, frames, animType, 0f)
-        {
+            layer = (float)sprites / 1000000;
         }
 
         public Sprite(Vector2 location, Texture2D texture, AnimationType animType)
         {
+            sprites++;
             this.location = location;
             Texture = texture;
             Pixels = new Color[texture.Width * texture.Height];
@@ -76,6 +75,7 @@ namespace ShmupLib
             frameWidth = texture.Width;
             frameHeight = texture.Height;
             type = animType;
+            layer = (float)sprites / 1000000;
         }
 
         #endregion

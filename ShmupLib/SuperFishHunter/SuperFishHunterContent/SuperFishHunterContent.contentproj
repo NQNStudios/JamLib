@@ -77,8 +77,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Large Fish - Clr. Variations Available.png">
-      <Name>Large Fish - Clr. Variations Available</Name>
+    <Compile Include="Textures\Large Fish.png">
+      <Name>Large Fish</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -94,6 +94,18 @@
     </Compile>
     <Compile Include="Textures\Small Fish.png">
       <Name>Small Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\Player Bar Back.png">
+      <Name>Player Bar Back</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\Player Bar Front.png">
+      <Name>Player Bar Front</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

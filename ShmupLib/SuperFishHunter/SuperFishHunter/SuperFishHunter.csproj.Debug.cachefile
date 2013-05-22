@@ -2,10 +2,12 @@ Content\Textures\Back Health.xnb
 Content\Textures\Front Health.xnb
 Content\Textures\Rogue.xnb
 Content\Textures\Bullet.xnb
-Content\Fonts\menufont.xnb
-Content\Fonts\titlefont.xnb
 Content\Textures\blank.xnb
-Content\Textures\Large Fish - Clr. Variations Available.xnb
 Content\Textures\Med Fish.xnb
 Content\Textures\Moby Dick.xnb
 Content\Textures\Small Fish.xnb
+Content\Textures\Player Bar Back.xnb
+Content\Textures\Player Bar Front.xnb
+Content\Fonts\menufont.xnb
+Content\Fonts\titlefont.xnb
+Content\Textures\Large Fish.xnb

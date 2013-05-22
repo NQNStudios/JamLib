@@ -236,7 +236,7 @@ namespace TileGameLib
 
         public void MoveTo(Point destination)
         {
-            if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving || CanAttack(destination))
+            if (destination.X < 0 || destination.Y < 0 || destination.X >= layer.Width() || destination.Y >= layer.Height() || !layer.IsPassable(destination) || Moving)
                 return;
 
             destinations = new Queue<Point>();
@@ -245,7 +245,7 @@ namespace TileGameLib
 
             for (int i = 0; i < points.Count(); ++i)
             {
-                if (CanMoveTo(points[i]))
+                if (CanMoveThrough(points[i]))
                     destinations.Enqueue(points[i]);
                 else
                     break;
@@ -268,7 +268,8 @@ namespace TileGameLib
 
             Point closest = new Point(-1, -1);
             int dist = int.MaxValue;
-            foreach (Point p in MovePoints())
+            List<Point> points = MovePoints();
+            foreach (Point p in points)
             {
                 if (CanAttackFrom(p, destination) && layer.Pathfind.MoveDistance(position, p, Group) < dist)
                 {
@@ -282,7 +283,15 @@ namespace TileGameLib
                 MoveTo(closest);
                 return;
             }
-            MoveTo(destination);
+            foreach (Point p in points)
+            {
+                if (layer.Pathfind.MoveDistance(destination, p, Group) < dist)
+                {
+                    closest = p;
+                    dist = layer.Pathfind.MoveDistance(destination, closest, Group);
+                }
+            }
+            MoveTo(closest);
         }
 
         public bool CanMoveTo(Point p)
@@ -293,7 +302,20 @@ namespace TileGameLib
             if (Position == p) return true;
             if (!layer.IsPassable(p)) return false;
             if (layer.Pathfind.MoveDistance(position, p, Group) > speed) return false;
-            if (EntityManager != null && EntityManager.EntityAt(p) != null) return false;
+            if (EntityManager.EntityAt(p) != null) return false;
+            return true;
+        }
+
+        public bool CanMoveThrough(Point p)
+        {
+            if (p.X < 0 || p.X >= layer.Width()) return false;
+            if (p.Y < 0 || p.Y >= layer.Height()) return false;
+            if (Moving || Attacking) return false;
+            if (Position == p) return true;
+            if (!layer.IsPassable(p)) return false;
+            if (layer.Pathfind.MoveDistance(position, p, Group) > speed) return false;
+            Entity e = EntityManager.EntityAt(p);
+            if (e != null && e.Group != Group) return false;
             return true;
         }
 

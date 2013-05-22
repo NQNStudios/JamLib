@@ -173,7 +173,7 @@ namespace TileGameLib
             List<Point> path = FindPath(p1, p2, group);
             if (path.Count == 0)
                 return int.MaxValue;
-            foreach (Point p in path)
+            foreach (Point p in FindPath(p1, p2, group))
             {
                 if (layer.IsSlowTile(p))
                     sum += 2;

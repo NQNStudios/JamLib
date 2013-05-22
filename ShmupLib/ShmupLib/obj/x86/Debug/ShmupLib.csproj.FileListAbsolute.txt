@@ -4,3 +4,9 @@ c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\ShmupLib\bin\x
 c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\ShmupLib\bin\x86\Debug\ShmupLib.pdb
 c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\ShmupLib\obj\x86\Debug\ShmupLib.dll
 c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\ShmupLib\obj\x86\Debug\ShmupLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\x86\Debug\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\x86\Debug\ShmupLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Debug\ShmupLib.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Debug\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Debug\ShmupLib.pdb

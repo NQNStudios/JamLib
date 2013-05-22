@@ -10,8 +10,9 @@ namespace ShmupLib
 {
     public class Player : Entity
     {
+        Texture2D barTextureBack;
+        Texture2D barTextureFront;
         float statBarX = 0f;
-        float barScale = 5f;
 
         bool horizontalMovement;
         bool verticalMovement;
@@ -24,7 +25,7 @@ namespace ShmupLib
         float shotTime;
         float elapsedShot = 0f;
 
-        public Player(int health, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
+        public Player(Texture2D backTexture, Texture2D frontTexture, int health, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
             : base("Player", "Players", health, sprite, true, collisionDamage, "Enemies")
         {
             OnCollision += new Action1(collideWith);
@@ -33,6 +34,9 @@ namespace ShmupLib
             horizontalMovement = horizontal;
             verticalMovement = vertical;
             this.speed = speed;
+
+            barTextureBack = backTexture;
+            barTextureFront = frontTexture;
 
             this.bulletTexture = bulletTexture;
             this.bulletHits = bulletHits;
@@ -141,20 +145,18 @@ namespace ShmupLib
             base.Draw(spriteBatch, manager);
         }
 
-        protected override void DrawBar(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, StatBar b, Microsoft.Xna.Framework.Color color, EntityManager manager)
+        protected override void DrawBar(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, StatBar b, Color color, EntityManager manager)
         {
-            Texture2D backTexture = manager.BackBarTexture;
-            Texture2D frontTexture = manager.FrontBarTexture;
+            Texture2D backTexture = barTextureBack;
+            Texture2D frontTexture = barTextureFront;
 
             int x = (int)statBarX;
-            int y = (int)(ScreenHelper.TitleSafeArea.Height - frontTexture.Height * barScale);
-            int width = (int)(backTexture.Width * barScale);
-            int height = backTexture.Height * (int)barScale;
+            int y = (int)(ScreenHelper.TitleSafeArea.Height - frontTexture.Height);
 
-            statBarX += width + width / 8;
+            statBarX += backTexture.Width + backTexture.Width / 8;
 
-            Rectangle backRect = new Rectangle(x, y, (int)(width * health.Fraction), height);
-            Rectangle frontRect = new Rectangle(x, y, width, height);
+            Rectangle backRect = new Rectangle(x, y, (int)(backTexture.Width * health.Fraction), backTexture.Height);
+            Rectangle frontRect = new Rectangle(x, y, frontTexture.Width, frontTexture.Height);
 
             spriteBatch.Draw(manager.BackBarTexture, backRect, color);
             spriteBatch.Draw(manager.FrontBarTexture, frontRect, Color.White);

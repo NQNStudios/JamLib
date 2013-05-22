@@ -19,5 +19,9 @@ namespace ShmupLib
         {
             Damage(1);
         }
+
+        protected override void DrawBar(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, StatBar b, Color color, EntityManager manager)
+        {
+        }
     }
 }

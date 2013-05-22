@@ -261,7 +261,12 @@ namespace TileGameLib
 
         Rectangle tileSource(int tile)
         {
-            return new Rectangle(--tile * tileWidth, 0, tileWidth, tileHeight);
+            int tilesPerRow = texture.Width / tileWidth;
+            int tilesPerColumn = texture.Height / tileHeight;
+
+            Point coords = new Point(--tile % tilesPerColumn, tile / tilesPerRow);
+
+            return new Rectangle(coords.X * tileWidth, coords.Y * tileHeight, tileWidth, tileHeight);
         }
 
         Rectangle tileDestination(int x, int y)
