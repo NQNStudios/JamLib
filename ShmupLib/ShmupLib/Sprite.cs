@@ -11,7 +11,8 @@ namespace ShmupLib
     {
         Loop,
         Bounce,
-        Once
+        Once,
+        None
     }
 
     public class Sprite

@@ -19,7 +19,6 @@ c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunte
 c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Small Fish.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Back Health.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Front Health.xnb
-C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Rogue.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Bullet.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\blank.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Med Fish.xnb
@@ -38,3 +37,14 @@ C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Player Bar Back.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Player Bar Front.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Large Fish.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Blood.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Diver.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Arrow.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Big Bubble.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Medium Bubble.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Small Bubble.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Life Saver.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\SuperFishHunter.exe.manifest
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\SuperFishHunter.application
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x86\Debug\SuperFishHunter.exe.manifest
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x86\Debug\SuperFishHunter.application

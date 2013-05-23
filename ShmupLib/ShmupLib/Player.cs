@@ -19,13 +19,14 @@ namespace ShmupLib
         float speed;
 
         Texture2D bulletTexture;
+        Vector2 shotOffset;
         int bulletHits;
         uint bulletDamage;
         float bulletSpeed;
         float shotTime;
         float elapsedShot = 0f;
 
-        public Player(Texture2D backTexture, Texture2D frontTexture, int health, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
+        public Player(Texture2D backTexture, Texture2D frontTexture, int health, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
             : base("Player", "Players", health, sprite, true, collisionDamage, "Enemies")
         {
             OnCollision += new Action1(collideWith);
@@ -39,6 +40,7 @@ namespace ShmupLib
             barTextureFront = frontTexture;
 
             this.bulletTexture = bulletTexture;
+            this.shotOffset = shotOffset;
             this.bulletHits = bulletHits;
             this.bulletDamage = bulletDamage;
             this.bulletSpeed = bulletSpeed;
@@ -122,7 +124,7 @@ namespace ShmupLib
 
                 Rectangle bulletFrame = new Rectangle(0, 0, bulletTexture.Width, bulletTexture.Height);
                 Vector2 bulletVelocity = new Vector2(bulletSpeed, 0f);
-                Sprite bulletSprite = new Sprite(Sprite.Center - new Vector2(bulletTexture.Width, bulletTexture.Height) / 2, bulletTexture, bulletFrame, 1, AnimationType.Loop);
+                Sprite bulletSprite = new Sprite(Sprite.Location + shotOffset, bulletTexture, bulletFrame, 1, AnimationType.Loop);
 
                 Projectile p = new Projectile(bulletHits, bulletSprite, bulletDamage, bulletVelocity, "Enemies");
 
@@ -155,11 +157,11 @@ namespace ShmupLib
 
             statBarX += backTexture.Width + backTexture.Width / 8;
 
-            Rectangle backRect = new Rectangle(x, y, (int)(backTexture.Width * health.Fraction), backTexture.Height);
+            Rectangle backRect = new Rectangle(x, y, (int)(backTexture.Width * b.Fraction), backTexture.Height);
             Rectangle frontRect = new Rectangle(x, y, frontTexture.Width, frontTexture.Height);
 
-            spriteBatch.Draw(manager.BackBarTexture, backRect, color);
-            spriteBatch.Draw(manager.FrontBarTexture, frontRect, Color.White);
+            spriteBatch.Draw(manager.BackBarTexture, backRect, null, color, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+            spriteBatch.Draw(manager.FrontBarTexture, frontRect, null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0f);
         }
 
         #endregion

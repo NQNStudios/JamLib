@@ -27,7 +27,7 @@ namespace ShmupLib
 
         public Action1 OnCollision;
         public Action OnDamage;
-        public Action OnDeath;
+        public Action1 OnDeath;
 
         float invTime = 0.4f;
         float elapsedInv = 0;
@@ -35,6 +35,12 @@ namespace ShmupLib
         #endregion
 
         #region Properties
+
+        public StatBar Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
 
         public Sprite Sprite
         {
@@ -84,12 +90,7 @@ namespace ShmupLib
 
             if (health.IsEmpty)
             {
-                if (OnDeath != null)
-                {
-                    OnDeath();
-                }
-
-                manager.Remove(this);
+                die(manager);
                 return;
             }
 
@@ -99,22 +100,37 @@ namespace ShmupLib
                 return;
             }
 
-            foreach (string group in manager.Entities.Keys)
+            if (collides)
             {
-                if (collisionGroups.Contains(group))
+                foreach (string group in manager.Entities.Keys)
                 {
-                    foreach (Entity e in manager.Entities[group])
+                    if (collisionGroups.Contains(group))
                     {
-                        if (e.collides && sprite.IsPixelColliding(e.sprite))
+                        foreach (Entity e in manager.Entities[group])
                         {
-                            if (OnCollision != null)
+                            if (e.collides && sprite.IsPixelColliding(e.sprite))
                             {
-                                OnCollision(e);
+                                if (OnCollision != null)
+                                {
+                                    OnCollision(e);
+                                }
                             }
                         }
                     }
                 }
             }
+        }
+
+        protected void die(EntityManager manager)
+        {
+            health.CurrentValue = 0;
+            if (OnDeath != null)
+            {
+                OnDeath(this);
+            }
+
+            manager.Remove(this);
+            return;
         }
 
         #endregion
@@ -137,11 +153,11 @@ namespace ShmupLib
             int x = (int)sprite.Center.X - backTexture.Width / 2;
             int y = sprite.BoundingBoxRect.Y - backTexture.Height;
 
-            Rectangle backRect = new Rectangle(x, y, (int)(backTexture.Width * health.Fraction), backTexture.Height);
+            Rectangle backRect = new Rectangle(x, y, (int)(backTexture.Width * b.Fraction), backTexture.Height);
             Rectangle frontRect = new Rectangle(x, y, frontTexture.Width, frontTexture.Height);
 
-            spriteBatch.Draw(manager.BackBarTexture, backRect, color);
-            spriteBatch.Draw(manager.FrontBarTexture, frontRect, Color.White);
+            spriteBatch.Draw(manager.BackBarTexture, backRect, null, color, 0f, Vector2.Zero, SpriteEffects.None, 0.1f);
+            spriteBatch.Draw(manager.FrontBarTexture, frontRect, null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0f);
         }
 
         #endregion

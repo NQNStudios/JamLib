@@ -20,15 +20,6 @@
       <Time>2013-05-21T20:10:10.1891937-06:00</Time>
     </Item>
     <Item>
-      <Source>Textures\Rogue.png</Source>
-      <Name>Textures\Rogue</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Rogue.xnb</Output>
-      <Time>2013-05-21T20:10:10.2401998-06:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\Bullet.png</Source>
       <Name>Textures\Bullet</Name>
       <Importer>TextureImporter</Importer>
@@ -117,6 +108,69 @@
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Large Fish.xnb</Output>
       <Time>2013-05-21T20:10:10.2051963-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Blood.png</Source>
+      <Name>Textures\Blood</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Blood.xnb</Output>
+      <Time>2013-05-22T17:29:24.4776015-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Diver.png</Source>
+      <Name>Textures\Diver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Diver.xnb</Output>
+      <Time>2013-05-22T18:07:53.3166092-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow.png</Source>
+      <Name>Textures\Arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Arrow.xnb</Output>
+      <Time>2013-05-22T18:07:36.8926055-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Big Bubble.png</Source>
+      <Name>Textures\Big Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Big Bubble.xnb</Output>
+      <Time>2013-05-22T18:39:59.4119205-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Medium Bubble.png</Source>
+      <Name>Textures\Medium Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Medium Bubble.xnb</Output>
+      <Time>2013-05-22T18:39:59.40592-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Small Bubble.png</Source>
+      <Name>Textures\Small Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Small Bubble.xnb</Output>
+      <Time>2013-05-22T18:39:59.4159205-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Life Saver.png</Source>
+      <Name>Textures\Life Saver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Life Saver.xnb</Output>
+      <Time>2013-05-22T19:52:44.8847041-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

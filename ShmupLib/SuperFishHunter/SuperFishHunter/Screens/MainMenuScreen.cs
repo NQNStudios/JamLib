@@ -15,10 +15,13 @@ namespace SuperFishHunter.Screens
         {
             //Add menu entries
             MenuEntry playGame = new MenuEntry("Play Game");
+            MenuEntry exitGame = new MenuEntry("Exit Game");
 
             playGame.Selected += new EventHandler<PlayerIndexEventArgs>(PlayGame);
+            exitGame.Selected += OnCancel;
 
             MenuEntries.Add(playGame);
+            MenuEntries.Add(exitGame);
         }
 
         private void PlayGame(object sender, PlayerIndexEventArgs e)

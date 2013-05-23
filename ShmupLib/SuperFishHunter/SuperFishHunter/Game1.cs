@@ -27,6 +27,28 @@ namespace SuperFishHunter
 
         ScreenManager screenManager;
 
+        Texture2D frontHealthBar;
+        Texture2D backHealthBar;
+
+        Texture2D playerTexture;
+        Texture2D playerBarFront;
+        Texture2D playerBarBack;
+
+        Texture2D arrowTexture;
+
+        Texture2D bloodTexture;
+
+        Texture2D smallFish;
+        Texture2D medFish;
+        Texture2D largeFish;
+        Texture2D moby;
+
+        Texture2D smallBubble;
+        Texture2D medBubble;
+        Texture2D bigBubble;
+
+        Texture2D lifeSaver;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -64,7 +86,30 @@ namespace SuperFishHunter
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            manager = new EntityManager(Content.Load<Texture2D>("Textures/Front Health"), Content.Load<Texture2D>("Textures/Back Health"));
+
+            backHealthBar = Content.Load<Texture2D>("Textures/Back Health");
+            frontHealthBar = Content.Load<Texture2D>("Textures/Front Health");
+
+            playerTexture = Content.Load<Texture2D>("Textures/Diver");
+            playerBarBack = Content.Load<Texture2D>("Textures/Player Bar Back");
+            playerBarFront = Content.Load<Texture2D>("Textures/Player Bar Front");
+
+            arrowTexture = Content.Load<Texture2D>("Textures/Arrow");
+
+            bloodTexture = Content.Load<Texture2D>("Textures/Blood");
+
+            smallFish = Content.Load<Texture2D>("Textures/Small Fish");
+            medFish = Content.Load<Texture2D>("Textures/Med Fish");
+            largeFish = Content.Load<Texture2D>("Textures/Large Fish");
+            moby = Content.Load<Texture2D>("Textures/Moby Dick");
+
+            smallBubble = Content.Load<Texture2D>("Textures/Small Bubble");
+            medBubble = Content.Load<Texture2D>("Textures/Medium Bubble");
+            bigBubble = Content.Load<Texture2D>("Textures/Big Bubble");
+
+            lifeSaver = Content.Load<Texture2D>("Textures/Life Saver");
+
+            manager = new EntityManager(frontHealthBar, backHealthBar);
 
             screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
         }
@@ -83,6 +128,9 @@ namespace SuperFishHunter
         public bool InGame = false;
         float elapsedSec = 5f;
 
+        float maxMooks = 0.1f;
+        float maxThugs = 0.05f;
+        float maxLarge = 0.025f;
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -91,39 +139,74 @@ namespace SuperFishHunter
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                this.Exit();
+            base.Update(gameTime);
 
             if (InGame)
             {
                 elapsedSec += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                {
+                    manager.Remove(manager.Get("Player"));
+                }
+
+                if (manager.Get("Player") == null)
+                {
+                    elapsedSec = 5f;
+                    screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
+                    InGame = false;
+                }
             }
 
             float difficulty = elapsedSec / 60f;
 
-            int mooksToSpawn = floatToInt(difficulty / 10f);
+            int mooksToSpawn = floatToInt(Math.Min(difficulty / 20f, maxMooks));
             for (int i = 0; i < mooksToSpawn; i++)
             {
                 manager.Add(MakeMook());
             }
 
-            int thugsToSpawn = floatToInt(difficulty / 100f);
-            for (int i = 0; i < thugsToSpawn; i++)
+            if (InGame)
             {
-                manager.Add(MakeThug());
+                int thugsToSpawn = floatToInt(Math.Min(difficulty / 100f, maxThugs));
+                for (int i = 0; i < thugsToSpawn; i++)
+                {
+                    manager.Add(MakeThug());
+                }
+
+                int largeToSpawn = floatToInt(Math.Min(difficulty / 1000f, maxLarge));
+                for (int i = 0; i < largeToSpawn; i++)
+                {
+                    manager.Add(MakeLarge());
+                }
             }
 
-            int largeToSpawn = floatToInt(difficulty / 1000f);
-            for (int i = 0; i < largeToSpawn; i++)
+            int smallBub = floatToInt(0.005f);
+            for (int i = 0; i < smallBub; i++)
             {
-                manager.Add(MakeLarge());
+                manager.Add(MakeSmallBubble());
+            }
+
+            int medBub = floatToInt(0.0005f);
+            for (int i = 0; i < medBub; i++)
+            {
+                manager.Add(MakeMedBubble());
+            }
+
+            int bigBub = floatToInt(0.00005f);
+            for (int i = 0; i < bigBub; i++)
+            {
+                manager.Add(MakeBigBubble());
+            }
+
+            int lifeSavers = floatToInt(0.0005f);
+            for (int i = 0; i < lifeSavers; i++)
+            {
+                manager.Add(MakeLifeSaver());
             }
 
             // TODO: Add your update logic here
             manager.Update(gameTime);
-
-            base.Update(gameTime);
         }
 
         #endregion
@@ -139,7 +222,7 @@ namespace SuperFishHunter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.NonPremultiplied);
+            spriteBatch.Begin();
 
             manager.Draw(spriteBatch);
 
@@ -156,32 +239,86 @@ namespace SuperFishHunter
 
         public  Entity MakePlayer()
         {
-            Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - 8), Content.Load<Texture2D>("Textures/Rogue"), new Rectangle(0, 0, 32, 32), 2, AnimationType.Loop);
-            return new Player(Content.Load<Texture2D>("Textures/Player Bar Front"), Content.Load<Texture2D>("Textures/Player Bar Back"), 5, s, 1, 200f, false, true, Content.Load<Texture2D>("Textures/Bullet"), 1, 1, 200, 0.25f);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - 8), playerTexture, AnimationType.None);
+
+            Entity e =  new Hunter(playerBarFront, playerBarBack, 5, 20, s, 1, 200f, arrowTexture, new Vector2(123, 45), 1, 1, 400, 0.25f);
+            e.OnDeath += new Action1(SpawnBlood);
+            return e;
         }
 
         private Entity MakeMook()
         {
-            float y = (float)((r.NextDouble() * 2 - 1) * ScreenHelper.Viewport.Height);
-            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), Content.Load<Texture2D>("Textures/Small Fish"), AnimationType.Loop);
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), smallFish, AnimationType.None);
 
-            return new Enemy(1, s, 1, 100f);
+            Entity e = new Enemy(1, s, 1, 200f);
+            e.OnDeath += new Action1(SpawnBlood);
+            return e;
         }
 
         private Entity MakeThug()
         {
-            float y = (float)((r.NextDouble() * 2 - 1) * ScreenHelper.Viewport.Height);
-            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), Content.Load<Texture2D>("Textures/Med Fish"), AnimationType.Loop);
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), medFish, AnimationType.None);
 
-            return new Enemy(2, s, 2, 100f);
+            Entity e = new TargetedEnemy(2, s, 2, 400, manager.Get("Player"));
+            e.OnDeath += new Action1(SpawnBlood);
+            return e;
         }
 
         private Entity MakeLarge()
         {
-            float y = (float)((r.NextDouble() * 2 - 1) * ScreenHelper.Viewport.Height);
-            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), Content.Load<Texture2D>("Textures/Large Fish"), AnimationType.Loop);
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), largeFish, AnimationType.None);
 
-            return new Enemy(3, s, 2, 100f);
+            Entity e = new Enemy(3, s, 2, 100f);
+            e.OnDeath += new Action1(SpawnBlood);
+            return e;
+        }
+
+        private Entity MakeSmallBubble()
+        {
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), smallBubble, AnimationType.None);
+
+            Entity e = new Bubble(1, s, 200f);
+            return e;
+        }
+
+        private Entity MakeMedBubble()
+        {
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), medBubble, AnimationType.None);
+
+            Entity e = new Bubble(5, s, 200f);
+            return e;
+        }
+
+        private Entity MakeBigBubble()
+        {
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), bigBubble, AnimationType.None);
+
+            Entity e = new Bubble(20, s, 200f);
+            return e;
+        }
+        
+        private Entity MakeLifeSaver()
+        {
+            float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), lifeSaver, AnimationType.None);
+
+            Entity e = new HealthPack(5, s, 200f);
+            return e;
+        }
+
+        private void SpawnBlood(Entity e)
+        {
+            Vector2 location = e.Sprite.Center - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            Sprite s = new Sprite(location, bloodTexture, AnimationType.None);
+
+            manager.Add(new Particle(s, 1f));
         }
 
         #endregion

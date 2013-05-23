@@ -28,7 +28,7 @@ namespace ShmupLib
                 if (current < 0)
                     current = 0;
                 if (current > MaxValue)
-                    current = max;
+                    current = MaxValue;
             }
         }
 
@@ -68,6 +68,14 @@ namespace ShmupLib
             current = 0;
             MaxValue = value;
             CurrentValue = value;
+        }
+
+        public StatBar(int current, int max)
+        {
+            this.max = 0;
+            this.current = 0;
+            MaxValue = max;
+            CurrentValue = current;
         }
 
         #endregion

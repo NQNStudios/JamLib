@@ -108,6 +108,7 @@ namespace ShmupLib.GameStates.Screens
             if (lastState == null) return false;
             return (lastState.LeftButton == ButtonState.Pressed) ? false : true;
         }
+
         #region Handle Input
 
         /// <summary>
