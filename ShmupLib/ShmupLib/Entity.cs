@@ -17,7 +17,9 @@ namespace ShmupLib
 
         public string Tag = "";
         public string Group = "";
-        
+
+        string damageSound;
+
         protected StatBar health;
         Sprite sprite;
 
@@ -27,9 +29,10 @@ namespace ShmupLib
 
         public Action1 OnCollision;
         public Action OnDamage;
+        public Action OnRemove;
         public Action1 OnDeath;
 
-        float invTime = 0.4f;
+        protected float invTime = 0.1f;
         float elapsedInv = 0;
 
         #endregion
@@ -51,11 +54,12 @@ namespace ShmupLib
 
         #region Initialization
 
-        public Entity(string tag, string group, int _health, Sprite _sprite, bool _collides, uint _collisionDamage, params string[] _collisionGroups)
+        public Entity(string tag, string group, int _health, string damageSound, Sprite _sprite, bool _collides, uint _collisionDamage, params string[] _collisionGroups)
         {
             Tag = tag;
             Group = group;
             health = new StatBar(_health);
+            this.damageSound = damageSound;
             sprite = _sprite;
             collides = _collides;
             collisionDamage = _collisionDamage;
@@ -73,6 +77,7 @@ namespace ShmupLib
         public void Damage(uint amount)
         {
             health.Damage(amount);
+            SoundManager.Play(damageSound);
         }
 
         public void Heal(uint amount)

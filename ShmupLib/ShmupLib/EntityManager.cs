@@ -64,6 +64,9 @@ namespace ShmupLib
 
         public void Remove(Entity e)
         {
+            if (e.OnRemove != null)
+                e.OnRemove();
+
             if (entities.ContainsKey(e.Group))
             {
                 entities[e.Group].Remove(e);

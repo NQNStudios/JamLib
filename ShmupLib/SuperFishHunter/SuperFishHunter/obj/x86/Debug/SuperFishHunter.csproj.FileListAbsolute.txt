@@ -19,7 +19,6 @@ c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunte
 c:\users\nathaniel\documents\visual studio 2010\Projects\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Small Fish.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Back Health.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Front Health.xnb
-C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Bullet.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\blank.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Med Fish.xnb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Moby Dick.xnb
@@ -48,3 +47,13 @@ C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\SuperFishHunter.application
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x86\Debug\SuperFishHunter.exe.manifest
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x86\Debug\SuperFishHunter.application
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Coin Sprite.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Fire.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Blip_Select6.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Explosion4.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Hit_Hurt.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Laser_Shoot6.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Pickup_Coin20.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Powerup.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Powerup6.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Backdrop.xnb

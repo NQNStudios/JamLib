@@ -20,15 +20,6 @@
       <Time>2013-05-21T20:10:10.1891937-06:00</Time>
     </Item>
     <Item>
-      <Source>Textures\Bullet.png</Source>
-      <Name>Textures\Bullet</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Bullet.xnb</Output>
-      <Time>2013-05-21T20:10:10.1881942-06:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\blank.png</Source>
       <Name>Textures\blank</Name>
       <Importer>TextureImporter</Importer>
@@ -36,6 +27,15 @@
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\blank.xnb</Output>
       <Time>2013-05-21T20:10:10.2422031-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Large Fish.png</Source>
+      <Name>Textures\Large Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Large Fish.xnb</Output>
+      <Time>2013-05-21T20:10:10.2051963-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Med Fish.png</Source>
@@ -83,33 +83,6 @@
       <Time>2013-05-21T20:26:32.362611-06:00</Time>
     </Item>
     <Item>
-      <Source>Fonts\menufont.spritefont</Source>
-      <Name>Fonts\menufont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Fonts\menufont.xnb</Output>
-      <Time>2013-05-21T20:10:10.1791932-06:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\titlefont.spritefont</Source>
-      <Name>Fonts\titlefont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Fonts\titlefont.xnb</Output>
-      <Time>2013-05-21T20:10:10.1821927-06:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\Large Fish.png</Source>
-      <Name>Textures\Large Fish</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Large Fish.xnb</Output>
-      <Time>2013-05-21T20:10:10.2051963-06:00</Time>
-    </Item>
-    <Item>
       <Source>Textures\Blood.png</Source>
       <Name>Textures\Blood</Name>
       <Importer>TextureImporter</Importer>
@@ -125,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Diver.xnb</Output>
-      <Time>2013-05-22T18:07:53.3166092-06:00</Time>
+      <Time>2013-05-28T17:36:57.4280185-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Arrow.png</Source>
@@ -171,6 +144,114 @@
       <Options>None</Options>
       <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Life Saver.xnb</Output>
       <Time>2013-05-22T19:52:44.8847041-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Coin Sprite.png</Source>
+      <Name>Textures\Coin Sprite</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Coin Sprite.xnb</Output>
+      <Time>2013-05-23T08:16:28.5515768-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Fire.png</Source>
+      <Name>Textures\Fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Fire.xnb</Output>
+      <Time>2013-05-23T10:11:01.3761069-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menufont.spritefont</Source>
+      <Name>Fonts\menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Fonts\menufont.xnb</Output>
+      <Time>2013-05-21T20:10:10.1791932-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\titlefont.spritefont</Source>
+      <Name>Fonts\titlefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Fonts\titlefont.xnb</Output>
+      <Time>2013-05-21T20:10:10.1821927-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Blip_Select6.wav</Source>
+      <Name>Sounds\Blip_Select6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Blip_Select6.xnb</Output>
+      <Time>2013-05-25T23:44:08.8090597-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Explosion4.wav</Source>
+      <Name>Sounds\Explosion4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Explosion4.xnb</Output>
+      <Time>2013-05-25T23:44:08.8020592-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Hit_Hurt.wav</Source>
+      <Name>Sounds\Hit_Hurt</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Hit_Hurt.xnb</Output>
+      <Time>2013-05-25T23:44:08.7980576-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Laser_Shoot6.wav</Source>
+      <Name>Sounds\Laser_Shoot6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Laser_Shoot6.xnb</Output>
+      <Time>2013-05-25T23:44:08.8070586-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Pickup_Coin20.wav</Source>
+      <Name>Sounds\Pickup_Coin20</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Pickup_Coin20.xnb</Output>
+      <Time>2013-05-25T23:44:08.8040587-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Powerup.wav</Source>
+      <Name>Sounds\Powerup</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Powerup.xnb</Output>
+      <Time>2013-05-25T23:44:08.8000582-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Powerup6.wav</Source>
+      <Name>Sounds\Powerup6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Sounds\Powerup6.xnb</Output>
+      <Time>2013-05-26T00:03:54.3383663-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Backdrop.png</Source>
+      <Name>Textures\Backdrop</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Debug\Content\Textures\Backdrop.xnb</Output>
+      <Time>2013-05-28T17:17:18.1579817-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

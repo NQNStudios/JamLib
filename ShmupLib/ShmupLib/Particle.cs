@@ -13,7 +13,7 @@ namespace ShmupLib
         float elapsedTime;
 
         public Particle(Sprite sprite, float fadeTime)
-            : base("", "Effects", 1, sprite, false, 0)
+            : base("", "Effects", 1, "", sprite, false, 0)
         {
             this.fadeTime = fadeTime;
         }

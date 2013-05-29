@@ -1,0 +1,40 @@
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Back Health.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Front Health.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\blank.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Large Fish.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Med Fish.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Moby Dick.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Small Fish.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Player Bar Back.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Player Bar Front.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Blood.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Diver.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Arrow.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Big Bubble.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Medium Bubble.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Small Bubble.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Life Saver.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Coin Sprite.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Fire.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Backdrop.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Fonts\menufont.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Fonts\titlefont.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Blip_Select6.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Explosion4.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Hit_Hurt.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Laser_Shoot6.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Pickup_Coin20.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Powerup.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Powerup6.xnb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\SuperFishHunter.exe.manifest
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\SuperFishHunter.application
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\SuperFishHunter.exe
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\SuperFishHunter.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\ShmupLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Debug\Xbox 360 Copy of SuperFishHunter.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Debug\SuperFishHunter.exe.manifest
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Debug\SuperFishHunter.application
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Debug\SuperFishHunter.exe
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Debug\SuperFishHunter.pdb

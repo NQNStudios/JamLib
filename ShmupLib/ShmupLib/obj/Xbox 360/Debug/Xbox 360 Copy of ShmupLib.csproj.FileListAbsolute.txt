@@ -1,0 +1,5 @@
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\Xbox 360\Debug\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\Xbox 360\Debug\ShmupLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Debug\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Debug\ShmupLib.pdb

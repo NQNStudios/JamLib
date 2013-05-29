@@ -11,11 +11,18 @@ namespace ShmupLib
         float speed;
         protected int amount;
 
-        public Powerup(int amount, Sprite sprite, float speed)
-            : base("", "Powerups", 1, sprite, true, 0, "Players")
+        public int Amount
+        {
+            get { return amount; }
+        }
+
+        public Powerup(int amount, string damageSound, Sprite sprite, float speed)
+            : base("", "Powerups", 1, damageSound, sprite, true, 0, "Players")
         {
             this.speed = speed;
             this.amount = amount;
+
+            OnCollision += new Action1(collision);
         }
 
         public override void Update(GameTime gameTime, EntityManager manager)
@@ -23,6 +30,11 @@ namespace ShmupLib
             Sprite.Velocity = new Vector2(-speed, 0);
 
             base.Update(gameTime, manager);
+        }
+
+        void collision(Entity e)
+        {
+            Damage(1);
         }
     }
 }

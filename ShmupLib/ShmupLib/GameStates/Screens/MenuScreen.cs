@@ -74,9 +74,6 @@ namespace ShmupLib.GameStates.Screens
             TransitionOnTime = TimeSpan.FromSeconds(0.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
-#if XBOX || WINDOWS
-
-            //Define the input actions
             menuUp = new InputAction(
                 new Buttons[] { Buttons.DPadUp, Buttons.LeftThumbstickUp },
                 new Keys[] { Keys.Up },
@@ -96,8 +93,6 @@ namespace ShmupLib.GameStates.Screens
                 new Buttons[] { Buttons.B, Buttons.Back },
                 new Keys[] { Keys.Escape },
                 true);
-
-#endif
         }
 
         #endregion Initialization
@@ -117,27 +112,6 @@ namespace ShmupLib.GameStates.Screens
         /// </summary>
         public override void HandleInput(GameTime gameTime, InputState input)
         {
-#if WINDOWS
-
-            foreach (MenuEntry entry in MenuEntries)
-            {
-                if (input.MouseHoverIn(entry.ClickRectangle) && selectedEntry != MenuEntries.IndexOf(entry))
-                {
-                    selectedEntry = MenuEntries.IndexOf(entry);
-                    if (!string.IsNullOrEmpty(selectionChangeSound))
-                        SoundManager.Play(selectionChangeSound);
-                }
-                if (input.LeftButtonDownIn(entry.ClickRectangle) && prevMouseCheck())
-                {
-                    OnSelectEntry(selectedEntry, PlayerIndex.One);
-                }
-            }
-
-            lastState = input.CurrentMouseState;
-#endif
-
-#if XBOX || WINDOWS
-
             PlayerIndex playerIndex;
 
             //Move to the previous menu entry?
@@ -187,8 +161,6 @@ namespace ShmupLib.GameStates.Screens
                     SoundManager.Play(cancelSound);
                 }
             }
-
-#endif
         }
 
         /// <summary>

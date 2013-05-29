@@ -26,8 +26,8 @@ namespace ShmupLib
         float shotTime;
         float elapsedShot = 0f;
 
-        public Player(Texture2D backTexture, Texture2D frontTexture, int health, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
-            : base("Player", "Players", health, sprite, true, collisionDamage, "Enemies")
+        public Player(Texture2D backTexture, Texture2D frontTexture, int health, string damageSound, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
+            : base("Player", "Players", health, damageSound, sprite, true, collisionDamage, "Enemies")
         {
             OnCollision += new Action1(collideWith);
             OnDamage += new Action(damageEffect);
@@ -122,18 +122,23 @@ namespace ShmupLib
             {
                 elapsedShot = 0f;
 
-                Rectangle bulletFrame = new Rectangle(0, 0, bulletTexture.Width, bulletTexture.Height);
-                Vector2 bulletVelocity = new Vector2(bulletSpeed, 0f);
-                Sprite bulletSprite = new Sprite(Sprite.Location + shotOffset, bulletTexture, bulletFrame, 1, AnimationType.Loop);
-
-                Projectile p = new Projectile(bulletHits, bulletSprite, bulletDamage, bulletVelocity, "Enemies");
-
-                manager.Add(p);
+                shoot(manager);
             }
 
             #endregion
 
             base.Update(gameTime, manager);
+        }
+
+        protected virtual void shoot(EntityManager manager)
+        {
+            Rectangle bulletFrame = new Rectangle(0, 0, bulletTexture.Width, bulletTexture.Height);
+            Vector2 bulletVelocity = new Vector2(bulletSpeed, 0f);
+            Sprite bulletSprite = new Sprite(Sprite.Location + shotOffset, bulletTexture, bulletFrame, 1, AnimationType.Loop);
+
+            Projectile p = new Projectile(bulletHits, bulletSprite, bulletDamage, bulletVelocity, "Enemies");
+
+            manager.Add(p);
         }
 
         #endregion
@@ -142,26 +147,28 @@ namespace ShmupLib
 
         public override void Draw(SpriteBatch spriteBatch, EntityManager manager)
         {
-            statBarX = 0f;
-
-            base.Draw(spriteBatch, manager);
+            Sprite.Draw(spriteBatch);
         }
 
-        protected override void DrawBar(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, StatBar b, Color color, EntityManager manager)
+        public virtual void DrawBars(SpriteBatch spriteBatch)
         {
-            Texture2D backTexture = barTextureBack;
-            Texture2D frontTexture = barTextureFront;
+            statBarX = 0f;
 
+            DrawTheBar(spriteBatch, health, Color.Red);
+        }
+
+        protected void DrawTheBar(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, StatBar b, Color color)
+        {
             int x = (int)statBarX;
-            int y = (int)(ScreenHelper.TitleSafeArea.Height - frontTexture.Height);
+            int y = (int)(ScreenHelper.TitleSafeArea.Height - barTextureFront.Height);
 
-            statBarX += backTexture.Width + backTexture.Width / 8;
+            statBarX += barTextureBack.Width + barTextureBack.Width / 8;
 
-            Rectangle backRect = new Rectangle(x, y, (int)(backTexture.Width * b.Fraction), backTexture.Height);
-            Rectangle frontRect = new Rectangle(x, y, frontTexture.Width, frontTexture.Height);
+            Rectangle backRect = new Rectangle(x, y, (int)(barTextureBack.Width * b.Fraction), barTextureBack.Height);
+            Rectangle frontRect = new Rectangle(x, y, barTextureFront.Width, barTextureFront.Height);
 
-            spriteBatch.Draw(manager.BackBarTexture, backRect, null, color, 0f, Vector2.Zero, SpriteEffects.None, 0f);
-            spriteBatch.Draw(manager.FrontBarTexture, frontRect, null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+            spriteBatch.Draw(barTextureBack, backRect, null, color, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+            spriteBatch.Draw(barTextureFront, frontRect, null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 0f);
         }
 
         #endregion

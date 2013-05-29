@@ -10,8 +10,8 @@ namespace ShmupLib
     {
         protected float speed;
 
-        public Enemy(int health, Sprite sprite, uint collisionDamage, float speed)
-            : base("", "Enemies", health, sprite, true, collisionDamage, "Players", "Projectiles")
+        public Enemy(int health, string damageSound, Sprite sprite, uint collisionDamage, float speed)
+            : base("", "Enemies", health, damageSound, sprite, true, collisionDamage, "Players", "Projectiles")
         {
             this.speed = speed;
             OnCollision += new Action1(collideWith);

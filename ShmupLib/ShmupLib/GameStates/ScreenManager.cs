@@ -4,6 +4,10 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Diagnostics;
+#if XBOX
+using Microsoft.Xna.Framework.Storage;
+#endif
+using System;
 
 namespace ShmupLib.GameStates
 {
@@ -19,9 +23,15 @@ namespace ShmupLib.GameStates
 
         private const string StateFilename = "ScreenManagerState.xml";
 
-#if XBOX
-        StorageDevice storageDevice;
-#endif
+        #if XBOX
+        public static StorageDevice Storage;
+
+        public static StorageContainer GetContainer()
+        {
+            IAsyncResult result = Storage.BeginOpenContainer("Super Fish Hunter", null, null);
+            return Storage.EndOpenContainer(result);
+        }
+        #endif
 
         private List<GameScreen> screens = new List<GameScreen>();
         private List<GameScreen> tempScreensList = new List<GameScreen>();
@@ -100,8 +110,8 @@ namespace ShmupLib.GameStates
         /// </summary>
         public StorageDevice StorageDevice
         {
-            get { return storageDevice; }
-            set { storageDevice = value; }
+            get { return Storage; }
+            set { Storage = value; }
         }
 #endif
 

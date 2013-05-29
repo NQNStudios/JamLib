@@ -12,6 +12,11 @@ using ShmupLib;
 using Action = ShmupLib.Action;
 using ShmupLib.GameStates;
 using SuperFishHunter.Screens;
+using System.IO;
+
+#if XBOX
+using Microsoft.Xna.Framework.Storage;
+#endif
 
 namespace SuperFishHunter
 {
@@ -20,6 +25,12 @@ namespace SuperFishHunter
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        #if XBOX
+        private IAsyncResult result;
+        bool needResult = true;
+        private bool needStorageDevice = true;
+        #endif
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -27,14 +38,17 @@ namespace SuperFishHunter
 
         ScreenManager screenManager;
 
+        Texture2D backdrop;
+
         Texture2D frontHealthBar;
         Texture2D backHealthBar;
 
-        Texture2D playerTexture;
+        Texture2D playerPistol;
         Texture2D playerBarFront;
         Texture2D playerBarBack;
 
         Texture2D arrowTexture;
+        Texture2D fireTexture;
 
         Texture2D bloodTexture;
 
@@ -48,13 +62,48 @@ namespace SuperFishHunter
         Texture2D bigBubble;
 
         Texture2D lifeSaver;
+        Texture2D coin;
 
+        string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Super Fish Hunter";
+
+        public int coins;
+
+        int score;
+        int highScore;
+
+        public int health;
+        public int air;
+        public uint collisionDamage;
+        public float speed;
+        public int bulletHits;
+        public uint bulletDamage;
+        public float bulletSpeed;
+        public float shotTime;
+
+        public int maxHealth = 20;
+        public int maxAir = 100;
+        public float maxSpeed = 400f;
+        public int maxBulletHits = 3;
+        public uint maxBulletDamage = 3;
+        public float maxBulletSpeed = 600f;
+        public float minShotTime = 0.15f;
+
+        public int healthCost;
+        public int airCost;
+        public int speedCost;
+        public int hitsCost;
+        public int damageCost;
+        public int bulletSpeedCost;
+        public int shotTimeCost;
+
+        bool boss;
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
@@ -87,14 +136,17 @@ namespace SuperFishHunter
 
             // TODO: use this.Content to load your game content here
 
+            backdrop = Content.Load<Texture2D>("Textures/Backdrop");
+
             backHealthBar = Content.Load<Texture2D>("Textures/Back Health");
             frontHealthBar = Content.Load<Texture2D>("Textures/Front Health");
 
-            playerTexture = Content.Load<Texture2D>("Textures/Diver");
+            playerPistol = Content.Load<Texture2D>("Textures/Diver");
             playerBarBack = Content.Load<Texture2D>("Textures/Player Bar Back");
             playerBarFront = Content.Load<Texture2D>("Textures/Player Bar Front");
 
             arrowTexture = Content.Load<Texture2D>("Textures/Arrow");
+            fireTexture = Content.Load<Texture2D>("Textures/Fire");
 
             bloodTexture = Content.Load<Texture2D>("Textures/Blood");
 
@@ -109,10 +161,118 @@ namespace SuperFishHunter
 
             lifeSaver = Content.Load<Texture2D>("Textures/Life Saver");
 
+            coin = Content.Load<Texture2D>("Textures/Coin Sprite");
+
+            SoundManager.Add("Select", Content.Load<SoundEffect>("Sounds/Blip_Select6"));
+            SoundManager.Add("Splode", Content.Load<SoundEffect>("Sounds/Explosion4"));
+            SoundManager.Add("Damage", Content.Load<SoundEffect>("Sounds/Hit_Hurt"));
+            SoundManager.Add("Shot", Content.Load<SoundEffect>("Sounds/Laser_Shoot6"));
+            SoundManager.Add("Coin", Content.Load<SoundEffect>("Sounds/Pickup_Coin20"));
+            SoundManager.Add("Bubble", Content.Load<SoundEffect>("Sounds/Powerup"));
+            SoundManager.Add("Health", Content.Load<SoundEffect>("Sounds/Powerup6"));
+
+            SoundManager.Volume = 1f;
+
+            if (!Directory.Exists(folderPath) || !File.Exists(folderPath + "/save.txt"))
+            {
+                InitialSave();
+            }
+
+            ReadSave();
+
             manager = new EntityManager(frontHealthBar, backHealthBar);
 
             screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
         }
+
+        #region IO
+
+        public void InitialSave()
+        {
+            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Super Fish Hunter";
+            if (!Directory.Exists(folderPath))
+                Directory.CreateDirectory(folderPath);
+
+            using (StreamWriter writer = new StreamWriter(File.Open(folderPath + "/save.txt", FileMode.Create)))
+            {
+                writer.WriteLine("0"); //coins
+                writer.WriteLine("0"); //high score
+                writer.WriteLine("False"); //boss
+                writer.WriteLine("2"); //health
+                writer.WriteLine("20"); //air
+                writer.WriteLine("1"); //collisionDamage
+                writer.WriteLine("200"); //speed
+                writer.WriteLine("1"); //bullet hits
+                writer.WriteLine("1"); //bullet damage
+                writer.WriteLine("400"); //bullet speed
+                writer.WriteLine("0.25"); //shot time
+                writer.WriteLine("50"); //health cost
+                writer.WriteLine("100"); //air cost
+                writer.WriteLine("150"); //speed cost
+                writer.WriteLine("500"); //bullet hits cost
+                writer.WriteLine("500"); //bullet damage cost
+                writer.WriteLine("500"); //bullet speed cost
+                writer.WriteLine("500"); //shot time cost
+
+                writer.Close();
+            }
+        }
+
+        public void WriteSave()
+        {
+            using (StreamWriter writer = new StreamWriter(File.Open(folderPath + "/save.txt", FileMode.Create)))
+            {
+                writer.WriteLine(coins); //coins
+                writer.WriteLine(highScore); //high score
+                writer.WriteLine(boss); //boss
+                writer.WriteLine(health); //health
+                writer.WriteLine(air); //air
+                writer.WriteLine(collisionDamage); //collisionDamage
+                writer.WriteLine(speed); //speed
+                writer.WriteLine(bulletHits);
+                writer.WriteLine(bulletDamage);
+                writer.WriteLine(bulletSpeed);
+                writer.WriteLine(shotTime);
+                writer.WriteLine(healthCost); //health cost
+                writer.WriteLine(airCost); //air cost
+                writer.WriteLine(speedCost);
+                writer.WriteLine(hitsCost);
+                writer.WriteLine(damageCost);
+                writer.WriteLine(bulletSpeedCost);
+                writer.WriteLine(shotTimeCost);
+
+                writer.Close();
+            }
+        }
+
+        public void ReadSave()
+        {
+            using (StreamReader reader = new StreamReader(File.Open(folderPath + "/save.txt", FileMode.Open)))
+            {
+                coins = int.Parse(reader.ReadLine());
+                highScore = int.Parse(reader.ReadLine());
+                boss = bool.Parse(reader.ReadLine());
+                health = int.Parse(reader.ReadLine());
+                air = int.Parse(reader.ReadLine());
+                collisionDamage = uint.Parse(reader.ReadLine());
+                speed = float.Parse(reader.ReadLine());
+                bulletHits = int.Parse(reader.ReadLine());
+                bulletDamage = uint.Parse(reader.ReadLine());
+                bulletSpeed = float.Parse(reader.ReadLine());
+                shotTime = float.Parse(reader.ReadLine());
+                healthCost = int.Parse(reader.ReadLine());
+                airCost = int.Parse(reader.ReadLine());
+                speedCost = int.Parse(reader.ReadLine());
+                hitsCost = int.Parse(reader.ReadLine());
+                damageCost = int.Parse(reader.ReadLine());
+                bulletSpeedCost = int.Parse(reader.ReadLine());
+                shotTimeCost = int.Parse(reader.ReadLine());
+
+                reader.Close();
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -141,26 +301,73 @@ namespace SuperFishHunter
         {
             base.Update(gameTime);
 
+            #if XBOX //Storage Device stuff
+
+            //UPDATE
+            // Set the request flag
+            if (needStorageDevice)
+            {
+                if (!Guide.IsVisible && needResult)
+                {
+                    result = StorageDevice.BeginShowSelector(
+                            PlayerIndex.One, null, null);
+                    needResult = false;
+                }
+
+                if (result != null && result.IsCompleted)
+                {
+                    StorageDevice device = StorageDevice.EndShowSelector(result);
+                    if (device != null && device.IsConnected)
+                    {
+                        ScreenManager.Storage = device;
+                        needStorageDevice = false;
+                    }
+                    else
+                    {
+                        throw new Exception("Storage bad");
+                    }
+                }
+            }
+            #endif
+
+            // TODO: Add your update logic here
+            manager.Update(gameTime);
+
             if (InGame)
             {
                 elapsedSec += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (score > highScore)
+                    highScore = score;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 {
-                    manager.Remove(manager.Get("Player"));
+                    Entity e = manager.Get("Player");
+                    if (e != null)
+                    {
+                        e.Damage((uint)e.Health.CurrentValue);
+                        manager.Remove(e);
+                    }
                 }
 
                 if (manager.Get("Player") == null)
                 {
+                    Entity e = manager.Get("Boss");
+                    if (e != null)
+                    {
+                        boss = false;
+                        return;
+                    }
+
                     elapsedSec = 5f;
                     screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
+                    score = 0;
                     InGame = false;
                 }
             }
 
             float difficulty = elapsedSec / 60f;
 
-            int mooksToSpawn = floatToInt(Math.Min(difficulty / 20f, maxMooks));
+            int mooksToSpawn = floatToInt(Math.Min(difficulty / 30f, maxMooks));
             for (int i = 0; i < mooksToSpawn; i++)
             {
                 manager.Add(MakeMook());
@@ -168,7 +375,7 @@ namespace SuperFishHunter
 
             if (InGame)
             {
-                int thugsToSpawn = floatToInt(Math.Min(difficulty / 100f, maxThugs));
+                int thugsToSpawn = floatToInt(Math.Min(difficulty / 150f, maxThugs));
                 for (int i = 0; i < thugsToSpawn; i++)
                 {
                     manager.Add(MakeThug());
@@ -178,6 +385,13 @@ namespace SuperFishHunter
                 for (int i = 0; i < largeToSpawn; i++)
                 {
                     manager.Add(MakeLarge());
+                }
+
+                if (elapsedSec >= 100 && !boss)
+                {
+                    elapsedSec = 50;
+                    manager.Add(MakeBoss());
+                    boss = true;
                 }
             }
 
@@ -204,9 +418,6 @@ namespace SuperFishHunter
             {
                 manager.Add(MakeLifeSaver());
             }
-
-            // TODO: Add your update logic here
-            manager.Update(gameTime);
         }
 
         #endregion
@@ -224,7 +435,27 @@ namespace SuperFishHunter
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
+            spriteBatch.Draw(backdrop, ScreenHelper.Viewport.Bounds, Color.White);
+
             manager.Draw(spriteBatch);
+            spriteBatch.DrawString(screenManager.Font, "$" + coins.ToString(), new Vector2(ScreenHelper.TitleSafeArea.Right, ScreenHelper.TitleSafeArea.Bottom) - screenManager.Font.MeasureString("$" + coins.ToString()), Color.Green);
+
+            if (InGame)
+            {
+                Vector2 size = screenManager.Font.MeasureString("High Score: " + highScore);
+                size.Y = 0;
+                Vector2 position = new Vector2(ScreenHelper.TitleSafeArea.Right, ScreenHelper.TitleSafeArea.Top) - size;
+
+                spriteBatch.DrawString(screenManager.Font, "High score: " + highScore, position, Color.Yellow);
+
+                position.X -= screenManager.Font.MeasureString("Score: " + score + " ").X;
+
+                spriteBatch.DrawString(screenManager.Font, "Score: " + score + " ", position, Color.White);
+            }
+
+            Hunter h = manager.Get("Player") as Hunter;
+            if (h != null)
+                h.DrawBars(spriteBatch);
 
             spriteBatch.End();
 
@@ -237,11 +468,14 @@ namespace SuperFishHunter
 
         #region Spawn Helpers
 
-        public  Entity MakePlayer()
+        public Entity MakePlayer()
         {
-            Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - 8), playerTexture, AnimationType.None);
+            Vector2 offset = new Vector2(123, 45);
+            string shotSound = "Shot";
 
-            Entity e =  new Hunter(playerBarFront, playerBarBack, 5, 20, s, 1, 200f, arrowTexture, new Vector2(123, 45), 1, 1, 400, 0.25f);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - playerPistol.Height / 2), playerPistol, AnimationType.None);
+
+            Entity e =  new Hunter(playerBarFront, playerBarBack, health, "Damage", air, s, collisionDamage, speed, arrowTexture, shotSound, offset, bulletHits, bulletDamage, bulletSpeed, shotTime);
             e.OnDeath += new Action1(SpawnBlood);
             return e;
         }
@@ -251,8 +485,8 @@ namespace SuperFishHunter
             float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
             Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), smallFish, AnimationType.None);
 
-            Entity e = new Enemy(1, s, 1, 200f);
-            e.OnDeath += new Action1(SpawnBlood);
+            Entity e = new Enemy(1, "Damage", s, 1, 200f);
+            e.OnDeath += new Action1(SpawnBlood); e.OnDeath += new Action1(SpawnCoin);
             return e;
         }
 
@@ -261,8 +495,8 @@ namespace SuperFishHunter
             float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
             Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), medFish, AnimationType.None);
 
-            Entity e = new TargetedEnemy(2, s, 2, 400, manager.Get("Player"));
-            e.OnDeath += new Action1(SpawnBlood);
+            Entity e = new TargetedEnemy(2, "Damage", s, 2, 400, manager.Get("Player"));
+            e.OnDeath += new Action1(SpawnBlood); e.OnDeath += new Action1(SpawnCoin);
             return e;
         }
 
@@ -271,9 +505,156 @@ namespace SuperFishHunter
             float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
             Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), largeFish, AnimationType.None);
 
-            Entity e = new Enemy(3, s, 2, 100f);
-            e.OnDeath += new Action1(SpawnBlood);
+            Entity e = new Enemy(3, "Damage", s, 2, 100f);
+            e.OnDeath += new Action1(SpawnWhaleBlood); e.OnDeath += new Action1(SpawnCoin);
             return e;
+        }
+
+        float sharkLoc;
+        private Entity MakeShark()
+        {
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, sharkLoc), medFish, AnimationType.None);
+            sharkLoc += (float)medFish.Height / 2;
+
+            Entity e = new Enemy(500, "Damage", s, 100, 400);
+            e.OnDeath += new Action1(SpawnBlood);
+            e.OnRemove += new Action(endGame);
+            e.Group = "Sharks";
+            return e;
+        }
+
+        private Entity MakeBoss()
+        {
+            float y = (float)(ScreenHelper.Viewport.Height / 2 - moby.Height / 2);
+            Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), moby, AnimationType.None);
+
+            Entity e = new Enemy(70, "Damage", s, 5, 100f);
+            e.Tag = "Boss";
+            e.OnDeath += new Action1(SpawnBossBlood); e.OnDeath += new Action1(SpawnCoin); e.OnDeath += BossDeath;
+            e.OnRemove += SpawnSharks;
+
+            return e;
+        }
+
+        private void SpawnSharks()
+        {
+            if (manager.Get("Player") != null)
+            {
+                sharkLoc = 0f;
+
+                for (int i = 0; i < 20; i++)
+                {
+                    manager.Add(MakeShark());
+                }
+
+                boss = false;
+            }
+        }
+
+        private void SpawnBossBlood(Entity e)
+        {
+            #region Bloods
+
+            Vector2 location = e.Sprite.Center - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            Sprite s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            float x = 150;
+            float y = 50;
+
+            location = e.Sprite.Center + new Vector2(x, y) - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            location = e.Sprite.Center + new Vector2(-x, y) - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            location = e.Sprite.Center + new Vector2(-x, -y) - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            location = e.Sprite.Center + new Vector2(x, -y) - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            Vector2 dist = new Vector2(x, y);
+            location = e.Sprite.Center + new Vector2(0, (float)dist.Length()) - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            location = e.Sprite.Center + new Vector2(0, -(float)dist.Length()) - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+
+            s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
+
+            manager.Add(new Particle(s, 1f));
+
+            #endregion
+        }
+
+        private void SpawnWhaleBlood(Entity e)
+        {
+            SoundManager.Play("Splode");
+
+            {
+                Vector2 location = e.Sprite.Center - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+                location.X += bloodTexture.Width / 4;
+
+                Sprite s = new Sprite(location, bloodTexture, AnimationType.None);
+                s.Velocity = new Vector2(-200, 0);
+
+                manager.Add(new Particle(s, 1f));
+            }
+
+            {
+                Vector2 location = e.Sprite.Center - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
+                location.X -= bloodTexture.Width / 4;
+                
+                Sprite s = new Sprite(location, bloodTexture, AnimationType.None);
+                s.Velocity = new Vector2(-200, 0);
+
+                manager.Add(new Particle(s, 1f));
+            }
+        }
+
+        private void BossDeath(Entity e)
+        {
+            screenManager.AddScreen(new VictoryScreen(), PlayerIndex.One);
+
+            if (manager.Get("Player") != null)
+            {
+                manager.Remove(manager.Get("Player"));
+            }
+
+            air = 0; //Infinite air
+            InGame = false;
+            score = 0;
+            elapsedSec = 5f;
+        }
+
+        private void endGame()
+        {
+            if (manager.Get("Player") != null)
+                manager.Remove(manager.Get("Player"));
         }
 
         private Entity MakeSmallBubble()
@@ -312,11 +693,32 @@ namespace SuperFishHunter
             return e;
         }
 
+        private void SpawnCoin(Entity e)
+        {
+            score += e.Health.MaxValue * 10;
+
+            Vector2 location = e.Sprite.Center - new Vector2(coin.Width, coin.Height) / 2;
+
+            Sprite s = new Sprite(location, coin, AnimationType.None);
+
+            Powerup p = new Powerup(e.Health.MaxValue * 5, "Coin", s, 200f);
+            p.OnDeath += new Action1(giveCoin);
+            manager.Add(p);
+        }
+
+        void giveCoin(Entity e)
+        {
+            coins += (e as Powerup).Amount;
+        }
+
         private void SpawnBlood(Entity e)
         {
+            SoundManager.Play("Splode");
+
             Vector2 location = e.Sprite.Center - new Vector2(bloodTexture.Width, bloodTexture.Height) / 2;
 
             Sprite s = new Sprite(location, bloodTexture, AnimationType.None);
+            s.Velocity = new Vector2(-200, 0);
 
             manager.Add(new Particle(s, 1f));
         }
@@ -336,6 +738,5 @@ namespace SuperFishHunter
             return (int)i;
         }
         #endregion
-
     }
 }

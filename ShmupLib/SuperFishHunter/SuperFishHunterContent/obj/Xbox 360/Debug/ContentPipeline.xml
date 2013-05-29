@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Textures\Back Health.png</Source>
+      <Name>Textures\Back Health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Back Health.xnb</Output>
+      <Time>2013-05-21T20:10:10.1871964-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Front Health.png</Source>
+      <Name>Textures\Front Health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Front Health.xnb</Output>
+      <Time>2013-05-21T20:10:10.1891937-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\blank.png</Source>
+      <Name>Textures\blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\blank.xnb</Output>
+      <Time>2013-05-21T20:10:10.2422031-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Large Fish.png</Source>
+      <Name>Textures\Large Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Large Fish.xnb</Output>
+      <Time>2013-05-21T20:10:10.2051963-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Med Fish.png</Source>
+      <Name>Textures\Med Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Med Fish.xnb</Output>
+      <Time>2013-05-21T20:10:10.2061957-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Moby Dick.png</Source>
+      <Name>Textures\Moby Dick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Moby Dick.xnb</Output>
+      <Time>2013-05-21T20:10:10.2081957-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Small Fish.png</Source>
+      <Name>Textures\Small Fish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Small Fish.xnb</Output>
+      <Time>2013-05-21T20:10:10.2412025-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Player Bar Back.png</Source>
+      <Name>Textures\Player Bar Back</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Player Bar Back.xnb</Output>
+      <Time>2013-05-21T20:45:27.4320867-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Player Bar Front.png</Source>
+      <Name>Textures\Player Bar Front</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Player Bar Front.xnb</Output>
+      <Time>2013-05-21T20:26:32.362611-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Blood.png</Source>
+      <Name>Textures\Blood</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Blood.xnb</Output>
+      <Time>2013-05-22T17:29:24.4776015-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Diver.png</Source>
+      <Name>Textures\Diver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Diver.xnb</Output>
+      <Time>2013-05-28T17:36:57.4280185-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow.png</Source>
+      <Name>Textures\Arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Arrow.xnb</Output>
+      <Time>2013-05-22T18:07:36.8926055-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Big Bubble.png</Source>
+      <Name>Textures\Big Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Big Bubble.xnb</Output>
+      <Time>2013-05-22T18:39:59.4119205-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Medium Bubble.png</Source>
+      <Name>Textures\Medium Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Medium Bubble.xnb</Output>
+      <Time>2013-05-22T18:39:59.40592-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Small Bubble.png</Source>
+      <Name>Textures\Small Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Small Bubble.xnb</Output>
+      <Time>2013-05-22T18:39:59.4159205-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Life Saver.png</Source>
+      <Name>Textures\Life Saver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Life Saver.xnb</Output>
+      <Time>2013-05-22T19:52:44.8847041-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Coin Sprite.png</Source>
+      <Name>Textures\Coin Sprite</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Coin Sprite.xnb</Output>
+      <Time>2013-05-23T08:16:28.5515768-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Fire.png</Source>
+      <Name>Textures\Fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Fire.xnb</Output>
+      <Time>2013-05-23T10:11:01.3761069-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Backdrop.png</Source>
+      <Name>Textures\Backdrop</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Textures\Backdrop.xnb</Output>
+      <Time>2013-05-28T17:17:18.1579817-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\menufont.spritefont</Source>
+      <Name>Fonts\menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Fonts\menufont.xnb</Output>
+      <Time>2013-05-21T20:10:10.1791932-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\titlefont.spritefont</Source>
+      <Name>Fonts\titlefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Fonts\titlefont.xnb</Output>
+      <Time>2013-05-21T20:10:10.1821927-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Blip_Select6.wav</Source>
+      <Name>Sounds\Blip_Select6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Blip_Select6.xnb</Output>
+      <Time>2013-05-25T23:44:08.8090597-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Explosion4.wav</Source>
+      <Name>Sounds\Explosion4</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Explosion4.xnb</Output>
+      <Time>2013-05-25T23:44:08.8020592-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Hit_Hurt.wav</Source>
+      <Name>Sounds\Hit_Hurt</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Hit_Hurt.xnb</Output>
+      <Time>2013-05-25T23:44:08.7980576-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Laser_Shoot6.wav</Source>
+      <Name>Sounds\Laser_Shoot6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Laser_Shoot6.xnb</Output>
+      <Time>2013-05-25T23:44:08.8070586-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Pickup_Coin20.wav</Source>
+      <Name>Sounds\Pickup_Coin20</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Pickup_Coin20.xnb</Output>
+      <Time>2013-05-25T23:44:08.8040587-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Powerup.wav</Source>
+      <Name>Sounds\Powerup</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Powerup.xnb</Output>
+      <Time>2013-05-25T23:44:08.8000582-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Powerup6.wav</Source>
+      <Name>Sounds\Powerup6</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\Sounds\Powerup6.xnb</Output>
+      <Time>2013-05-26T00:03:54.3383663-06:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Xbox360</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>true</CompressContent>
+      <RootDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunterContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunterContent\obj\Xbox 360\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T12:41:18-06:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-03-15T19:03:42.3502421-06:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

@@ -8,7 +8,7 @@ namespace ShmupLib
     public class Animation : Entity
     {
         public Animation(Sprite sprite)
-            : base("", "Effects", 1, sprite, false, 0)
+            : base("", "Effects", 1, "", sprite, false, 0)
         {
         }
 
