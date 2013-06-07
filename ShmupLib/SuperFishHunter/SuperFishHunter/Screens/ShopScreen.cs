@@ -88,7 +88,7 @@ namespace SuperFishHunter.Screens
             bulletHits.Text = "Upgrade Bullet Penetration: $" + theGame.hitsCost;
             bulletDamage.Text = "Upgrade Bullet Damage: $" + theGame.damageCost;
             bulletSpeed.Text = "Upgrade Bullet Speed: $" + theGame.bulletSpeedCost;
-            shotTime.Text = "Upgrade Shot Frequency: $" + theGame.shotTimeCost;
+            shotTime.Text = "Upgrade Fire Rate: $" + theGame.shotTimeCost;
         }
 
         void upgradeHealth(object sender, PlayerIndexEventArgs e)

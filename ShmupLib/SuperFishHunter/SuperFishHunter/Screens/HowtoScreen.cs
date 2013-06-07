@@ -30,7 +30,7 @@ namespace SuperFishHunter.Screens
         public HowtoScreen()
             : base(
             "How To Play",
-            "Move up and down with the left stick.", 
+            "Move with the left stick.", 
             "Hold A to fire your weapon.",
             "Try to avoid enemies. The red bar shows your health.",
             "The blue bar shows your oxygen supply. Bubbles replenish oxygen.",

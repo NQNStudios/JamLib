@@ -21,7 +21,7 @@ namespace SuperFishHunter
         }
 
         public Hunter(PlayerIndex index, Texture2D backTexture, Texture2D frontTexture, int health, string damageSound, int air, Sprite sprite, uint collisionDamage, float speed, Texture2D bulletTexture, string shotSound, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
-            : base(index, backTexture, frontTexture, health, damageSound, sprite, collisionDamage, speed, false, true, bulletTexture, shotOffset, bulletHits, bulletDamage, bulletSpeed, shotTime)
+            : base(index, backTexture, frontTexture, health, damageSound, sprite, collisionDamage, speed, true, true, bulletTexture, shotOffset, bulletHits, bulletDamage, bulletSpeed, shotTime)
         {
             this.air = new StatBar(air);
             if (air == 0)

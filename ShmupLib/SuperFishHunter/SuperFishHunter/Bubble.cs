@@ -22,7 +22,8 @@ namespace SuperFishHunter
 
         void collide(Entity e)
         {
-            (e as Hunter).Air= new StatBar((e as Hunter).Air.CurrentValue + amount, (e as Hunter).Air.MaxValue);
+            int amt = (int)((e as Hunter).Air.MaxValue * ((float)amount / 100));
+            (e as Hunter).Air= new StatBar((e as Hunter).Air.CurrentValue + amt, (e as Hunter).Air.MaxValue);
         }
     }
 }

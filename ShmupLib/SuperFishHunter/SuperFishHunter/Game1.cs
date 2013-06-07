@@ -28,7 +28,7 @@ namespace SuperFishHunter
         #if XBOX
         private IAsyncResult result;
         bool needResult = true;
-        private bool needStorageDevice = true;
+        public bool needStorageDevice = false;
         #endif
 
         GraphicsDeviceManager graphics;
@@ -64,12 +64,9 @@ namespace SuperFishHunter
         Texture2D lifeSaver;
         Texture2D coin;
 
-        bool needIndex = true;
-        PlayerIndex index;
+        public PlayerIndex ControllingIndex;
 
-        #if WINDOWS
-        string folderPath = @"Content/";//Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Super Fish Hunter";
-        #endif      
+        string folderPath = @"Content/";
 
         public int coins;
 
@@ -193,7 +190,13 @@ namespace SuperFishHunter
 
             manager = new EntityManager(frontHealthBar, backHealthBar);
 
+#if WINDOWS
             screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), null);
+#endif
+
+#if XBOX
+            screenManager.AddScreen(new StartScreen(), null);
+#endif
         }
 
         #region IO
@@ -355,7 +358,7 @@ namespace SuperFishHunter
                 if (!Guide.IsVisible && needResult)
                 {
                     result = StorageDevice.BeginShowSelector(
-                            PlayerIndex.One, null, null);
+                            ControllingIndex, null, null);
                     needResult = false;
                 }
 
@@ -376,19 +379,8 @@ namespace SuperFishHunter
                     }
                     else
                     {
-                        throw new Exception("Storage bad");
-                    }
-                }
-            }
-
-            if (needIndex)
-            {
-                for (int i = 3; i >= 0; i--)
-                {
-                    if (GamePad.GetState((PlayerIndex)i).IsConnected)
-                    {
-                        index = (PlayerIndex)i;
-                        needIndex = false;
+                        result = null;
+                        needResult = true;
                     }
                 }
             }
@@ -404,7 +396,7 @@ namespace SuperFishHunter
                 if (score > highScore)
                     highScore = score;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Escape) || GamePad.GetState(index).IsButtonDown(Buttons.Start))
+                if (Keyboard.GetState().IsKeyDown(Keys.Escape) || GamePad.GetState(ControllingIndex).IsButtonDown(Buttons.Start))
                 {
                     Entity e = manager.Get("Player");
                     if (e != null)
@@ -424,7 +416,7 @@ namespace SuperFishHunter
                     }
 
                     elapsedSec = 5f;
-                    screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
+                    screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), ControllingIndex);
                     score = 0;
                     InGame = false;
                 }
@@ -460,19 +452,19 @@ namespace SuperFishHunter
                 }
             }
 
-            int smallBub = floatToInt(0.005f);
+            int smallBub = floatToInt(0.01f);
             for (int i = 0; i < smallBub; i++)
             {
                 manager.Add(MakeSmallBubble());
             }
 
-            int medBub = floatToInt(0.0005f);
+            int medBub = floatToInt(0.001f);
             for (int i = 0; i < medBub; i++)
             {
                 manager.Add(MakeMedBubble());
             }
 
-            int bigBub = floatToInt(0.00005f);
+            int bigBub = floatToInt(0.0001f);
             for (int i = 0; i < bigBub; i++)
             {
                 manager.Add(MakeBigBubble());
@@ -540,7 +532,7 @@ namespace SuperFishHunter
 
             Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - playerPistol.Height / 2), playerPistol, AnimationType.None);
 
-            Entity e =  new Hunter(index, playerBarFront, playerBarBack, health, "Damage", air, s, collisionDamage, speed, arrowTexture, shotSound, offset, bulletHits, bulletDamage, bulletSpeed, shotTime);
+            Entity e =  new Hunter(ControllingIndex, playerBarFront, playerBarBack, health, "Damage", air, s, collisionDamage, speed, arrowTexture, shotSound, offset, bulletHits, bulletDamage, bulletSpeed, shotTime);
             e.OnDeath += new Action1(SpawnBlood);
             return e;
         }
@@ -727,7 +719,7 @@ namespace SuperFishHunter
             float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
             Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), smallBubble, AnimationType.None);
 
-            Entity e = new Bubble(1, s, 200f);
+            Entity e = new Bubble(5, s, 200f);
             return e;
         }
 
@@ -736,7 +728,7 @@ namespace SuperFishHunter
             float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
             Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), medBubble, AnimationType.None);
 
-            Entity e = new Bubble(5, s, 200f);
+            Entity e = new Bubble(15, s, 200f);
             return e;
         }
 
@@ -745,7 +737,7 @@ namespace SuperFishHunter
             float y = (float)((r.NextDouble()) * ScreenHelper.Viewport.Height);
             Sprite s = new Sprite(new Vector2(ScreenHelper.Viewport.Width, y), bigBubble, AnimationType.None);
 
-            Entity e = new Bubble(20, s, 200f);
+            Entity e = new Bubble(33, s, 200f);
             return e;
         }
         
