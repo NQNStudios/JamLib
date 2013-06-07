@@ -8,6 +8,8 @@ namespace SuperFishHunter.Screens
 {
     public class HowtoScreen : TextScreen
     {
+        #if WINDOWS
+
         public HowtoScreen()
             : base(
             "How To Play",
@@ -20,6 +22,25 @@ namespace SuperFishHunter.Screens
         {
             OnExit += OnCancel;
         }
+
+        #endif
+
+        #if XBOX
+
+        public HowtoScreen()
+            : base(
+            "How To Play",
+            "Move up and down with the left stick.", 
+            "Hold A to fire your weapon.",
+            "Try to avoid enemies. The red bar shows your health.",
+            "The blue bar shows your oxygen supply. Bubbles replenish oxygen.",
+            "Collect coins. Use these to buy weapons and upgrades.",
+            "Survive long enough to kill the White Whale.")
+        {
+            OnExit += OnCancel;
+        }
+
+#endif
 
         /// <summary>
         /// Helper overload makes it easy to use OnCancel as a MenuEntry event handler.

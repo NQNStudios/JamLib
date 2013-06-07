@@ -123,7 +123,7 @@ namespace ShmupLib.GameStates
         /// <summary>
         /// Gets the manager that the screen belongs to.
         /// </summary>
-        public ScreenManager ScreenManager
+        public ScreenManager Manager
         {
             get { return screenManager; }
             set { screenManager = value; }
@@ -186,7 +186,7 @@ namespace ShmupLib.GameStates
             if (TransitionOffTime == TimeSpan.Zero)
             {
                 //If the screen's transition time is zero, remove immediately
-                ScreenManager.RemoveScreen(this);
+                Manager.RemoveScreen(this);
             }
             else
             {
@@ -257,7 +257,7 @@ namespace ShmupLib.GameStates
                 if (!UpdateTransition(gameTime, transitionOffTime, 1))
                 {
                     //When the transition finishes, remove the screen.
-                    ScreenManager.RemoveScreen(this);
+                    Manager.RemoveScreen(this);
                 }
             }
 

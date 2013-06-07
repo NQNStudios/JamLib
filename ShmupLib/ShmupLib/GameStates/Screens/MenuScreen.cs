@@ -211,8 +211,8 @@ namespace ShmupLib.GameStates.Screens
                 MenuEntry menuEntry = menuEntries[i];
 
                 //set the left margin
-                position.X = ScreenManager.GraphicsDevice.Viewport.Width / 2;
-                position.X -= ((ScreenManager.Font.MeasureString(menuEntry.Text).X) * menuEntry.Scale) / 2;
+                position.X = Manager.GraphicsDevice.Viewport.Width / 2;
+                position.X -= ((Manager.Font.MeasureString(menuEntry.Text).X) * menuEntry.Scale) / 2;
 
                 if (ScreenState == ScreenState.TransitionOn)
                     position.X -= transitionOffset * 256;
@@ -249,10 +249,10 @@ namespace ShmupLib.GameStates.Screens
             //Make sure the entries are in the right place before we draw them.
             UpdateMenuEntryLocations();
 
-            GraphicsDevice graphics = ScreenManager.GraphicsDevice;
-            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
-            SpriteFont font = ScreenManager.Font;
-            SpriteFont titleFont = ScreenManager.TitleFont;
+            GraphicsDevice graphics = Manager.GraphicsDevice;
+            SpriteBatch spriteBatch = Manager.SpriteBatch;
+            SpriteFont font = Manager.Font;
+            SpriteFont titleFont = Manager.TitleFont;
 
             spriteBatch.Begin();
 

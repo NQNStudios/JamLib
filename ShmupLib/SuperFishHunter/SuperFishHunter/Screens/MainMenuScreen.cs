@@ -5,6 +5,11 @@ using System.Text;
 using ShmupLib.GameStates.Screens;
 using Microsoft.Xna.Framework;
 using ShmupLib.GameStates.Input;
+using ShmupLib.GameStates;
+using System.IO;
+#if XBOX
+using Microsoft.Xna.Framework.Storage;
+#endif
 
 namespace SuperFishHunter.Screens
 {
@@ -38,7 +43,7 @@ namespace SuperFishHunter.Screens
 
         private void PlayGame(object sender, PlayerIndexEventArgs e)
         {
-            Game1 game = (ScreenManager.Game as Game1);
+            Game1 game = (Manager.Game as Game1);
             game.InGame = true;
             game.manager.Add(game.MakePlayer());
             ExitScreen();
@@ -46,23 +51,37 @@ namespace SuperFishHunter.Screens
 
         private void Shop(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new ShopScreen(), PlayerIndex.One);
+            Manager.AddScreen(new ShopScreen(), PlayerIndex.One);
         }
 
         private void howtoplay(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new HowtoScreen(), PlayerIndex.One);
+            Manager.AddScreen(new HowtoScreen(), PlayerIndex.One);
         }
 
         private void openCredits(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new CreditScreen(), PlayerIndex.One);
+            Manager.AddScreen(new CreditScreen(), PlayerIndex.One);
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            (ScreenManager.Game as Game1).WriteSave();
-            ScreenManager.Game.Exit();
+            #if WINDOWS
+            (Manager.Game as Game1).WriteSave();
+            #endif
+    
+            #if XBOX
+
+            StorageContainer c = ScreenManager.GetContainer();
+            StreamWriter writer = new StreamWriter(c.OpenFile("save.txt", FileMode.Open));
+
+            (Manager.Game as Game1).WriteTheSave(writer);
+
+            c.Dispose();
+
+            #endif
+
+            Manager.Game.Exit();
         }
     }
 }

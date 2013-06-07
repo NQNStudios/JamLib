@@ -23,7 +23,7 @@ namespace SuperFishHunter.Screens
         protected void OnCancel(object sender, EventArgs e)
         {
             ExitScreen();
-            ScreenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
+            Manager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
             SoundManager.Play("Select");
         }
     }

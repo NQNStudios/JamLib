@@ -10,6 +10,8 @@ namespace ShmupLib
 {
     public class Player : Entity
     {
+        PlayerIndex index;
+
         Texture2D barTextureBack;
         Texture2D barTextureFront;
         float statBarX = 0f;
@@ -26,9 +28,11 @@ namespace ShmupLib
         float shotTime;
         float elapsedShot = 0f;
 
-        public Player(Texture2D backTexture, Texture2D frontTexture, int health, string damageSound, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
+        public Player(PlayerIndex playerIndex, Texture2D backTexture, Texture2D frontTexture, int health, string damageSound, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
             : base("Player", "Players", health, damageSound, sprite, true, collisionDamage, "Enemies")
         {
+            index = playerIndex;
+
             OnCollision += new Action1(collideWith);
             OnDamage += new Action(damageEffect);
 
@@ -51,6 +55,8 @@ namespace ShmupLib
 
         public override void Update(GameTime gameTime, EntityManager manager)
         {
+            #if WINDOWS
+
             KeyboardState keyState = Keyboard.GetState();
 
             #region Movement
@@ -92,6 +98,60 @@ namespace ShmupLib
 
             #endregion
 
+            #region Shooting
+
+            elapsedShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (keyState.IsKeyDown(Keys.Space) && elapsedShot > shotTime)
+            {
+                elapsedShot = 0f;
+
+                shoot(manager);
+            }
+
+            #endregion
+
+            #endif
+
+            #if XBOX
+
+            GamePadState padState = GamePad.GetState(index);
+
+            #region Movement
+
+            Vector2 velocity = Vector2.Zero;
+
+            if (horizontalMovement)
+            {
+                velocity.X = padState.ThumbSticks.Left.X;
+            }
+
+            if (verticalMovement)
+            {
+                velocity.Y = -padState.ThumbSticks.Left.Y;
+            }
+
+            velocity *= speed;
+
+            Sprite.Velocity = velocity;
+
+            #endregion
+
+            #region Shooting
+
+            elapsedShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (padState.IsButtonDown(Buttons.A) && elapsedShot > shotTime)
+            {
+                elapsedShot = 0f;
+
+                shoot(manager);
+            }
+
+            #endregion
+
+            #endif
+
             #region Clamp
 
             Vector2 location = Sprite.Location;
@@ -111,19 +171,6 @@ namespace ShmupLib
                 location.Y = ScreenHelper.Viewport.Height - height;
 
             Sprite.Location = location;
-
-            #endregion
-
-            #region Shooting
-
-            elapsedShot += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (keyState.IsKeyDown(Keys.Space) && elapsedShot > shotTime)
-            {
-                elapsedShot = 0f;
-
-                shoot(manager);
-            }
 
             #endregion
 
@@ -152,7 +199,7 @@ namespace ShmupLib
 
         public virtual void DrawBars(SpriteBatch spriteBatch)
         {
-            statBarX = 0f;
+            statBarX = ScreenHelper.TitleSafeArea.X;
 
             DrawTheBar(spriteBatch, health, Color.Red);
         }
@@ -160,7 +207,12 @@ namespace ShmupLib
         protected void DrawTheBar(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, StatBar b, Color color)
         {
             int x = (int)statBarX;
-            int y = (int)(ScreenHelper.TitleSafeArea.Height - barTextureFront.Height);
+#if WINDOWS
+            int y = (int)(ScreenHelper.Viewport.Height - 32 - barTextureFront.Height);
+#endif
+#if XBOX
+            int y = (int)(ScreenHelper.TitleSafeArea.Bottom - barTextureFront.Height);
+#endif
 
             statBarX += barTextureBack.Width + barTextureBack.Width / 8;
 

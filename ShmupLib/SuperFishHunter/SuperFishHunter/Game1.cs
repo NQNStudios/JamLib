@@ -64,7 +64,12 @@ namespace SuperFishHunter
         Texture2D lifeSaver;
         Texture2D coin;
 
-        string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Super Fish Hunter";
+        bool needIndex = true;
+        PlayerIndex index;
+
+        #if WINDOWS
+        string folderPath = @"Content/";//Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Super Fish Hunter";
+        #endif      
 
         public int coins;
 
@@ -103,10 +108,12 @@ namespace SuperFishHunter
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             graphics.ApplyChanges();
+
+            Components.Add(new GamerServicesComponent(this));
         }
 
         /// <summary>
@@ -173,6 +180,8 @@ namespace SuperFishHunter
 
             SoundManager.Volume = 1f;
 
+            #if WINDOWS
+
             if (!Directory.Exists(folderPath) || !File.Exists(folderPath + "/save.txt"))
             {
                 InitialSave();
@@ -180,68 +189,56 @@ namespace SuperFishHunter
 
             ReadSave();
 
+            #endif
+
             manager = new EntityManager(frontHealthBar, backHealthBar);
 
-            screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), PlayerIndex.One);
+            screenManager.AddScreen(new MainMenuScreen("Super Fish Hunter!"), null);
         }
 
         #region IO
 
         public void InitialSave()
         {
-            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\Super Fish Hunter";
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
 
             using (StreamWriter writer = new StreamWriter(File.Open(folderPath + "/save.txt", FileMode.Create)))
             {
-                writer.WriteLine("0"); //coins
-                writer.WriteLine("0"); //high score
-                writer.WriteLine("False"); //boss
-                writer.WriteLine("2"); //health
-                writer.WriteLine("20"); //air
-                writer.WriteLine("1"); //collisionDamage
-                writer.WriteLine("200"); //speed
-                writer.WriteLine("1"); //bullet hits
-                writer.WriteLine("1"); //bullet damage
-                writer.WriteLine("400"); //bullet speed
-                writer.WriteLine("0.25"); //shot time
-                writer.WriteLine("50"); //health cost
-                writer.WriteLine("100"); //air cost
-                writer.WriteLine("150"); //speed cost
-                writer.WriteLine("500"); //bullet hits cost
-                writer.WriteLine("500"); //bullet damage cost
-                writer.WriteLine("500"); //bullet speed cost
-                writer.WriteLine("500"); //shot time cost
-
-                writer.Close();
+                WriteInitialSave(writer);
             }
         }
 
+        private void WriteInitialSave(StreamWriter writer)
+        {
+            writer.WriteLine("0"); //coins
+            writer.WriteLine("0"); //high score
+            writer.WriteLine("False"); //boss
+            writer.WriteLine("2"); //health
+            writer.WriteLine("20"); //air
+            writer.WriteLine("1"); //collisionDamage
+            writer.WriteLine("200"); //speed
+            writer.WriteLine("1"); //bullet hits
+            writer.WriteLine("1"); //bullet damage
+            writer.WriteLine("400"); //bullet speed
+            writer.WriteLine("0.25"); //shot time
+            writer.WriteLine("50"); //health cost
+            writer.WriteLine("100"); //air cost
+            writer.WriteLine("150"); //speed cost
+            writer.WriteLine("500"); //bullet hits cost
+            writer.WriteLine("500"); //bullet damage cost
+            writer.WriteLine("500"); //bullet speed cost
+            writer.WriteLine("500"); //shot time cost
+
+            writer.Close();
+        }
+        
+        #if WINDOWS
         public void WriteSave()
         {
             using (StreamWriter writer = new StreamWriter(File.Open(folderPath + "/save.txt", FileMode.Create)))
             {
-                writer.WriteLine(coins); //coins
-                writer.WriteLine(highScore); //high score
-                writer.WriteLine(boss); //boss
-                writer.WriteLine(health); //health
-                writer.WriteLine(air); //air
-                writer.WriteLine(collisionDamage); //collisionDamage
-                writer.WriteLine(speed); //speed
-                writer.WriteLine(bulletHits);
-                writer.WriteLine(bulletDamage);
-                writer.WriteLine(bulletSpeed);
-                writer.WriteLine(shotTime);
-                writer.WriteLine(healthCost); //health cost
-                writer.WriteLine(airCost); //air cost
-                writer.WriteLine(speedCost);
-                writer.WriteLine(hitsCost);
-                writer.WriteLine(damageCost);
-                writer.WriteLine(bulletSpeedCost);
-                writer.WriteLine(shotTimeCost);
-
-                writer.Close();
+                WriteTheSave(writer);
             }
         }
 
@@ -249,28 +246,76 @@ namespace SuperFishHunter
         {
             using (StreamReader reader = new StreamReader(File.Open(folderPath + "/save.txt", FileMode.Open)))
             {
-                coins = int.Parse(reader.ReadLine());
-                highScore = int.Parse(reader.ReadLine());
-                boss = bool.Parse(reader.ReadLine());
-                health = int.Parse(reader.ReadLine());
-                air = int.Parse(reader.ReadLine());
-                collisionDamage = uint.Parse(reader.ReadLine());
-                speed = float.Parse(reader.ReadLine());
-                bulletHits = int.Parse(reader.ReadLine());
-                bulletDamage = uint.Parse(reader.ReadLine());
-                bulletSpeed = float.Parse(reader.ReadLine());
-                shotTime = float.Parse(reader.ReadLine());
-                healthCost = int.Parse(reader.ReadLine());
-                airCost = int.Parse(reader.ReadLine());
-                speedCost = int.Parse(reader.ReadLine());
-                hitsCost = int.Parse(reader.ReadLine());
-                damageCost = int.Parse(reader.ReadLine());
-                bulletSpeedCost = int.Parse(reader.ReadLine());
-                shotTimeCost = int.Parse(reader.ReadLine());
-
-                reader.Close();
+                ReadTheSave(reader);
             }
         }
+
+        #endif
+
+        public void WriteTheSave(StreamWriter writer)
+        {
+            writer.WriteLine(coins); //coins
+            writer.WriteLine(highScore); //high score
+            writer.WriteLine(boss); //boss
+            writer.WriteLine(health); //health
+            writer.WriteLine(air); //air
+            writer.WriteLine(collisionDamage); //collisionDamage
+            writer.WriteLine(speed); //speed
+            writer.WriteLine(bulletHits);
+            writer.WriteLine(bulletDamage);
+            writer.WriteLine(bulletSpeed);
+            writer.WriteLine(shotTime);
+            writer.WriteLine(healthCost); //health cost
+            writer.WriteLine(airCost); //air cost
+            writer.WriteLine(speedCost);
+            writer.WriteLine(hitsCost);
+            writer.WriteLine(damageCost);
+            writer.WriteLine(bulletSpeedCost);
+            writer.WriteLine(shotTimeCost);
+
+            writer.Close();
+        }
+
+        private void ReadTheSave(StreamReader reader)
+        {
+            coins = int.Parse(reader.ReadLine());
+            highScore = int.Parse(reader.ReadLine());
+            boss = bool.Parse(reader.ReadLine());
+            health = int.Parse(reader.ReadLine());
+            air = int.Parse(reader.ReadLine());
+            collisionDamage = uint.Parse(reader.ReadLine());
+            speed = float.Parse(reader.ReadLine());
+            bulletHits = int.Parse(reader.ReadLine());
+            bulletDamage = uint.Parse(reader.ReadLine());
+            bulletSpeed = float.Parse(reader.ReadLine());
+            shotTime = float.Parse(reader.ReadLine());
+            healthCost = int.Parse(reader.ReadLine());
+            airCost = int.Parse(reader.ReadLine());
+            speedCost = int.Parse(reader.ReadLine());
+            hitsCost = int.Parse(reader.ReadLine());
+            damageCost = int.Parse(reader.ReadLine());
+            bulletSpeedCost = int.Parse(reader.ReadLine());
+            shotTimeCost = int.Parse(reader.ReadLine());
+
+            reader.Close();
+        }
+
+        #if XBOX
+        public void InitializeXbox(StorageContainer c)
+        {
+            if (!c.FileExists("save.txt"))
+            {
+                c.CreateFile("save.txt").Close();
+               
+                StreamWriter writer = new StreamWriter(c.OpenFile("save.txt", FileMode.Open));
+
+                WriteInitialSave(writer);
+            }
+
+            StreamReader reader = new StreamReader(c.OpenFile("save.txt", FileMode.Open));
+            ReadTheSave(reader);
+        }
+#endif
 
         #endregion
 
@@ -320,6 +365,13 @@ namespace SuperFishHunter
                     if (device != null && device.IsConnected)
                     {
                         ScreenManager.Storage = device;
+
+                        StorageContainer c = ScreenManager.GetContainer();
+
+                        InitializeXbox(c);
+
+                        c.Dispose();
+
                         needStorageDevice = false;
                     }
                     else
@@ -328,6 +380,19 @@ namespace SuperFishHunter
                     }
                 }
             }
+
+            if (needIndex)
+            {
+                for (int i = 3; i >= 0; i--)
+                {
+                    if (GamePad.GetState((PlayerIndex)i).IsConnected)
+                    {
+                        index = (PlayerIndex)i;
+                        needIndex = false;
+                    }
+                }
+            }
+
             #endif
 
             // TODO: Add your update logic here
@@ -339,7 +404,7 @@ namespace SuperFishHunter
                 if (score > highScore)
                     highScore = score;
 
-                if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+                if (Keyboard.GetState().IsKeyDown(Keys.Escape) || GamePad.GetState(index).IsButtonDown(Buttons.Start))
                 {
                     Entity e = manager.Get("Player");
                     if (e != null)
@@ -438,7 +503,7 @@ namespace SuperFishHunter
             spriteBatch.Draw(backdrop, ScreenHelper.Viewport.Bounds, Color.White);
 
             manager.Draw(spriteBatch);
-            spriteBatch.DrawString(screenManager.Font, "$" + coins.ToString(), new Vector2(ScreenHelper.TitleSafeArea.Right, ScreenHelper.TitleSafeArea.Bottom) - screenManager.Font.MeasureString("$" + coins.ToString()), Color.Green);
+            spriteBatch.DrawString(screenManager.Font, "$" + coins.ToString(), new Vector2(ScreenHelper.TitleSafeArea.Location.X, ScreenHelper.TitleSafeArea.Location.Y), Color.Green);
 
             if (InGame)
             {
@@ -475,7 +540,7 @@ namespace SuperFishHunter
 
             Sprite s = new Sprite(new Vector2(ScreenHelper.TitleSafeArea.X, ScreenHelper.Viewport.Height / 2 - playerPistol.Height / 2), playerPistol, AnimationType.None);
 
-            Entity e =  new Hunter(playerBarFront, playerBarBack, health, "Damage", air, s, collisionDamage, speed, arrowTexture, shotSound, offset, bulletHits, bulletDamage, bulletSpeed, shotTime);
+            Entity e =  new Hunter(index, playerBarFront, playerBarBack, health, "Damage", air, s, collisionDamage, speed, arrowTexture, shotSound, offset, bulletHits, bulletDamage, bulletSpeed, shotTime);
             e.OnDeath += new Action1(SpawnBlood);
             return e;
         }

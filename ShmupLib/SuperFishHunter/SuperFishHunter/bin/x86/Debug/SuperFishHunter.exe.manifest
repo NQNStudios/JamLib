@@ -75,19 +75,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>xm/hBBB/oEPPXnUx9+hArGamt1Y=</dsig:DigestValue>
+        <dsig:DigestValue>C8YTgXNhQ6Qjn8IAhLGa7YH6PoI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SuperFishHunter.exe" size="30208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SuperFishHunter.exe" size="30720">
       <assemblyIdentity name="SuperFishHunter" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>shlgnjmkAcZdEvpZmpl1tdlvN80=</dsig:DigestValue>
+        <dsig:DigestValue>737GRRR23GOHoLwxj5OBR1k61lg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

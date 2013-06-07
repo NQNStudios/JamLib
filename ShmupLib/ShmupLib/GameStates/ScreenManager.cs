@@ -269,7 +269,7 @@ namespace ShmupLib.GameStates
         public void AddScreen(GameScreen screen, PlayerIndex? controllingPlayer)
         {
             screen.ControllingPlayer = controllingPlayer;
-            screen.ScreenManager = this;
+            screen.Manager = this;
             screen.IsExiting = false;
 
             //If we have a graphics device, tell the screen to load content.

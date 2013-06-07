@@ -48,18 +48,18 @@ namespace ShmupLib.GameStates.Screens
             //slow down as it nears the end).
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
-            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+            SpriteBatch spriteBatch = Manager.SpriteBatch;
 
             spriteBatch.Begin();
 
-            Vector2 titlePosition = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2, ScreenManager.GraphicsDevice.Viewport.Height * 0.1736111111111111f);
-            Vector2 titleOrigin = ScreenManager.TitleFont.MeasureString(title) / 2;
+            Vector2 titlePosition = new Vector2(Manager.GraphicsDevice.Viewport.Width / 2, Manager.GraphicsDevice.Viewport.Height * 0.1736111111111111f);
+            Vector2 titleOrigin = Manager.TitleFont.MeasureString(title) / 2;
             Color titleColor = Color.Blue * TransitionAlpha;
             float titleScale = 1f;
 
             titlePosition.Y -= transitionOffset * 100;
 
-            spriteBatch.DrawString(ScreenManager.TitleFont, title, titlePosition, titleColor, 0,
+            spriteBatch.DrawString(Manager.TitleFont, title, titlePosition, titleColor, 0,
                 titleOrigin, titleScale, SpriteEffects.None, 0);
 
             Vector2 position = new Vector2(0f, ScreenHelper.Viewport.Height * 0.3472222222222222f);
@@ -67,12 +67,12 @@ namespace ShmupLib.GameStates.Screens
             for (int i = 0; i < lines.Length; i++)
             {
                 //set the left margin
-                position.X = ScreenManager.GraphicsDevice.Viewport.Width / 2;
-                position.X -= ((ScreenManager.Font.MeasureString(lines[i]).X)) / 2;
+                position.X = Manager.GraphicsDevice.Viewport.Width / 2;
+                position.X -= ((Manager.Font.MeasureString(lines[i]).X)) / 2;
 
-                spriteBatch.DrawString(ScreenManager.Font, lines[i], position, Color.White);
+                spriteBatch.DrawString(Manager.Font, lines[i], position, Color.White);
 
-                position.Y += ScreenManager.Font.LineSpacing;
+                position.Y += Manager.Font.LineSpacing;
             }
 
             spriteBatch.End();

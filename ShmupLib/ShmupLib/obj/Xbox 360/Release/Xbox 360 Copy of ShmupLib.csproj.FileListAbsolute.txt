@@ -1,0 +1,6 @@
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\Xbox 360\Release\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\Xbox 360\Release\ShmupLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Release\ShmupLib.dll
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Release\ShmupLib.pdb
+C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\Xbox 360\Release\Xbox 360 Copy of ShmupLib.csprojResolveAssemblyReference.cache

@@ -1,0 +1,28 @@
+Content\Textures\Back Health.xnb
+Content\Textures\Front Health.xnb
+Content\Textures\blank.xnb
+Content\Textures\Large Fish.xnb
+Content\Textures\Med Fish.xnb
+Content\Textures\Moby Dick.xnb
+Content\Textures\Small Fish.xnb
+Content\Textures\Player Bar Back.xnb
+Content\Textures\Player Bar Front.xnb
+Content\Textures\Blood.xnb
+Content\Textures\Diver.xnb
+Content\Textures\Arrow.xnb
+Content\Textures\Big Bubble.xnb
+Content\Textures\Medium Bubble.xnb
+Content\Textures\Small Bubble.xnb
+Content\Textures\Life Saver.xnb
+Content\Textures\Coin Sprite.xnb
+Content\Textures\Fire.xnb
+Content\Textures\Backdrop.xnb
+Content\Fonts\menufont.xnb
+Content\Fonts\titlefont.xnb
+Content\Sounds\Blip_Select6.xnb
+Content\Sounds\Explosion4.xnb
+Content\Sounds\Hit_Hurt.xnb
+Content\Sounds\Laser_Shoot6.xnb
+Content\Sounds\Pickup_Coin20.xnb
+Content\Sounds\Powerup.xnb
+Content\Sounds\Powerup6.xnb

@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using ShmupLib.GameStates.Screens;
 using ShmupLib.GameStates.Input;
+using ShmupLib.GameStates;
+
+#if XBOX
+using Microsoft.Xna.Framework.Storage;
+#endif
 
 namespace SuperFishHunter.Screens
 {
@@ -53,7 +58,7 @@ namespace SuperFishHunter.Screens
         {
             base.Activate();
 
-            theGame = ScreenManager.Game as Game1;
+            theGame = Manager.Game as Game1;
             
             updateText();
 
@@ -72,7 +77,7 @@ namespace SuperFishHunter.Screens
             if (theGame.shotTime > theGame.minShotTime)
                 MenuEntries.Add(shotTime);
 
-            MenuEntries.Add(restartEntry);
+            //MenuEntries.Add(restartEntry);
         }
 
         void updateText()
@@ -200,8 +205,19 @@ namespace SuperFishHunter.Screens
 
         void startOver(object sender, PlayerIndexEventArgs e)
         {
+            #if WINDOWS
             theGame.InitialSave();
+
             theGame.ReadSave();
+            #endif
+
+            #if XBOX
+            StorageContainer c = ScreenManager.GetContainer();
+
+            theGame.InitializeXbox(c);
+
+            c.Dispose();
+            #endif
 
             updateText();
         }
