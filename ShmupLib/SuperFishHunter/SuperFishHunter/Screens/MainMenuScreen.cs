@@ -51,17 +51,17 @@ namespace SuperFishHunter.Screens
 
         private void Shop(object sender, PlayerIndexEventArgs e)
         {
-            Manager.AddScreen(new ShopScreen(), PlayerIndex.One);
+            Manager.AddScreen(new ShopScreen(), ControllingPlayer);
         }
 
         private void howtoplay(object sender, PlayerIndexEventArgs e)
         {
-            Manager.AddScreen(new HowtoScreen(), PlayerIndex.One);
+            Manager.AddScreen(new HowtoScreen(), ControllingPlayer);
         }
 
         private void openCredits(object sender, PlayerIndexEventArgs e)
         {
-            Manager.AddScreen(new CreditScreen(), PlayerIndex.One);
+            Manager.AddScreen(new CreditScreen(), ControllingPlayer);
         }
 
         protected override void OnCancel(PlayerIndex playerIndex)
