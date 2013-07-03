@@ -72,12 +72,22 @@ namespace SuperFishHunter.Screens
     
             #if XBOX
 
-            StorageContainer c = ScreenManager.GetContainer();
-            StreamWriter writer = new StreamWriter(c.OpenFile("save.txt", FileMode.Open));
+            try
+            {
+                StorageContainer c = ScreenManager.GetContainer();
 
-            (Manager.Game as Game1).WriteTheSave(writer);
+                if (c != null)
+                {
+                    StreamWriter writer = new StreamWriter(c.OpenFile("save.txt", FileMode.Open));
 
-            c.Dispose();
+                    (Manager.Game as Game1).WriteTheSave(writer);
+
+                    c.Dispose();
+                }
+            }
+            catch
+            {
+            }
 
             #endif
 
