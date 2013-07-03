@@ -8,7 +8,7 @@ namespace ShmupLib
 {
     public class Enemy : Entity
     {
-        protected float speed;
+         float speed;
 
         public Enemy(int health, string damageSound, Sprite sprite, uint collisionDamage, float speed)
             : base("", "Enemies", health, damageSound, sprite, true, collisionDamage, "Players", "Projectiles")

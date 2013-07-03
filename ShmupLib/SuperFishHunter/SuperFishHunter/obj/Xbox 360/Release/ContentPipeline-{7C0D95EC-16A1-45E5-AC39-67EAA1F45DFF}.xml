@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Back Health.xnb</Output>
-      <Time>2013-06-07T15:32:59-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Back Health.xnb</Output>
+      <Time>2013-06-07T15:32:59.9495141-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Front Health.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Front Health.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Front Health.xnb</Output>
+      <Time>2013-06-07T15:33:00.0125177-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\blank.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\blank.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\blank.xnb</Output>
+      <Time>2013-06-07T15:33:00.0295186-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Large Fish.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Large Fish.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Large Fish.xnb</Output>
+      <Time>2013-06-07T15:33:00.0165179-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Med Fish.png</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Med Fish.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Med Fish.xnb</Output>
+      <Time>2013-06-07T15:33:00.018518-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Moby Dick.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Moby Dick.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Moby Dick.xnb</Output>
+      <Time>2013-06-07T15:33:00.0205181-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Small Fish.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Small Fish.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Small Fish.xnb</Output>
+      <Time>2013-06-07T15:33:00.0265185-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Player Bar Back.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Player Bar Back.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Player Bar Back.xnb</Output>
+      <Time>2013-06-07T15:33:00.0255184-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Player Bar Front.png</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Player Bar Front.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Player Bar Front.xnb</Output>
+      <Time>2013-06-07T15:33:00.0255184-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Blood.png</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Blood.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Blood.xnb</Output>
+      <Time>2013-06-07T15:33:00.0045172-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Diver.png</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Diver.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Diver.xnb</Output>
+      <Time>2013-06-07T15:33:00.0085174-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Arrow.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Arrow.xnb</Output>
-      <Time>2013-06-07T15:32:59-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Arrow.xnb</Output>
+      <Time>2013-06-07T15:32:59.9495141-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Big Bubble.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Big Bubble.xnb</Output>
-      <Time>2013-06-07T15:32:59-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Big Bubble.xnb</Output>
+      <Time>2013-06-07T15:32:59.9515142-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Medium Bubble.png</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Medium Bubble.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Medium Bubble.xnb</Output>
+      <Time>2013-06-07T15:33:00.0195181-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Small Bubble.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Small Bubble.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Small Bubble.xnb</Output>
+      <Time>2013-06-07T15:33:00.0265185-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Life Saver.png</Source>
@@ -142,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Life Saver.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Life Saver.xnb</Output>
+      <Time>2013-06-07T15:33:00.017518-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Coin Sprite.png</Source>
@@ -151,8 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Coin Sprite.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Coin Sprite.xnb</Output>
+      <Time>2013-06-07T15:33:00.0055173-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Fire.png</Source>
@@ -160,8 +160,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Fire.xnb</Output>
-      <Time>2013-06-07T15:33:00-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Fire.xnb</Output>
+      <Time>2013-06-07T15:33:00.0085174-06:00</Time>
     </Item>
     <Item>
       <Source>Textures\Backdrop.png</Source>
@@ -169,8 +169,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Textures\Backdrop.xnb</Output>
-      <Time>2013-06-07T15:32:59-06:00</Time>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Textures\Backdrop.xnb</Output>
+      <Time>2013-06-07T15:32:59.9505141-06:00</Time>
     </Item>
     <Item>
       <Source>Fonts\menufont.spritefont</Source>
@@ -178,7 +178,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Fonts\menufont.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Fonts\menufont.xnb</Output>
       <Time>2013-06-07T15:32:59.8995112-06:00</Time>
     </Item>
     <Item>
@@ -187,7 +187,7 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Fonts\titlefont.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Fonts\titlefont.xnb</Output>
       <Time>2013-06-07T15:32:59.9005113-06:00</Time>
     </Item>
     <Item>
@@ -196,7 +196,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Blip_Select6.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Blip_Select6.xnb</Output>
       <Time>2013-06-07T15:32:59.9015113-06:00</Time>
     </Item>
     <Item>
@@ -205,7 +205,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Explosion4.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Explosion4.xnb</Output>
       <Time>2013-06-07T15:32:59.9055115-06:00</Time>
     </Item>
     <Item>
@@ -214,7 +214,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Hit_Hurt.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Hit_Hurt.xnb</Output>
       <Time>2013-06-07T15:32:59.9065116-06:00</Time>
     </Item>
     <Item>
@@ -223,7 +223,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Laser_Shoot6.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Laser_Shoot6.xnb</Output>
       <Time>2013-06-07T15:32:59.9185123-06:00</Time>
     </Item>
     <Item>
@@ -232,7 +232,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Pickup_Coin20.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Pickup_Coin20.xnb</Output>
       <Time>2013-06-07T15:32:59.9195123-06:00</Time>
     </Item>
     <Item>
@@ -241,7 +241,7 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Powerup.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Powerup.xnb</Output>
       <Time>2013-06-07T15:32:59.9245126-06:00</Time>
     </Item>
     <Item>
@@ -250,20 +250,20 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\Sounds\Powerup6.xnb</Output>
+      <Output>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\Sounds\Powerup6.xnb</Output>
       <Time>2013-06-07T15:32:59.9255127-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{7C0D95EC-16A1-45E5-AC39-67EAA1F45DFF}</ContentProjectGUID>
-      <TargetPlatform>Windows</TargetPlatform>
-      <TargetProfile>Reach</TargetProfile>
+      <TargetPlatform>Xbox360</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Release</BuildConfiguration>
       <CompressContent>true</CompressContent>
       <RootDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunterContent\</RootDirectory>
       <LoggerRootDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\x86\Release\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\x86\Release\Content\</OutputDirectory>
+      <IntermediateDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\obj\Xbox 360\Release\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\SuperFishHunter\SuperFishHunter\bin\Xbox 360\Release\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

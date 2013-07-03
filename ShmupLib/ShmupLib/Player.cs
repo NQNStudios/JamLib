@@ -28,7 +28,10 @@ namespace ShmupLib
         float shotTime;
         float elapsedShot = 0f;
 
-        public Player(PlayerIndex playerIndex, Texture2D backTexture, Texture2D frontTexture, int health, string damageSound, Sprite sprite, uint collisionDamage, float speed, bool horizontal, bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits, uint bulletDamage, float bulletSpeed, float shotTime)
+        public Player(PlayerIndex playerIndex, Texture2D backTexture, Texture2D frontTexture, int health,
+            string damageSound, Sprite sprite, uint collisionDamage, float speed, bool horizontal, 
+            bool vertical, Texture2D bulletTexture, Vector2 shotOffset, int bulletHits,
+            uint bulletDamage, float bulletSpeed, float shotTime)
             : base("Player", "Players", health, damageSound, sprite, true, collisionDamage, "Enemies")
         {
             index = playerIndex;

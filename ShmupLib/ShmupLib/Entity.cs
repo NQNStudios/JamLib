@@ -54,7 +54,8 @@ namespace ShmupLib
 
         #region Initialization
 
-        public Entity(string tag, string group, int _health, string damageSound, Sprite _sprite, bool _collides, uint _collisionDamage, params string[] _collisionGroups)
+        public Entity(string tag, string group, int _health, string damageSound, 
+            Sprite _sprite, bool _collides, uint _collisionDamage, params string[] _collisionGroups)
         {
             Tag = tag;
             Group = group;
