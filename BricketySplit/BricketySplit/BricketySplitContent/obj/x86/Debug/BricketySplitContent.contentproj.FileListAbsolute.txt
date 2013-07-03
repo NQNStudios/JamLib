@@ -1,0 +1,2 @@
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplitContent\obj\x86\Debug\BricketySplitContent.contentprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplitContent\obj\x86\Debug\BricketySplitContent.contentprojResolveAssemblyReference.cache

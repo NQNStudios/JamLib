@@ -5,9 +5,13 @@ using System.Text;
 using ShmupLib.GameStates.Screens;
 using ShmupLib.GameStates.Input;
 using ShmupLib.GameStates;
-
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ShmupLib;
 #if XBOX
 using Microsoft.Xna.Framework.Storage;
+
+
 #endif
 
 namespace SuperFishHunter.Screens
@@ -78,6 +82,25 @@ namespace SuperFishHunter.Screens
                 MenuEntries.Add(shotTime);
 
             //MenuEntries.Add(restartEntry);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+
+            SpriteBatch batch = Manager.SpriteBatch;
+            SpriteFont font = Manager.Font;
+
+            batch.Begin();
+
+            Vector2 pos =  new Vector2(ScreenHelper.Viewport.Width / 2 - font.MeasureString("$" + theGame.coins.ToString()).X / 2, ScreenHelper.Viewport.Height * 0.27f);
+
+            float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
+            pos.Y -= transitionOffset * 100;
+
+            batch.DrawString(font, "$" + theGame.coins.ToString(), pos, Color.Green);
+
+            batch.End();
         }
 
         void updateText()

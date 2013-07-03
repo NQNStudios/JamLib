@@ -28,8 +28,15 @@ namespace ShmupLib.GameStates
 
         public static StorageContainer GetContainer()
         {
-            IAsyncResult result = Storage.BeginOpenContainer("Super Fish Hunter", null, null);
-            return Storage.EndOpenContainer(result);
+            try
+            {
+                IAsyncResult result = Storage.BeginOpenContainer("Super Fish Hunter", null, null);
+                return Storage.EndOpenContainer(result);
+            }
+            catch
+            {
+                return null;
+            }
         }
         #endif
 

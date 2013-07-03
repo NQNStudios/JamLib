@@ -68,19 +68,19 @@ namespace SuperFishHunter
 
         string folderPath = @"Content/";
 
-        public int coins;
+        public int coins = 0;
 
-        int score;
-        int highScore;
+        int score = 0;
+        int highScore = 0;
 
-        public int health;
-        public int air;
-        public uint collisionDamage;
-        public float speed;
-        public int bulletHits;
-        public uint bulletDamage;
-        public float bulletSpeed;
-        public float shotTime;
+        public int health = 2;
+        public int air = 20;
+        public uint collisionDamage = 1;
+        public float speed = 200f;
+        public int bulletHits = 1;
+        public uint bulletDamage = 1;
+        public float bulletSpeed = 400f;
+        public float shotTime = 0.25f;
 
         public int maxHealth = 20;
         public int maxAir = 100;
@@ -90,13 +90,13 @@ namespace SuperFishHunter
         public float maxBulletSpeed = 600f;
         public float minShotTime = 0.15f;
 
-        public int healthCost;
-        public int airCost;
-        public int speedCost;
-        public int hitsCost;
-        public int damageCost;
-        public int bulletSpeedCost;
-        public int shotTimeCost;
+        public int healthCost = 50;
+        public int airCost = 100;
+        public int speedCost = 150;
+        public int hitsCost = 500;
+        public int damageCost = 500;
+        public int bulletSpeedCost = 500;
+        public int shotTimeCost = 500;
 
         bool boss;
         
@@ -208,32 +208,8 @@ namespace SuperFishHunter
 
             using (StreamWriter writer = new StreamWriter(File.Open(folderPath + "/save.txt", FileMode.Create)))
             {
-                WriteInitialSave(writer);
+                WriteTheSave(writer);
             }
-        }
-
-        private void WriteInitialSave(StreamWriter writer)
-        {
-            writer.WriteLine("0"); //coins
-            writer.WriteLine("0"); //high score
-            writer.WriteLine("False"); //boss
-            writer.WriteLine("2"); //health
-            writer.WriteLine("20"); //air
-            writer.WriteLine("1"); //collisionDamage
-            writer.WriteLine("200"); //speed
-            writer.WriteLine("1"); //bullet hits
-            writer.WriteLine("1"); //bullet damage
-            writer.WriteLine("400"); //bullet speed
-            writer.WriteLine("0.25"); //shot time
-            writer.WriteLine("50"); //health cost
-            writer.WriteLine("100"); //air cost
-            writer.WriteLine("150"); //speed cost
-            writer.WriteLine("500"); //bullet hits cost
-            writer.WriteLine("500"); //bullet damage cost
-            writer.WriteLine("500"); //bullet speed cost
-            writer.WriteLine("500"); //shot time cost
-
-            writer.Close();
         }
         
         #if WINDOWS
@@ -312,7 +288,7 @@ namespace SuperFishHunter
                
                 StreamWriter writer = new StreamWriter(c.OpenFile("save.txt", FileMode.Open));
 
-                WriteInitialSave(writer);
+                WriteTheSave(writer);
             }
 
             StreamReader reader = new StreamReader(c.OpenFile("save.txt", FileMode.Open));
@@ -370,10 +346,13 @@ namespace SuperFishHunter
                         ScreenManager.Storage = device;
 
                         StorageContainer c = ScreenManager.GetContainer();
+                        
+                        if (c != null)
+                        {
+                            InitializeXbox(c);
 
-                        InitializeXbox(c);
-
-                        c.Dispose();
+                            c.Dispose();
+                        }
 
                         needStorageDevice = false;
                     }
@@ -695,7 +674,7 @@ namespace SuperFishHunter
 
         private void BossDeath(Entity e)
         {
-            screenManager.AddScreen(new VictoryScreen(), PlayerIndex.One);
+            screenManager.AddScreen(new VictoryScreen(), ControllingIndex);
 
             if (manager.Get("Player") != null)
             {
