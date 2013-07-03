@@ -1,0 +1,21 @@
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\BricketySplit.csprojResolveAssemblyReference.cache
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\Content\Brick.xnb
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\BricketySplit.exe
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\BricketySplit.pdb
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\BricketySplit.exe
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\BricketySplit.pdb
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\GameLibrary.dll
+c:\users\nathaniel\documents\visual studio 2010\Projects\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\GameLibrary.pdb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\BricketySplit.csprojResolveAssemblyReference.cache
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\BricketySplit.exe
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\obj\x86\Debug\BricketySplit.pdb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\Content\Brick.xnb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\BricketySplit.exe
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\BricketySplit.pdb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\GameLibrary.dll
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\GameLibrary.pdb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\Content\Player.xnb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\Content\Bullet.xnb
+C:\Users\Nathaniel\Desktop\BricketySplit\BricketySplit\BricketySplit\bin\x86\Debug\Content\Monster.xnb
