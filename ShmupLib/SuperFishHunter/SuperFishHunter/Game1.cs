@@ -333,9 +333,15 @@ namespace SuperFishHunter
             {
                 if (!Guide.IsVisible && needResult)
                 {
-                    result = StorageDevice.BeginShowSelector(
-                            ControllingIndex, null, null);
-                    needResult = false;
+                    try
+                    {
+                        result = StorageDevice.BeginShowSelector(
+                                ControllingIndex, null, null);
+                        needResult = false;
+                    }
+                    catch
+                    {  
+                    }
                 }
 
                 if (result != null && result.IsCompleted)

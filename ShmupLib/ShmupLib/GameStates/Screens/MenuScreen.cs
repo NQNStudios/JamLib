@@ -20,10 +20,10 @@ namespace ShmupLib.GameStates.Screens
         private string menuTitle;
 
 #if XBOX || WINDOWS
-        private InputAction menuUp;
-        private InputAction menuDown;
-        private InputAction menuSelect;
-        private InputAction menuCancel;
+        protected InputAction menuUp;
+        protected InputAction menuDown;
+        protected InputAction menuSelect;
+        protected InputAction menuCancel;
 #endif
         string selectionChangeSound = "";
         string selectionSound = "";

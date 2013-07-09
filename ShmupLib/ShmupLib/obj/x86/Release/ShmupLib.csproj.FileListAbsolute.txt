@@ -3,4 +3,3 @@ C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\bin\x86\Release\ShmupLib.pdb
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Release\ShmupLib.dll
 C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Release\ShmupLib.pdb
-C:\Users\Nathaniel\Desktop\JamLib\ShmupLib\ShmupLib\obj\x86\Release\ShmupLib.csprojResolveAssemblyReference.cache

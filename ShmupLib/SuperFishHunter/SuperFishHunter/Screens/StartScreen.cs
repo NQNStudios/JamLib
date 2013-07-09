@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using SuperFishHunter;
 using SuperFishHunter.Screens;
 using System;
+using Microsoft.Xna.Framework.Input;
 
 #if XBOX
 
@@ -13,6 +14,8 @@ public class StartScreen : MenuScreen
     public StartScreen() :
         base("")
     {
+        menuCancel = new InputAction(new Buttons[] { }, new Keys[] { }, true);
+
         MenuEntry enter = new MenuEntry("Press A");
 
         enter.Selected += entry;

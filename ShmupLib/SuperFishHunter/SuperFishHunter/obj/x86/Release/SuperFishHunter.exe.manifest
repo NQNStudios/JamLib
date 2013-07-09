@@ -75,7 +75,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gSaxp+nWtP69e1hDX1q2e0kbFuY=</dsig:DigestValue>
+        <dsig:DigestValue>KtiZXsKiKf/Lem/tGUEhIAk9WLU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -87,7 +87,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>yL6puA4ZEajdZrbqDDMLTgZ3Ozg=</dsig:DigestValue>
+        <dsig:DigestValue>k9uu2wtSg/CCRaR2WljsqmQy4lw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -352,13 +352,13 @@
       <dsig:DigestValue>/y21PfwGnUAkwpPwwaFuIIyWENo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="GameThumbnail.png" size="5734">
+  <file name="GameThumbnail.png" size="5965">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>diNvdcDpDtGEMuMQIHpkKK3qVHc=</dsig:DigestValue>
+      <dsig:DigestValue>DjWineWLSQ9aOE4gtNVqBJa81WA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
